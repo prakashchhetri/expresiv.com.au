@@ -8,12 +8,19 @@
         <style>
             body {
                 font-family: 'Inter', sans-serif;
-                font-weight: 500;
+                font-weight: 200;
                 font-size: 1.2rem;
                 line-height: 1.5;
                 text-align: center;
                 margin: 0;
                 padding: 0;
+            }
+            h3{
+                display: block;
+                padding: 10px;
+            }
+            p{
+                display: block;
             }
             .container {
                 display: flex;
@@ -24,7 +31,8 @@
         </style>
     </head>
     <body>
-        <div class="container">
+        <div class="container"> 
+            <h3>expresiv.</h3> <br/>
             <p>Home of something new.</p>
         </div>
     </body>
