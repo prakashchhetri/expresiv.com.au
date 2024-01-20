@@ -1,0 +1,37 @@
+---
+import Stats from '../components/Stats.astro';
+import Features from '../components/Features.astro';
+import HeroSection2 from '../components/HeroSection2.astro';
+import Layout from '../layouts/Layout.astro';
+import Testimonials from '../components/Testimonials.astro';
+import CallToAction from '../components/CallToAction.astro';
+import Blog from '../components/Blog.astro';
+import Container from "../components/Container.astro";
+---
+
+<Layout title="Welcome to Astrolus.">
+	<main class="space-y-40 mb-40">
+		<div class="relative" id="home">
+			<div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
+				<div class="blur-[106px] bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500"></div>
+				<div class="blur-[106px] h-32 bg-gradient-to-r from-rose-700 to-pink-600"></div>
+			</div>
+			<Container>
+				<div class="relative pt-2 ml-auto">
+
+				</div>
+                <div>
+	                <section class="">
+		                <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+			                <div class="mx-auto max-w-screen-sm text-center">
+				                <h2 class="mb-4 text-4xl tracking-tight font-extrabold leading-tight text-gray-900 dark:text-white">Start your free trial today</h2>
+				                <p class="mb-6 font-light text-gray-500 dark:text-gray-400 md:text-lg">Try Flowbite Platform for 30 days. No credit card required.</p>
+				                <a href="#" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Free trial for 30 days</a>
+			                </div>
+		                </div>
+	                </section>
+                </div>
+			</Container>
+		</div>
+	</main>
+</Layout>
