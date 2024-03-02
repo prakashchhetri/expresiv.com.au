@@ -1,54 +1,57 @@
 ---
 import AppFooter from "../components/AppFooter.astro";
 import AppHeader from "../components/AppHeader.astro"
-import { Helmet } from 'react-helmet-async';
-
+import {Helmet} from 'react-helmet-async';
 ---
 
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content="Expresiv Designs - We support small businesses to thrive by providing top-notch design services.">		<title>Expresiv Designs - Supporting small businesses thrive.</title>
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width"/>
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+	<meta name="generator" content={Astro.generator}/>
+	<meta name="description"
+	      content="Expresiv Designs - We support small businesses to thrive by providing top-notch design services.">
+	<title>Expresiv Designs - Supporting small businesses thrive.</title>
 
-		<meta name="keywords" content="design agency, website design, brochure design, digital marketing, SEO, search engine optimization, graphic design, branding, logo design, web development, online marketing, content creation, social media marketing" />
-		<meta property="og:title" content="Expresiv Designs" />
-		<meta property="og:description" content="Expresiv Designs: Supporting small business thrive." />
-		<meta property="og:image" content="https://expresiv.com.au/static/social-image.jpeg" />
-		<meta property="og:url" content="https://expresiv.com.au" />
-		<meta name="twitter:card" content="summary_large_image" />
+	<meta name="keywords"
+	      content="design agency, website design, brochure design, digital marketing, SEO, search engine optimization, graphic design, branding, logo design, web development, online marketing, content creation, social media marketing"/>
+	<meta property="og:title" content="Expresiv Designs"/>
+	<meta property="og:description" content="Expresiv Designs: Supporting small business thrive."/>
+	<meta property="og:image" content="https://expresiv.com.au/static/social-image.jpeg"/>
+	<meta property="og:url" content="https://expresiv.com.au"/>
+	<meta name="twitter:card" content="summary_large_image"/>
 
-		<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-		<!-- @todo might need to search for a better alternative of adding google analytics-->
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y1HKE41C83"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
+	<!-- @todo might need to search for a better alternative of adding google analytics-->
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y1HKE41C83"></script>
+	<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-Y1HKE41C83');
+	</script>
 
-			gtag('config', 'G-Y1HKE41C83');
-		</script>
-
-	</head>
-	<body class="bg-white dark:bg-gray-900">
-		<AppHeader/>
-		<slot />
-		<AppFooter/>
-	</body>
+</head>
+<body class="bg-white dark:bg-gray-900">
+<AppHeader/>
+<slot/>
+<AppFooter/>
+</body>
 </html>
 <style>
-	html {
-		font-family: Urbanist, sans-serif;
-		scroll-behavior: smooth;
-	}
+    html {
+        font-family: Urbanist, sans-serif;
+        scroll-behavior: smooth;
+    }
 
-	body {
-		margin: 0;
-	}
+    body {
+        margin: 0;
+    }
 </style>
