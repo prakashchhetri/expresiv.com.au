@@ -1,0 +1,18 @@
+---
+import Container from "./Container.astro";
+import techStack from "../../public/images/fullframeworks.svg";
+
+---
+
+<section class="relative pt-[100px] pb-[100px]">
+    <Container>
+        <div class="text-center w-[85%]  ml-auto mr-auto">
+            <h2 class="leading-relaxedtext-gray-900 dark:text-white font-bold text-3xl md:text-4xl xl:text-4xl">Our Tech Stack</h2>
+            <p class="mb-6 font-normal text-gray-800 dark:text-gray-400 md:text-lg mt-5">We strive for high development velocity despite the ever-changing business requirements through lean and agile development techniques, setting up and maintaining adequate test coverage of the codebase powered by CI/CD pipelines.
+            </p>
+        </div>
+        <div class="mt-[70px] w-[70%] ml-auto mr-auto">
+            <img src={techStack} alt="" class="w-full">
+        </div>
+    </Container>
+</section>
