@@ -7,31 +7,56 @@ import Testimonials from '../components/Testimonials.astro';
 import CallToAction from '../components/CallToAction.astro';
 import Blog from '../components/Blog.astro';
 import Container from "../components/Container.astro";
+import TechStack from "../components/TechStack.astro";
+import MainCallToAction from "../components/MainCallToAction.astro"
 ---
 
 <Layout title="Welcome to Astrolus.">
-	<main class="space-y-40 mb-40">
+	<main class="space-y-40">
 		<div class="relative" id="home">
 			<div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
-				<div class="blur-[106px] bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500"></div>
-				<div class="blur-[106px] h-32 bg-gradient-to-r from-rose-700 to-pink-600"></div>
+				<div class="blur-[106px] h-32 bg-gradient-to-r from-sky-700 to-sky-700"></div>
+				<div class="blur-[106px] h-32 bg-gradient-to-r from-purple-700 to-fuchsia-600"></div>
 			</div>
-			<Container>
-				<div class="relative pt-2 ml-auto">
+			<section class="relative">
+				<Container>
+					<div>
+						<div class="">
+							<div class="pt-[200px] pb-[120px] w-[85%]">
+								<h1 class="leading-relaxedtext-gray-900 dark:text-white font-bold text-5xl md:text-6xl xl:text-6xl">We Create meaningful digital solutions that level up your business
+								</h1>
+								<p class="mb-6 font-normal text-gray-800 dark:text-gray-400 md:text-lg mt-5">Elevating businesses with expertly designed and executed digital strategies. Crator is here to help you conquer the online space one pexel at a time.
+								</p>
+								<a
+								href="/contact"
+								class="relative flex h-12 w-full items-center justify-center px-8 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
+								>
+								<span class="relative text-sm font-semibold text-white"
+									>Let’s get started</span
+								>
+							</a>
+							</div>
+						</div>
+					</div>
+				</Container>
+			</section>
+			<!-- tech stack -->
+			<TechStack/>
 
-				</div>
-                <div>
-	                <section class="">
-		                <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-			                <div class="mx-auto max-w-screen-sm text-center">
-				                <h2 class="mb-4 text-4xl tracking-tight font-extrabold leading-tight text-gray-900 dark:text-white">Start your free trial today</h2>
-				                <p class="mb-6 font-light text-gray-500 dark:text-gray-400 md:text-lg">Try Flowbite Platform for 30 days. No credit card required.</p>
-				                <a href="#" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Free trial for 30 days</a>
-			                </div>
-		                </div>
-	                </section>
-                </div>
-			</Container>
+			<!-- design process -->
+			<section class="relative pt-[100px] pb-[100px]">
+				<Container>
+					<div class="text-center w-[85%]  ml-auto mr-auto">
+						<h2 class="leading-relaxedtext-gray-900 dark:text-white font-bold text-3xl md:text-4xl xl:text-4xl">Experience our simple design process
+						</h2>
+						<p class="mb-6 font-normal text-gray-800 dark:text-gray-400 md:text-lg mt-5">Uncover the essence of your brand, through our highly collaborative and intuitively structured design process.
+						</p>
+					</div>
+				</Container>
+			</section>
+
+			<!-- Call to action -->
+			<MainCallToAction/>
 		</div>
 	</main>
 </Layout>
