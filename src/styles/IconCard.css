@@ -1,0 +1,26 @@
+.light-bg{
+    background-image: linear-gradient(to right, #64ffda75, #00bfa5c9);
+}
+
+.iconCard:nth-child(2) .light-bg{
+    background-image: linear-gradient(to right, #0ef015, #a3bf00);
+}
+
+.iconCard:nth-child(3) .light-bg{
+    background-image: linear-gradient(to right, #ff6464a1, #bf0000);
+}
+
+
+.iconCard:nth-child(4) .light-bg{
+    background-image: linear-gradient(to right, #4c534d, #3c504d63);
+    
+}
+
+
+.iconCard:nth-child(5) .light-bg{
+    background-image: linear-gradient(to right, #ffe864, #bfb700);
+}
+
+.iconCard:nth-child(6) .light-bg{
+    background-image: linear-gradient(to right, #64b6ff, #0073bf);
+}
