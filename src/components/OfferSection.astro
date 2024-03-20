@@ -1,0 +1,24 @@
+---
+import Container from "./Container.astro";
+import IconCard from "./IconCard";
+---
+
+<section class="relative">
+    <Container>
+        <div class="text-center w-[85%] ml-auto mr-auto">
+            <h2 class="leading-relaxed text-gray-900 dark:text-white font-bold text-3xl md:text-4xl xl:text-4xl">What we offer</h2>
+        </div>
+        <div class="mt-8 grid grid-cols-3 gap-8">
+            {[
+                { title: "UI/UX Design", description: "Transforming ideas into visually compelling and functional designs that users love.", icon: "Box" },
+                { title: "Web Development", description: "Transforming ideas into visually compelling and functional designs that users love.", icon: "Layout" },
+                { title: "Mobile App Development", description: "Transforming ideas into visually compelling and functional designs that users love.", icon: "Smartphone" },
+                { title: "Digital Marketing", description: "Transforming ideas into visually compelling and functional designs that users love.", icon: "PieChart" },
+                { title: "Branding Services", description: "Transforming ideas into visually compelling and functional designs that users love.", icon: "Trello" },
+                { title: "SEO Optimization", description: "Transforming ideas into visually compelling and functional designs that users love.", icon: "Search" }
+            ].map((card, index) => (
+                <IconCard key={index} title={card.title} description={card.description} icon={card.icon}/>
+            ))}
+        </div>
+    </Container>
+</section>
