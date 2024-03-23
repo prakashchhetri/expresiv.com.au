@@ -7,15 +7,17 @@ const { title, description, buttonText, buttonLink } = Astro.props;
     <Container>
         <div>
             <div class="">
-                <div class="pt-[200px] pb-[120px] w-[85%]">
-                    <h1 class="leading-relaxed text-gray-900 dark:text-white font-bold text-5xl md:text-6xl xl:text-6xl">{title}</h1>
+                <div class="pt-[200px] pb-[120px] xl:w-[85%] w-full">
+                    <h1 class="lg:leading-relaxed leading-10 text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl">{title}</h1>
                     <p class="mb-6 font-normal text-gray-800 dark:text-gray-400 md:text-lg mt-5">{description}</p>
-                    <a
+                    <div class="flex">
+                        <a
                     href={buttonLink}
-                    class="relative flex h-12 w-full items-center justify-center px-8 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
+                    class="relative flex h-12 items-center justify-center px-8 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
                     >
                     <span class="relative text-sm font-semibold text-white">{buttonText}</span>
                 </a>
+                    </div>
                 </div>
             </div>
         </div>
