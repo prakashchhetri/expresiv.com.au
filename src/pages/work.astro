@@ -3,6 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import MainCallToAction from "../components/MainCallToAction.astro";
 import Container from '../components/Container.astro';
 import '../styles/index.css'
+import WorkComponent from "../components/WorkPage/WorkComponent.astro";
+import workThumbnail1 from '../../public/images/work1.png';
+import workThumbnail2 from '../../public/images/work2.png';
+import workThumbnail3 from '../../public/images/work3.png';
 ---
 
 <Layout>
@@ -13,9 +17,9 @@ import '../styles/index.css'
 				<div class="blur-[106px] h-32 bg-gradient-to-r from-purple-700 to-fuchsia-600"></div>
 			</div>
 
-            <section class="pt-[150px] md:pt-[200px] pb-[100px] md:pb-[150px] relative">
+            <section class="pt-[150px] md:pt-[200px] relative">
                 <Container>
-                    <h1 class="lg:leading-relaxed leading-10 text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl">A TASTE OF OUR WORK
+                    <h1 class="lg:leading-relaxed leading-10 text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl">A TASTE OF OUR<br/> WORK
                     </h1>
                     <p class="mb-6 font-normal text-gray-800 dark:text-gray-400 md:text-lg mt-5">Explore how strategic thinking and creative excellence come together to drive growth.
                     </p>
@@ -23,6 +27,15 @@ import '../styles/index.css'
                 </Container>
             </section>
 
+            <section class="pb-[100px] md:pb-[150px] relative mt-10">
+                <Container>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <WorkComponent image={workThumbnail1} title="Web Networks" link="/single-page"/>
+                        <WorkComponent image={workThumbnail2} title="Beauty & Nails" link="/single-page"/>
+                        <WorkComponent image={workThumbnail3} title="OffshoreGeniX" link="/single-page"/>
+                    </div>
+                </Container>
+            </section>
 
 
 
