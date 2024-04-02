@@ -60,6 +60,10 @@ li{
     margin-bottom: 12px;
 }
 
+.single-content h1, .single-content h2, .single-content h3, .single-content h4, .single-content h5{
+    margin-top: 0;
+}
+
 @media only screen and (max-width: 768px) {
     .single-content h1{
         font-size: 30px;
