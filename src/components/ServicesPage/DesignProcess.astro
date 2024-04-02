@@ -1,0 +1,41 @@
+---
+import Container from "../Container.astro";
+import { ClipboardMinus, Rocket, Cpu } from 'lucide-react';
+---
+
+<section class="relative pb-[100px] md:pb-[150px]">
+    <Container>
+        <div class="text-center w-full md:w-[85%]  ml-auto mr-auto">
+            <h2 class="leading-relaxedtext-gray-900 dark:text-white font-bold text-3xl md:text-4xl xl:text-4xl">Experience our simple design process
+            </h2>
+            <p class="mb-6 font-normal text-gray-800 dark:text-gray-400 md:text-lg mt-5">Uncover the essence of your brand, through our highly collaborative and intuitively structured design process.
+            </p>
+        </div>
+        <div class="mt-[80px] grid grid-col-1 md:grid-cols-3 md:gap-8 gap-16 text-center">
+            <div class="lg:px-16 md:px-2 px-10">
+                
+                <div class="bg-gradient-to-br from-purple-100 to-blue-100 rounded-3xl h-[60px] w-[60px] p-3 flex items-center justify-center ml-auto mr-auto">
+                    <Cpu />
+                </div>
+                <h4 class="mt-5 text-lg font-semibold">1.Collect Ideas</h4>
+                <p class="mt-1">Uncover unique project insights through in-depth research and analysis, laying the foundation for a tailored app solution.</p>
+            </div>
+            <div class="lg:px-16 md:px-2 px-10">
+                
+                <div class="bg-gradient-to-br from-purple-100 to-blue-100 rounded-3xl h-[60px] w-[60px] p-3 flex items-center justify-center ml-auto mr-auto">
+                    <ClipboardMinus />
+                </div>
+                <h4 class="mt-5 text-lg font-semibold">2.Design Concept</h4>
+                <p class="mt-1">Craft visually stunning and user-centric interfaces, ensuring a seamless and intuitive experience that aligns with your brand.</p>
+            </div>
+            <div class="lg:px-16 md:px-2 px-10">
+                
+                <div class="bg-gradient-to-br from-purple-100 to-blue-100 rounded-3xl h-[60px] w-[60px] p-3 flex items-center justify-center ml-auto mr-auto">
+                    <Rocket />
+                </div>
+                <h4 class="mt-5 text-lg font-semibold">3.Finalize Product</h4>
+                <p class="mt-1">Bring your vision to life with expert development, employing cutting-edge technologies and agile methodologies for efficient and robust app creation.</p>
+            </div>
+        </div>
+    </Container>
+</section>

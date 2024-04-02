@@ -1,9 +1,14 @@
 ---
 import Container from "./Container.astro";
+import facebook from '../../public/images/icon/facebook.svg';
+import instagram from '../../public/images/icon/instagram.svg';
+import linkedin from '../../public/images/icon/linkedin.svg';
+import twitter from '../../public/images/icon/twitter.svg';
+
 
 ---
 
-<footer class="py-5 md:py-20 bg-[#181725]">
+<footer class="py-16 md:py-20 bg-[#181725]">
     <Container>
         <!-- <div class="mx-auto max-w-screen-xl text-center">
           <a href="/" aria-label="extresiv." class="space-x-2 items-center ">
@@ -38,8 +43,8 @@ import Container from "./Container.astro";
           <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023-2024 <a href="#" class="hover:underline">Expresiv Designs</a>. All Rights Reserved.</span>
         </div> -->
 
-        <div class="grid grid-cols-5 gap-20 text-white">
-          <div>
+        <div class="grid grid-col-1 sm:grid-cols-2 md:grid-cols-5 gap-10 lg:gap-20 text-white">
+          <div class="col-span-2 md:col-span-1">
             <div class="font-bold text-base">Expresiv.</div>
           </div>
           <div>
@@ -71,17 +76,28 @@ import Container from "./Container.astro";
             </ul>
           </div>
           <div>
-            <div class="font-bold text-base">Menu</div>
+            <div class="font-bold text-base">Follow Us</div>
             <ul class="text-sm">
-              <li  class="mt-3"><a href="#">About</a></li>
-              <li class="mt-3"><a href="#">Work</a></li>
-              <li class="mt-3"><a href="#">What we do</a></li>
-              <li class="mt-3"><a href="#">Contact</a></li>
-              <li class="mt-3"><a href="#">Careers</a></li>
+              <li  class="mt-3 flex items-center gap-3">
+                <img src={facebook} alt="" class="w-[16px] h-[16px]">
+                <a href="#">Facebook</a>
+              </li>
+              <li  class="mt-3 flex items-center gap-3">
+                <img src={instagram} alt="" class="w-[16px] h-[16px]">
+                <a href="#">Instagram</a>
+              </li>
+              <li  class="mt-3 flex items-center gap-3">
+                <img src={twitter} alt="" class="w-[16px] h-[16px]">
+                <a href="#">Twitter</a>
+              </li>
+              <li  class="mt-3 flex items-center gap-3">
+                <img src={linkedin} alt="" class="w-[16px] h-[16px]">
+                <a href="#">LinkedIn</a>
+              </li>
             </ul>
           </div>
         </div>
-        <div class="border-t border-white mt-[100px] pt-8 text-white flex justify-between text-sm">
+        <div class="border-t border-white mt-16 md:mt-[100px] pt-8 text-white flex justify-between flex-col gap-4 md:flex-row text-sm">
           <div>2023 expresiv. All right reserved.</div>
           <div class="flex space-x-4">
             <a href="#" title="">Privacy Policy</a>

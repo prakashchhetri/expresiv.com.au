@@ -1,0 +1,148 @@
+---
+import Layout from "../layouts/Layout.astro";
+import MainCallToAction from "../components/MainCallToAction.astro";
+import Container from "../components/Container.astro";
+import "../styles/index.css";
+import singleImage from "../../public/images/webnetwork.png";
+import appnet from "../../public/images/appnet.png";
+import oneplus from "../../public/images/OnePlus.png";
+import web11 from "../../public/images/webimg1.jpg";
+import web12 from "../../public/images/webimg2.png";
+---
+
+<Layout>
+    <main class="space-y-40">
+        <div class="relative" id="home">
+            <div
+                aria-hidden="true"
+                class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20"
+            >
+                <div
+                    class="blur-[106px] h-32 bg-gradient-to-r from-sky-700 to-sky-700"
+                >
+                </div>
+                <div
+                    class="blur-[106px] h-32 bg-gradient-to-r from-purple-700 to-fuchsia-600"
+                >
+                </div>
+            </div>
+
+            <section
+                class="pt-[150px] md:pt-[200px] md:pb-[150px] pb-[100px] relative"
+            >
+                <Container>
+                    <h1
+                        class="lg:leading-relaxed leading-10 text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl"
+                    >
+                        Web Networks
+                    </h1>
+                    <p
+                        class="mb-6 font-normal text-gray-800 dark:text-gray-400 md:text-lg mt-5"
+                    >
+                        They serve the best quality internet with 24/7 dedicated
+                        support. We are ready to connect to you to the world.
+                        Any time, Anywhere.
+                    </p>
+                </Container>
+            </section>
+
+            <!-- single content -->
+            <section class="md:pb-[150px] pb-[100px] relative">
+                <img src={singleImage} alt="" class="w-full" />
+
+                <Container>
+                    <div class="single-content">
+                        <h4>About Web Networks</h4>
+                        <p>
+                            When Web Networks was founded in 2012, we were a
+                            small company dealing with various technology
+                            services. Gradually we transitioned into wireless
+                            internet and established a number of access points
+                            at the peak of Argakhachi Simalpani. Our first
+                            milestone was a small team with a small vision.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-12 gap-[100px] mt-[120px]">
+                        <div class="col-span-5 single-content">
+                            <h4>Challenges</h4>
+                            <p>
+                                Web Networks Pvt Ltd, a privately owned ISP,
+                                faces challenges common to the industry. The
+                                competitive market demands a delicate balance
+                                between delivering reliable and cost-effective
+                                services while keeping up with rapid
+                                technological advancements. Ensuring consistent
+                                customer satisfaction and retention is crucial
+                                amid diverse user options. Managing a scalable
+                                and reliable network infrastructure and
+                                recruiting and retaining skilled professionals
+                                pose ongoing challenges. Striking a balance
+                                between corporate expectations and employees'
+                                work-life harmony is a continuous effort, as is
+                                meeting service standards and timelines. These
+                                challenges require strategic solutions to
+                                maintain the company's commitment to clear,
+                                simple, and reliable internet services.
+                            </p>
+                        </div>
+                        <div class="col-span-7">
+                            <img src={appnet} alt="" class="w-full" />
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-12 gap-[100px] mt-[120px]">
+                        <div class="col-span-7">
+                            <img src={oneplus} alt="" class="w-full" />
+                        </div>
+                        <div class="col-span-5 single-content">
+                            <h4>Solution</h4>
+                            <p>
+                                As a dynamic agency, we've partnered closely
+                                with Web Networks Pvt Ltd to strategically
+                                tackle their industry challenges. Through
+                                meticulous competitive analyses and pricing
+                                model refinements, we've ensured their
+                                competitiveness while maintaining profitability.
+                                Our technology consultations have equipped Web
+                                Networks with the insights needed for informed
+                                decisions on infrastructure upgrades and key
+                                partnerships. By conducting customer experience
+                                assessments, we've implemented targeted programs
+                                that significantly elevated customer
+                                satisfaction and loyalty. Infrastructure audits
+                                led to scalable solutions, bolstering network
+                                reliability. Human resources support and
+                                training programs have strengthened their
+                                workforce, and our work-life balance initiatives
+                                have fostered a positive corporate culture.
+                                Through operational optimization and performance
+                                monitoring, we've streamlined processes,
+                                enabling Web Networks to consistently meet and
+                                exceed service standards. Our collaborative
+                                efforts position Web Networks as industry
+                                leaders, delivering clear and reliable internet
+                                services with a competitive edge.
+                            </p>
+                        </div>
+                    </div>
+                </Container>
+            </section>
+
+            <!-- last work section -->
+            <section class="bg-[#E5F8FF]">
+                <Container>
+                    <div class="pt-[50px] mb-[150px] relative pl-[100px]">
+                        <img
+                            src={web12}
+                            alt=""
+                            class="absolute right-0 top-0 w-[450px] shadow-sm"
+                        />
+                        <img src={web11} alt="" class="relative shadow-sm" />
+                    </div>
+                </Container>
+            </section>
+
+            <!-- Call to action -->
+            <MainCallToAction />
+        </div>
+    </main>
+</Layout>

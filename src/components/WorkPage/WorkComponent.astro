@@ -1,0 +1,9 @@
+---
+const { image, title, link } = Astro.props;
+---
+
+<div class="pb-8 md:pb-10">
+    <a href={link} title={title}>
+        <img src={image} alt="" class="w-full">
+    </a>
+</div>

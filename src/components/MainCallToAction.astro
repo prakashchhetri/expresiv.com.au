@@ -3,14 +3,14 @@ import Container from "./Container.astro"
 
 ---
 
-<div class="relative py-[150px]">
-  <div aria-hidden="true" class="absolute inset-0 h-max w-full m-auto grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
-    <div class="blur-[106px] h-56 bg-gradient-to-br from-primary to-purple-400 dark:from-blue-700"></div>
-    <div class="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"></div>
+<div class="relative pb-[100px] md:pb-[150px]">
+  <div aria-hidden="true" class="absolute inset-0 h-max w-[85%] m-auto opacity-40 dark:opacity-20 flex justify-between">
+    <div class="blur-[50px] w-[150px] h-[150px] bg-gradient-to-br from-yellow-100 to-yellow-400 dark:from-blue-700"></div>
+    <div class="blur-[80px]  w-[180px] h-[180px] bg-gradient-to-r from-green-400 to-green-300 dark:to-indigo-600"></div>
   </div>
   <Container>
-    <div class="relative">
-      <div class="flex w-[85%] ml-auto mr-auto items-center gap-2">
+    <div class="relative mt-10">
+      <div class="flex w-full md:w-[85%] ml-auto mr-auto items-start md:items-center gap-2 flex-col md:flex-row">
         <div>
           <h2 class="leading-relaxedtext-gray-900 dark:text-white font-bold text-3xl md:text-4xl xl:text-4xl">Let's make something great together.
           </h2>

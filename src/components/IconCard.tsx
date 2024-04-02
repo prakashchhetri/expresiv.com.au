@@ -28,7 +28,7 @@ const IconCard: React.FC<IconCardProps> = ({ title, description, icon }) => {
     };
 
     return (
-        <div className="border-solid border border-[#E4E4E7] p-8 rounded-3xl relative overflow-hidden iconCard">
+        <div className="border-solid border border-[#E4E4E7] p-8 rounded-3xl relative overflow-hidden iconCard dark:text-white ">
             <div aria-hidden="true" className="absolute inset-0 opacity-20 dark:opacity-20 top-[-20px]">
                 <div className="light-bg blur-[50px] h-10"></div>
             </div>

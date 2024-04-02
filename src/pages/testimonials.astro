@@ -1,0 +1,53 @@
+---
+import Layout from "../layouts/Layout.astro";
+import MainCallToAction from "../components/MainCallToAction.astro";
+import Container from "../components/Container.astro";
+import "../styles/index.css";
+import singleImage from "../../public/images/webnetwork.png";
+import appnet from "../../public/images/appnet.png";
+import oneplus from "../../public/images/OnePlus.png";
+import web11 from "../../public/images/webimg1.jpg";
+import web12 from "../../public/images/webimg2.png";
+---
+
+<Layout>
+    <main class="space-y-40">
+        <div class="relative" id="home">
+            <div
+                aria-hidden="true"
+                class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20"
+            >
+                <div
+                    class="blur-[106px] h-32 bg-gradient-to-r from-sky-700 to-sky-700"
+                >
+                </div>
+                <div
+                    class="blur-[106px] h-32 bg-gradient-to-r from-purple-700 to-fuchsia-600"
+                >
+                </div>
+            </div>
+
+            <section
+                class="pt-[150px] md:pt-[200px] md:pb-[150px] pb-[100px] relative"
+            >
+                <Container>
+                    <h1
+                        class="lg:leading-relaxed leading-10 text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl"
+                    >
+                        HEAR FROM OUR CLIENTS
+                    </h1>
+                    <p
+                        class="mb-6 font-normal text-gray-800 dark:text-gray-400 md:text-lg mt-5"
+                    >
+                        We love our clients. Seriously. Creating remarkable work
+                        that delivers results is only possible with long term
+                        partnerships built on trust.
+                    </p>
+                </Container>
+            </section>
+
+            <!-- Call to action -->
+            <MainCallToAction />
+        </div>
+    </main>
+</Layout>
