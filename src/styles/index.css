@@ -64,6 +64,43 @@ li{
     margin-top: 0;
 }
 
+.tick-list li{
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    list-style: none;
+    margin-bottom: 15px;
+}
+
+.tick-list img{
+    height: 22px;
+    width: 22px;
+}
+
+.testimonial-module h4{
+    font-size: 20px;
+    font-weight: 500;
+    color: #9747FF;
+    width: 60%;
+    line-height: 1.35;
+}
+
+.testimonial-module p{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.testimonial-module{
+    border-bottom: 1px solid #E0E0E0;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    page-break-inside: avoid;
+}
+
+.testimonial-module a{
+    font-weight: 600;
+}
+
 @media only screen and (max-width: 768px) {
     .single-content h1{
         font-size: 30px;
