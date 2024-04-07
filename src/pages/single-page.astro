@@ -1,47 +1,141 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Container from '../components/Container.astro';
-import Thumbnail from '../../public/images/thumbnail.png';
-import MainCallToAction from '../components/MainCallToAction.astro';
-import NewsComponent from '../components/NewInsight/NewsComponent.astro';
-import highlightThumbnail1 from '../../public/images/Image2.png';
-import highlightThumbnail3 from '../../public/images/Image1.png';
-import highlightThumbnail2 from '../../public/images/Image.png';
-import '../styles/index.css'
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/Container.astro";
+import MainCallToAction from "../components/MainCallToAction.astro";
+import NewsComponent from "../components/NewInsight/NewsComponent.astro";
+import "../styles/index.css";
 ---
 
 <Layout>
     <main class="space-y-40">
-		<div class="relative" id="home">
-			<div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
-				<div class="blur-[106px] h-32 bg-gradient-to-r from-purple-700 to-purple-700"></div>
-				<div class="blur-[106px] h-32 bg-gradient-to-r from-green-700 to-green-600"></div>
-			</div>
-            <section class="pt-[150px] md:pt-[200px] pb-[100px] md:pb-[150px] relative">
+        <div class="relative" id="home">
+            <div
+                aria-hidden="true"
+                class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20"
+            >
+                <div
+                    class="blur-[106px] h-32 bg-gradient-to-r from-purple-700 to-purple-700"
+                >
+                </div>
+                <div
+                    class="blur-[106px] h-32 bg-gradient-to-r from-green-700 to-green-600"
+                >
+                </div>
+            </div>
+            <section
+                class="pt-[150px] md:pt-[200px] pb-[100px] md:pb-[150px] relative"
+            >
                 <Container>
-                    <h1 class="w-[300px] lg:leading-relaxed leading-10 text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl">NEWS & INSIGHTS</h1>
-                    <img src={Thumbnail} alt="" class="w-full mt-[60px]">
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-[40px] lg:gap-[80px] mt-12">
+                    <h1
+                        class="w-[300px] lg:leading-relaxed leading-10 text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl"
+                    >
+                        NEWS & INSIGHTS
+                    </h1>
+                    <img
+                        src="./images/thumbnail.png"
+                        alt=""
+                        class="w-full mt-[60px]"
+                    />
+                    <div
+                        class="grid grid-cols-1 lg:grid-cols-3 gap-[40px] lg:gap-[80px] mt-12"
+                    >
                         <div class="col-span-1">
-                            <h1 class="text-gray-900 dark:text-white font-bold text-4xl md:text-5xl">Best practices for successful prototypes</h1>
+                            <h1
+                                class="text-gray-900 dark:text-white font-bold text-4xl md:text-5xl"
+                            >
+                                Best practices for successful prototypes
+                            </h1>
                         </div>
                         <div class="col-span-2 single-content">
-                            <p>Flowbite is an open-source library of UI components built with the utility-first classes from Tailwind CSS. It also includes interactive elements such as dropdowns, modals, datepickers.</p>
-                            <p>Flowbite is an open-source library of UI components built with the utility-first classes from Tailwind CSS. It also includes interactive elements such as dropdowns, modals, datepickers.
+                            <p>
+                                Flowbite is an open-source library of UI
+                                components built with the utility-first classes
+                                from Tailwind CSS. It also includes interactive
+                                elements such as dropdowns, modals, datepickers.
                             </p>
-                            <p>But then I found a <a href="#" title="">component library based on Tailwind CSS called Flowbite</a>. It comes with the most commonly used UI components, such as buttons, navigation bars, cards, form elements, and more which are conveniently built with the utility classes from Tailwind CSS.</p>
+                            <p>
+                                Flowbite is an open-source library of UI
+                                components built with the utility-first classes
+                                from Tailwind CSS. It also includes interactive
+                                elements such as dropdowns, modals, datepickers.
+                            </p>
+                            <p>
+                                But then I found a <a href="#" title=""
+                                    >component library based on Tailwind CSS
+                                    called Flowbite</a
+                                >. It comes with the most commonly used UI
+                                components, such as buttons, navigation bars,
+                                cards, form elements, and more which are
+                                conveniently built with the utility classes from
+                                Tailwind CSS.
+                            </p>
                             <h4>Getting started with Flowbite</h4>
-                            <p>First of all you need to understand how Flowbite works. This library is not another framework. Rather, it is a set of components based on Tailwind CSS that you can just copy-paste from the documentation.</p>
-                            <p>It also includes a JavaScript file that enables interactive components, such as modals, dropdowns, and datepickers which you can optionally include into your project via CDN or NPM.</p>
-                            <p>You can check out the quickstart guide to explore the elements by including the CDN files into your project. But if you want to build a project with Flowbite I recommend you to follow the build tools steps so that you can purge and minify the generated CSS.</p>
-                            <p>You'll also receive a lot of useful application UI, marketing UI, and e-commerce pages that can help you get started with your projects even faster. You can check out this comparison table to better understand the differences between the open-source and pro version of Flowbite.</p>
+                            <p>
+                                First of all you need to understand how Flowbite
+                                works. This library is not another framework.
+                                Rather, it is a set of components based on
+                                Tailwind CSS that you can just copy-paste from
+                                the documentation.
+                            </p>
+                            <p>
+                                It also includes a JavaScript file that enables
+                                interactive components, such as modals,
+                                dropdowns, and datepickers which you can
+                                optionally include into your project via CDN or
+                                NPM.
+                            </p>
+                            <p>
+                                You can check out the quickstart guide to
+                                explore the elements by including the CDN files
+                                into your project. But if you want to build a
+                                project with Flowbite I recommend you to follow
+                                the build tools steps so that you can purge and
+                                minify the generated CSS.
+                            </p>
+                            <p>
+                                You'll also receive a lot of useful application
+                                UI, marketing UI, and e-commerce pages that can
+                                help you get started with your projects even
+                                faster. You can check out this comparison
+                                table to better understand the differences
+                                between the open-source and pro version of
+                                Flowbite.
+                            </p>
                             <h4>When does design come in handy?</h4>
-                            <p> While it might seem like extra work at a first glance, here are some key moments in which prototyping will come in handy:</p>
+                            <p>
+                                While it might seem like extra work at a first
+                                glance, here are some key moments in which
+                                prototyping will come in handy:
+                            </p>
                             <ol>
-                                <li>Usability testing. Does your user know how to exit out of screens? Can they follow your intended user journey and buy something from the site you’ve designed? By running a usability test, you’ll be able to see how users will interact with your design once it’s live;</li>
-                                <li>Involving stakeholders. Need to check if your GDPR consent boxes are displaying properly? Pass your prototype to your data protection team and they can test it for real;</li>
-                                <li>Impressing a client. Prototypes can help explain or even sell your idea by providing your client with a hands-on experience;</li>
-                                <li>Communicating your vision. By using an interactive medium to preview and test design elements, designers and developers can understand each other — and the project — better.</li>
+                                <li>
+                                    Usability testing. Does your user know how
+                                    to exit out of screens? Can they follow your
+                                    intended user journey and buy something from
+                                    the site you’ve designed? By running a
+                                    usability test, you’ll be able to see how
+                                    users will interact with your design once
+                                    it’s live;
+                                </li>
+                                <li>
+                                    Involving stakeholders. Need to check if
+                                    your GDPR consent boxes are displaying
+                                    properly? Pass your prototype to your data
+                                    protection team and they can test it for
+                                    real;
+                                </li>
+                                <li>
+                                    Impressing a client. Prototypes can help
+                                    explain or even sell your idea by providing
+                                    your client with a hands-on experience;
+                                </li>
+                                <li>
+                                    Communicating your vision. By using an
+                                    interactive medium to preview and test
+                                    design elements, designers and developers
+                                    can understand each other — and the project
+                                    — better.
+                                </li>
                             </ol>
                             <h1>hreadin1</h1>
                             <h2>heading 2</h2>
@@ -54,26 +148,48 @@ import '../styles/index.css'
                 </Container>
             </section>
 
-
             <!-- additional news -->
             <section class="relative pb-[50px] md:pb-[150px]">
                 <Container>
                     <div class="flex justify-between items-center">
-                        <h4 class="leading-relaxed text-gray-900 dark:text-white font-bold text-3xl md:text-4xl xl:text-4xl">Our Insights</h4>
-                        <div><a href="#" title="" class="text-primary font-medium">View blog</a></div>
+                        <h4
+                            class="leading-relaxed text-gray-900 dark:text-white font-bold text-3xl md:text-4xl xl:text-4xl"
+                        >
+                            Our Insights
+                        </h4>
+                        <div>
+                            <a
+                                href="#"
+                                title=""
+                                class="text-primary font-medium">View blog</a
+                            >
+                        </div>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
-                        <NewsComponent image={highlightThumbnail1} title="The Ultimate Guide to Auditing Your Website for Optimal Performance" link="/single-page"/>
-                        <NewsComponent image={highlightThumbnail2} title="Mastering Magento SEO: A Blueprint for E-commerce Success" link="/"/>
-                        <NewsComponent image={highlightThumbnail3} title="Top 8 Best Magento 2 Extensions To Boost Your Sales " link="/"/>
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10"
+                    >
+                        <NewsComponent
+                            image="./images/Image2.png"
+                            title="The Ultimate Guide to Auditing Your Website for Optimal Performance"
+                            link="/single-page"
+                        />
+                        <NewsComponent
+                            image="./images/Image1.png"
+                            title="Mastering Magento SEO: A Blueprint for E-commerce Success"
+                            link="/"
+                        />
+                        <NewsComponent
+                            image="./images/Image.png"
+                            title="Top 8 Best Magento 2 Extensions To Boost Your Sales "
+                            link="/"
+                        />
                     </div>
                 </Container>
             </section>
 
             <!-- Call to action -->
-			<MainCallToAction/>
+            <MainCallToAction />
         </div>
-
     </main>
 </Layout>

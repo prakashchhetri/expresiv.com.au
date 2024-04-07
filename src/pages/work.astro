@@ -1,47 +1,70 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 import MainCallToAction from "../components/MainCallToAction.astro";
-import Container from '../components/Container.astro';
-import '../styles/index.css'
+import Container from "../components/Container.astro";
+import "../styles/index.css";
 import WorkComponent from "../components/WorkPage/WorkComponent.astro";
-import workThumbnail1 from '../../public/images/work1.png';
-import workThumbnail2 from '../../public/images/work2.png';
-import workThumbnail3 from '../../public/images/work3.png';
 ---
 
 <Layout>
     <main class="space-y-40">
         <div class="relative" id="home">
-			<div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
-				<div class="blur-[106px] h-32 bg-gradient-to-r from-sky-700 to-sky-700"></div>
-				<div class="blur-[106px] h-32 bg-gradient-to-r from-purple-700 to-fuchsia-600"></div>
-			</div>
+            <div
+                aria-hidden="true"
+                class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20"
+            >
+                <div
+                    class="blur-[106px] h-32 bg-gradient-to-r from-sky-700 to-sky-700"
+                >
+                </div>
+                <div
+                    class="blur-[106px] h-32 bg-gradient-to-r from-purple-700 to-fuchsia-600"
+                >
+                </div>
+            </div>
 
             <section class="pt-[150px] md:pt-[200px] relative">
                 <Container>
-                    <h1 class="lg:leading-relaxed leading-10 text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl">A TASTE OF OUR<br/> WORK
+                    <h1
+                        class="lg:leading-relaxed leading-10 text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl"
+                    >
+                        A TASTE OF OUR<br /> WORK
                     </h1>
-                    <p class="mb-6 font-normal text-gray-800 dark:text-gray-400 md:text-lg mt-5">Explore how strategic thinking and creative excellence come together to drive growth.
+                    <p
+                        class="mb-6 font-normal text-gray-800 dark:text-gray-400 md:text-lg mt-5"
+                    >
+                        Explore how strategic thinking and creative excellence
+                        come together to drive growth.
                     </p>
-                    
                 </Container>
             </section>
 
             <section class="pb-[100px] md:pb-[150px] relative mt-10">
                 <Container>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <WorkComponent image={workThumbnail1} title="Web Networks" link="/work-single"/>
-                        <WorkComponent image={workThumbnail2} title="Beauty & Nails" link="/work-single"/>
-                        <WorkComponent image={workThumbnail3} title="OffshoreGeniX" link="/work-single"/>
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    >
+                        <WorkComponent
+                            image="/images/work1.png"
+                            title="Web Networks"
+                            link="/work-single"
+                        />
+                        <WorkComponent
+                            image="/images/work2.png"
+                            title="Beauty & Nails"
+                            link="/work-single"
+                        />
+                        <WorkComponent
+                            image="/images/work3.png"
+                            title="OffshoreGeniX"
+                            link="/work-single"
+                        />
                     </div>
                 </Container>
             </section>
 
-
-
             <!-- Call to action -->
-			<MainCallToAction/>
+            <MainCallToAction />
         </div>
-
     </main>
 </Layout>
