@@ -2,6 +2,7 @@
 import AppFooter from "../components/AppFooter.astro";
 import AppHeader from "../components/AppHeader.astro"
 import {Helmet} from 'react-helmet-async';
+import { ViewTransitions } from "astro:transitions";
 ---
 
 
@@ -38,7 +39,7 @@ import {Helmet} from 'react-helmet-async';
         gtag('js', new Date());
         gtag('config', 'G-Y1HKE41C83');
 	</script>
-
+	<ViewTransitions />
 </head>
 <body class="bg-white dark:bg-gray-900">
 <AppHeader/>

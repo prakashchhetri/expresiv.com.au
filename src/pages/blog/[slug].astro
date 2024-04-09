@@ -1,0 +1,117 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Container from "../../components/Container.astro";
+import MainCallToAction from "../../components/MainCallToAction.astro";
+import NewsComponent from "../../components/NewInsight/NewsComponent.astro";
+import "../../styles/index.css";
+
+const { slug } = Astro.params;
+console.log(slug)
+let res = await fetch(`https://blog.expresiv.com.au/wp-json/wp/v2/posts?slug=${slug}`);
+let [post] = await res.json();
+
+// The getStaticPaths() is required for static Astro sites.
+// If using SSR, you will not need this function.
+export async function getStaticPaths() {
+    let data = await fetch("https://blog.expresiv.com.au/wp-json/wp/v2/posts");
+    let posts = await data.json();
+
+    return posts.map((post) => ({
+        params: { slug: post.slug },
+        props: { post: post },
+    }));
+}
+---
+
+<Layout>
+	<main class="space-y-40">
+		<div class="relative" id="home">
+			<div
+					aria-hidden="true"
+					class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20"
+			>
+				<div
+						class="blur-[106px] h-32 bg-gradient-to-r from-purple-700 to-purple-700"
+				>
+				</div>
+				<div
+						class="blur-[106px] h-32 bg-gradient-to-r from-green-700 to-green-600"
+				>
+				</div>
+			</div>
+			<section
+					class="pt-[150px] md:pt-[200px] pb-[100px] md:pb-[150px] relative"
+			>
+				<Container>
+					<h1
+							class="w-[300px] lg:leading-relaxed leading-10 text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl"
+					>
+						NEWS & INSIGHTS
+					</h1>
+					<img
+							src="./images/thumbnail.png"
+							alt=""
+							class="w-full mt-[60px]"
+					/>
+					<div
+							class="grid grid-cols-1 lg:grid-cols-3 gap-[40px] lg:gap-[80px] mt-12"
+					>
+						<div class="col-span-1">
+							<h1
+                                    set:html={post.title.rendered}
+									class="text-gray-900 dark:text-white font-bold text-4xl md:text-5xl"
+							>
+							</h1>
+						</div>
+						<div class="col-span-2 single-content" set:html={post.content.rendered}>
+
+						</div>
+					</div>
+				</Container>
+			</section>
+
+			<!-- additional news -->
+			<section class="relative pb-[50px] md:pb-[150px]">
+				<Container>
+					<div class="flex justify-between items-center">
+						<h4
+								class="leading-relaxed text-gray-900 dark:text-white font-bold text-3xl md:text-4xl xl:text-4xl"
+						>
+							Our Insights
+						</h4>
+						<div>
+							<a
+									href="#"
+									title=""
+									class="text-primary font-medium">View blog</a
+							>
+						</div>
+					</div>
+
+					<div
+							class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10"
+					>
+						<NewsComponent
+								image="./images/Image2.png"
+								title="The Ultimate Guide to Auditing Your Website for Optimal Performance"
+								link="/single-page"
+						/>
+						<NewsComponent
+								image="./images/Image1.png"
+								title="Mastering Magento SEO: A Blueprint for E-commerce Success"
+								link="/"
+						/>
+						<NewsComponent
+								image="./images/Image.png"
+								title="Top 8 Best Magento 2 Extensions To Boost Your Sales "
+								link="/"
+						/>
+					</div>
+				</Container>
+			</section>
+
+			<!-- Call to action -->
+			<MainCallToAction />
+		</div>
+	</main>
+</Layout>
