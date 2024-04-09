@@ -8,10 +8,13 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 
 // https://astro.build/config
+
+// https://astro.build/config
 export default defineConfig({
   site: 'https://expresiv.com.au',
-  prefetch: true,
-  integrations: [tailwind(), react()]
+  prefetch: {
+    prefetchAll: true,
+  },
+  integrations: [tailwind(), react(), sitemap()]
   // integrations: [tailwind(), react(), sitemap()] adding sitemap is causing build issues. Need to come back to this later on
-
 });

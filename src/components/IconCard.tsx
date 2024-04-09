@@ -1,5 +1,6 @@
 import { Box, Layout, Smartphone, PieChart, Trello, Search } from 'lucide-react';
 import '../styles/IconCard.css'
+import React from 'react';
 
 interface IconCardProps {
     title: string;
