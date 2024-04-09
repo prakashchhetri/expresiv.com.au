@@ -3,11 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import MainCallToAction from "../components/MainCallToAction.astro";
 import Container from "../components/Container.astro";
 import "../styles/index.css";
-import singleImage from "../../public/images/webnetwork.png";
-import appnet from "../../public/images/appnet.png";
-import oneplus from "../../public/images/OnePlus.png";
-import web11 from "../../public/images/webimg1.jpg";
-import web12 from "../../public/images/webimg2.png";
+import WorkComponent from "../components/WorkPage/WorkComponent.astro";
+import workThumbnail1 from "../../public/images/work1.png";
+import workThumbnail2 from "../../public/images/work2.png";
+import workThumbnail3 from "../../public/images/work3.png";
+import TestimonialComponents from "../components/Testimonials/TestimonialComponents.astro";
 ---
 
 <Layout>
@@ -31,18 +31,45 @@ import web12 from "../../public/images/webimg2.png";
                 class="pt-[150px] md:pt-[200px] md:pb-[150px] pb-[100px] relative"
             >
                 <Container>
-                    <h1
-                        class="lg:leading-relaxed leading-10 text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl"
+                    <div class="w-full md:w-[55%]">
+                        <h1
+                            class="lg:leading-relaxed leading-10 text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl w-[60%]"
+                        >
+                            HEAR FROM OUR CLIENTS
+                        </h1>
+                        <p
+                            class="mb-6 font-normal text-gray-800 dark:text-gray-400 md:text-lg mt-5"
+                        >
+                            We love our clients. Seriously. Creating remarkable
+                            work that delivers results is only possible with
+                            long term partnerships built on trust.
+                        </p>
+                    </div>
+                </Container>
+            </section>
+
+            <section class="pb-[80px] md:pb-[120px] relative">
+                <Container>
+                    <TestimonialComponents />
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-[100px]"
                     >
-                        HEAR FROM OUR CLIENTS
-                    </h1>
-                    <p
-                        class="mb-6 font-normal text-gray-800 dark:text-gray-400 md:text-lg mt-5"
-                    >
-                        We love our clients. Seriously. Creating remarkable work
-                        that delivers results is only possible with long term
-                        partnerships built on trust.
-                    </p>
+                        <WorkComponent
+                            image={workThumbnail1}
+                            title="Web Networks"
+                            link="/work-single"
+                        />
+                        <WorkComponent
+                            image={workThumbnail2}
+                            title="Beauty & Nails"
+                            link="/work-single"
+                        />
+                        <WorkComponent
+                            image={workThumbnail3}
+                            title="OffshoreGeniX"
+                            link="/work-single"
+                        />
+                    </div>
                 </Container>
             </section>
 

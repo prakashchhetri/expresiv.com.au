@@ -1,81 +1,148 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 import WhySection from "../components/SingleService/WhySection.astro";
 import DesignProcess from "../components/ServicesPage/DesignProcess.astro";
 import MainCallToAction from "../components/MainCallToAction.astro";
-import '../styles/index.css'
-import Container from '../components/Container.astro';
-import wordpressimage from '../../public/images/WordPress-logotype-standard 1.svg'
+import "../styles/index.css";
+import Container from "../components/Container.astro";
 ---
 
 <Layout>
     <main class="space-y-40">
         <div class="relative" id="home">
-			<div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
-				<div class="blur-[106px] h-32 bg-gradient-to-r from-sky-700 to-sky-700"></div>
-				<div class="blur-[106px] h-32 bg-gradient-to-r from-purple-700 to-fuchsia-600"></div>
-			</div>
+            <div
+                aria-hidden="true"
+                class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20"
+            >
+                <div
+                    class="blur-[106px] h-32 bg-gradient-to-r from-sky-700 to-sky-700"
+                >
+                </div>
+                <div
+                    class="blur-[106px] h-32 bg-gradient-to-r from-purple-700 to-fuchsia-600"
+                >
+                </div>
+            </div>
 
             <!-- hero section -->
             <section class="relative pt-[200px] pb-[120px]">
                 <Container>
-                    <div class="grid grid-cols-1 md:grid-cols-4 items-center gap-5 md:gap-2">
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-4 items-center gap-5 md:gap-2"
+                    >
                         <div class="col-span-3">
                             <div class="">
-                                <h1 class="lg:leading-relaxed leading-10 text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl w-[30%]">WordPress Development</h1>
-                                <p class="mb-6 font-normal text-gray-800 dark:text-gray-400 md:text-lg mt-5">Empower your online presence with our expert WordPress development services. From bespoke themes to powerful plugins, we bring your digital vision to life.</p>
+                                <h1
+                                    class="lg:leading-relaxed leading-10 text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl w-[30%]"
+                                >
+                                    WordPress Development
+                                </h1>
+                                <p
+                                    class="mb-6 font-normal text-gray-800 dark:text-gray-400 md:text-lg mt-5"
+                                >
+                                    Empower your online presence with our expert
+                                    WordPress development services. From bespoke
+                                    themes to powerful plugins, we bring your
+                                    digital vision to life.
+                                </p>
                                 <div class="flex">
-                                <a
-                                    href='/'
-                                    class="relative flex h-12 items-center justify-center px-8 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
+                                    <a
+                                        href="/"
+                                        class="relative flex h-12 items-center justify-center px-8 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
                                     >
-                                    <span class="relative text-sm font-semibold text-white">Quick Quote</span>
-                                </a>
+                                        <span
+                                            class="relative text-sm font-semibold text-white"
+                                            >Quick Quote</span
+                                        >
+                                    </a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-span-1">
-                            <img src={wordpressimage} alt="" class="w-full">
+                            <img
+                                src="/images/WordPress-logotype-standard 1.svg"
+                                alt=""
+                                class="w-full"
+                            />
                         </div>
                     </div>
                 </Container>
             </section>
-			
 
             <section class="pb-[120px] relative">
                 <Container>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="w-[70%]">
-                            <h3 class="text-xl text-gray-900 dark:text-white font-bold">Transforming Visions into Digital Reality: Our WordPress Wizards Craft Exceptional Experiences for Your Brand
+                            <h3
+                                class="text-xl text-gray-900 dark:text-white font-bold"
+                            >
+                                Transforming Visions into Digital Reality: Our
+                                WordPress Wizards Craft Exceptional Experiences
+                                for Your Brand
                             </h3>
                         </div>
                         <div>
-                            <p>At expresiv, we specialize in delivering top-notch WordPress development services that empower businesses to thrive in the digital landscape. Our dedicated team of experts combines creativity and technical prowess to bring your vision to life, ensuring a robust and user-friendly online presence.
+                            <p>
+                                At expresiv, we specialize in delivering
+                                top-notch WordPress development services that
+                                empower businesses to thrive in the digital
+                                landscape. Our dedicated team of experts
+                                combines creativity and technical prowess to
+                                bring your vision to life, ensuring a robust and
+                                user-friendly online presence.
                             </p>
-                            <ul>
-                                <li>Custom WordPress Theme Development</li>
-                                <li>Responsive Website Design</li>
-                                <li>E-commerce Solutions with WooCommerce</li>
-                                <li>Plugin Customization and Integration</li>
-                                <li>Speed Optimization and Performance Tuning</li>
-                                <li>Seamless Migration and Upgrades</li>
-                                <li>Ongoing Maintenance and Support</li>
+                            <ul class="tick-list mt-6">
+                                <li>
+                                    <img src='./images/tick.svg' alt="" />
+                                    <span
+                                        >Custom WordPress Theme Development</span
+                                    >
+                                </li>
+                                <li>
+                                    <img src='./images/tick.svg' alt="" />
+                                    <span>Responsive Website Design</span>
+                                </li>
+                                <li>
+                                    <img src='./images/tick.svg' alt="" />
+                                    <span
+                                        >E-commerce Solutions with WooCommerce</span
+                                    >
+                                </li>
+                                <li>
+                                    <img src='./images/tick.svg' alt="" />
+                                    <span
+                                        >Plugin Customization and Integration</span
+                                    >
+                                </li>
+                                <li>
+                                    <img src='./images/tick.svg' alt="" />
+                                    <span
+                                        >Speed Optimization and Performance
+                                        Tuning</span
+                                    >
+                                </li>
+                                <li>
+                                    <img src='./images/tick.svg' alt="" />
+                                    <span>Seamless Migration and Upgrades</span>
+                                </li>
+                                <li>
+                                    <img src='./images/tick.svg' alt="" />
+                                    <span>Ongoing Maintenance and Support</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </Container>
             </section>
-			
+
             <!-- why section -->
-            <WhySection/>
+            <WhySection />
 
-
-        	<!-- design process -->
-			<DesignProcess/>
+            <!-- design process -->
+            <DesignProcess />
 
             <!-- Call to action -->
-			<MainCallToAction/>
+            <MainCallToAction />
         </div>
-
     </main>
 </Layout>
