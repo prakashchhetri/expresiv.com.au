@@ -7,8 +7,24 @@ import "../../styles/index.css";
 
 const { slug } = Astro.params;
 console.log(slug)
-let res = await fetch(`https://blog.expresiv.com.au/wp-json/wp/v2/posts?slug=${slug}`);
+let res = await fetch(`https://blog.expresiv.com.au/wp-json/wp/v2/posts?slug=${slug}&_embed`);
+console.log(res);
 let [post] = await res.json();
+
+// if the post doesnt have featured image, create a dummy image
+if (!post._embedded["wp:featuredmedia"]) {
+	post._embedded['wp:featuredmedia'] = [
+		{
+			media_details: {
+				sizes: {
+					medium: {
+						source_url: "https://picsum.photos/389/201"
+					}
+				}
+			}
+		}
+	]
+}
 
 // The getStaticPaths() is required for static Astro sites.
 // If using SSR, you will not need this function.
@@ -49,7 +65,7 @@ export async function getStaticPaths() {
 						NEWS & INSIGHTS
 					</h1>
 					<img
-							src="./images/thumbnail.png"
+							src={post._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url}
 							alt=""
 							class="w-full mt-[60px]"
 					/>
@@ -91,21 +107,21 @@ export async function getStaticPaths() {
 					<div
 							class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10"
 					>
-						<NewsComponent
-								image="./images/Image2.png"
-								title="The Ultimate Guide to Auditing Your Website for Optimal Performance"
-								link="/single-page"
-						/>
-						<NewsComponent
-								image="./images/Image1.png"
-								title="Mastering Magento SEO: A Blueprint for E-commerce Success"
-								link="/"
-						/>
-						<NewsComponent
-								image="./images/Image.png"
-								title="Top 8 Best Magento 2 Extensions To Boost Your Sales "
-								link="/"
-						/>
+						<!--<NewsComponent-->
+						<!--		image="./images/Image2.png"-->
+						<!--		title="The Ultimate Guide to Auditing Your Website for Optimal Performance"-->
+						<!--		link="/single-page"-->
+						<!--/>-->
+						<!--<NewsComponent-->
+						<!--		image="./images/Image1.png"-->
+						<!--		title="Mastering Magento SEO: A Blueprint for E-commerce Success"-->
+						<!--		link="/"-->
+						<!--/>-->
+						<!--<NewsComponent-->
+						<!--		image="./images/Image.png"-->
+						<!--		title="Top 8 Best Magento 2 Extensions To Boost Your Sales "-->
+						<!--		link="/"-->
+						<!--/>-->
 					</div>
 				</Container>
 			</section>
