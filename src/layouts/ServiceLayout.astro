@@ -6,6 +6,14 @@ import Container from "../components/Container.astro";
 import ServiceCard from "../components/ServiceCard.astro";
 import { Icon } from 'astro-icon/components';
 
+export interface Props {
+	title: string;
+	keywords: string[];
+	description: string;
+}
+
+const { title, keywords, description } = Astro.props;
+
 ---
 
 
@@ -17,11 +25,11 @@ import { Icon } from 'astro-icon/components';
 	<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
 	<meta name="generator" content={Astro.generator}/>
 	<meta name="description"
-	      content="Expresiv Designs - We support small businesses to thrive by providing top-notch design services.">
-	<title>Expresiv Designs - Supporting small businesses thrive.</title>
+	      content={description ?? 'We help small businesses thrive.'}>
+	<title> {title ?? 'Expresiv Designs - Supporting small businesses thrive.'}</title>
 
 	<meta name="keywords"
-	      content="design agency, website design, brochure design, digital marketing, SEO, search engine optimization, graphic design, branding, logo design, web development, online marketing, content creation, social media marketing"/>
+	      content={keywords ?? 'design agency, website design, brochure design, digital marketing, SEO, search engine optimization, graphic design, branding, logo design, web development, online marketing, content creation, social media marketing' }/>
 	<meta property="og:title" content="Expresiv Designs"/>
 	<meta property="og:description" content="Expresiv Designs: Supporting small business thrive."/>
 	<meta property="og:image" content="https://expresiv.com.au/static/social-image.jpeg"/>

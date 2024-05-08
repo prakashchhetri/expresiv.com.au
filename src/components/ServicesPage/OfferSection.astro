@@ -10,14 +10,16 @@ import IconCard from "../IconCard";
         </div>
         <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-                { title: "UI/UX Design", description: "Transforming ideas into visually compelling and functional designs that users love.", icon: "Box" },
-                { title: "Web Development", description: "Transforming ideas into visually compelling and functional designs that users love.", icon: "Layout" },
-                { title: "Mobile App Development", description: "Transforming ideas into visually compelling and functional designs that users love.", icon: "Smartphone" },
-                { title: "Digital Marketing", description: "Transforming ideas into visually compelling and functional designs that users love.", icon: "PieChart" },
-                { title: "Branding Services", description: "Transforming ideas into visually compelling and functional designs that users love.", icon: "Trello" },
-                { title: "SEO Optimization", description: "Transforming ideas into visually compelling and functional designs that users love.", icon: "Search" }
+                { title: "UI/UX Design", uri:'', description: "Transforming ideas into visually compelling and functional designs that users love.", icon: "Box" },
+                { title: "Web Development", uri:'/services/website-development', description: "Transforming ideas into visually compelling and functional designs that users love.", icon: "Layout" },
+                { title: "Mobile App Development", uri:'', description: "Transforming ideas into visually compelling and functional designs that users love.", icon: "Smartphone" },
+                { title: "Digital Marketing", uri:'', description: "Transforming ideas into visually compelling and functional designs that users love.", icon: "PieChart" },
+                { title: "Branding Services", uri:'', description: "Transforming ideas into visually compelling and functional designs that users love.", icon: "Trello" },
+                { title: "SEO Optimization", uri:'', description: "Transforming ideas into visually compelling and functional designs that users love.", icon: "Search" }
             ].map((card, index) => (
-                <IconCard key={index} title={card.title} description={card.description} icon={card.icon}/>
+                    <a href={card?.uri} >
+                        <IconCard key={index} title={card.title} description={card.description} icon={card.icon}/>
+                    </a>
             ))}
         </div>
     </Container>
