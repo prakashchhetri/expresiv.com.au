@@ -1,133 +1,171 @@
 /* single blog css */
-.single-content p{
+.single-content p {
     margin-bottom: 15px;
 }
 
-.single-content a{
-    color: #9747FF;
+.single-content a {
+    color: #9747ff;
     text-decoration: underline;
 }
 
-.single-content h1{
+.single-content h1 {
     font-size: 56px;
     font-weight: 700;
     margin-bottom: 20px;
     margin-top: 25px;
 }
 
-.single-content h2{
+.single-content h2 {
     font-size: 48px;
     font-weight: 700;
     margin-bottom: 20px;
     margin-top: 25px;
 }
 
-.single-content h3{
+.single-content h3 {
     font-size: 40px;
     font-weight: 700;
     margin-bottom: 20px;
     margin-top: 25px;
 }
 
-.single-content h4{
+.single-content h4 {
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 20px;
     margin-top: 25px;
 }
 
-.single-content h5{
+.single-content h5 {
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 20px;
     margin-top: 20px;
 }
 
-.single-content h6{
+.single-content h6 {
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 20px;
     margin-top: 20px;
 }
 
-ol{
+ol {
     list-style: decimal;
     padding-left: 15px;
-
 }
 
-li{
+li {
     margin-bottom: 12px;
 }
 
-.single-content h1, .single-content h2, .single-content h3, .single-content h4, .single-content h5{
+.single-content h1,
+.single-content h2,
+.single-content h3,
+.single-content h4,
+.single-content h5 {
     margin-top: 0;
 }
 
-.tick-list li{
+.tick-list li {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
+    gap: 15px;
     list-style: none;
-    margin-bottom: 15px;
+    margin-bottom: 45px;
 }
 
-.tick-list img{
+.tick-list img {
     height: 22px;
     width: 22px;
 }
 
-.testimonial-module h4{
+.testimonial-module h4 {
     font-size: 20px;
     font-weight: 500;
-    color: #9747FF;
+    color: #9747ff;
     width: 60%;
     line-height: 1.35;
 }
 
-.testimonial-module p{
+.testimonial-module p {
     margin-top: 15px;
     margin-bottom: 15px;
 }
 
-.testimonial-module{
-    border-bottom: 1px solid #E0E0E0;
+.testimonial-module {
+    border-bottom: 1px solid #e0e0e0;
     margin-bottom: 30px;
     padding-bottom: 15px;
     page-break-inside: avoid;
 }
 
-.testimonial-module a{
+.testimonial-module a {
     font-weight: 600;
 }
 
+.service-content h2 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41.6px;
+    width: 65%;
+}
+
+.service-box {
+    margin-top: 65px;
+}
+
+.service-box h4 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.service-box .icon-wrap {
+    height: 60px;
+    width: 60px;
+}
+
+.service-box .icon-wrap img {
+    height: 100%;
+    width: 100%;
+}
+
+.sticky-img {
+    position: sticky;
+    top: 50px;
+    height: 356px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 @media only screen and (max-width: 768px) {
-    .single-content h1{
+    .single-content h1 {
         font-size: 30px;
     }
 
-    .single-content h2{
+    .single-content h2 {
         font-size: 28px;
     }
 
-    .single-content h3{
+    .single-content h3 {
         font-size: 25px;
     }
 
-    .single-content h4{
+    .single-content h4 {
         font-size: 22px;
     }
 
-    .single-content h5{
+    .single-content h5 {
         font-size: 20px;
     }
 
-    .single-content h6{
+    .single-content h6 {
         font-size: 18px;
     }
-
 }
-  
+
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
-    
 }
