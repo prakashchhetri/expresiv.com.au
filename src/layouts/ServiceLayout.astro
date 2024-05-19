@@ -66,28 +66,8 @@ const { title, keywords, description } = Astro.props;
 			</div>
 		</Container>
 	</div>
-	<Container>
-		<div class="grid grid-cols-12 gap-3">
-			<div class="xs:col-span-12 col-span-6">
-				<h1 class="text-4xl font-medium break-words">WordPress <br/> Development</h1>
-				<p>Empower your online presence with our expert WordPress development services. From bespoke themes to powerful plugins, we bring your digital vision to life.</p>
-				<div class="py-5 px-0 mx-0">
-					<a href="" class="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-slate-600 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max">
-						<span class="relative text-sm font-semibold text-white">Quick Quote</span>
-					</a>
-				</div>
-
-				<!--<ServiceCard/>-->
-				<!--<Icon name="material-symbols-light:10k-outline" />-->
-
-
-			</div>
-			<div class="col-span-6 flex justify-end">
-				<img src="/images/logos/wp-logo.svg" class="w-2/3" alt="WordPress Logo"/>
-			</div>
-		</div>
-	</Container>
 </main>
+<slot/>
 <AppFooter/>
 </body>
 </html>
