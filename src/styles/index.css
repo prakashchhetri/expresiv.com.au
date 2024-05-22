@@ -1,3 +1,18 @@
+/* main or global css */
+p {
+    color: rgba(33, 31, 49, 0.8) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.text-gray-900 {
+    color: #171546;
+}
+
 /* single blog css */
 .single-content p {
     margin-bottom: 15px;

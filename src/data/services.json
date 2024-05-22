@@ -23,7 +23,7 @@
             }
         ],
         "serviceTilte": "Our WordPress Development Services",
-        "serviceImg": "/images/wordpres-sservice.png",
+        "serviceImg": "/images/icon/wp-new.svg",
         "services": [
             {
                 "title": "Custom WordPress Website Design",
@@ -120,7 +120,7 @@
         "title": "Website Development",
         "description": "At Expresiv Designs, we believe in a collaborative approach to website development. We work closely with our clients to understand their unique goals, audience, and brand identity. By combining creativity with technical prowess, we create tailored solutions that exceed expectations.",
         "serviceTilte": "Services Offered",
-        "serviceImg": "/images/development.png",
+        "serviceImg": "/images/icon/web-dev.svg",
         "services": [
             {
                 "title": "Custom Website Development",
@@ -151,6 +151,236 @@
                 "title": "Maintenance and Support",
                 "icon": "/images/icon/blue-icon6.svg",
                 "description": "Enhance the speed and efficiency of your Laravel applications with our optimization services. From codebase analysis to server configuration tweaks, we'll fine-tune your system for improved scalability and responsiveness, ensuring an optimal user experience."
+            }
+        ]
+    },
+    {
+        "slug": "small-business-website",
+        "title": "Small Business Website",
+        "description": "In today's digital age, having a strong online presence is essential for success, and we're here to help you achieve just that. Our mission is simple: to empower small businesses like yours with stunning websites that not only attract customers but also drive growth and prosperity.",
+        "features": [
+            {
+                "description": "In a world where consumers turn to the internet for everything from finding local services to making purchasing decisions, having a professional website is no longer a luxury – it's a necessity. A well-designed website serves as the digital storefront for your business, providing a platform to showcase your products, services, and brand identity to a global audience 24/7."
+            }
+        ],
+        "serviceTilte": "How Expresiv Designs Can Help",
+        "serviceImg": "/images/icon/small-business.svg",
+        "services": [
+            {
+                "title": "Custom Website Design",
+                "icon": "/images/icon/sky-icon1.svg",
+                "description": "We understand that every small business is unique, which is why we take a personalized approach to website design. Our team of experienced designers will work closely with you to create a custom website that captures the essence of your brand and resonates with your target audience. From layout and color scheme to typography and imagery, we'll ensure that your website reflects the personality and values of your business."
+            },
+            {
+                "title": "Mobile Responsiveness",
+                "icon": "/images/icon/sky-icon2.svg",
+                "description": "With more and more consumers accessing the internet on mobile devices, having a mobile-responsive website is crucial. Expresiv Designs ensures that your website looks and functions flawlessly across all devices, providing a seamless user experience that keeps visitors engaged and encourages them to explore further."
+            },
+            {
+                "title": "User-Friendly Navigation",
+                "icon": "/images/icon/sky-icon3.svg",
+                "description": "We understand that small businesses often have limited resources, which is why we prioritize simplicity and ease of use in our website designs. Our intuitive navigation ensures that visitors can find what they're looking for quickly and easily, whether it's information about your products and services, contact details, or customer reviews."
+            },
+            {
+                "title": "SEO Optimization",
+                "icon": "/images/icon/sky-icon4.svg",
+                "description": "Getting found online is key to attracting new customers, and that's where our SEO optimization services come in. We'll optimize your website for search engines, using strategic keywords, meta tags, and content optimization techniques to improve your visibility and drive organic traffic to your site."
+            },
+            {
+                "title": "Social Media Integration",
+                "icon": "/images/icon/sky-icon5.svg",
+                "description": "In today's interconnected world, social media plays a crucial role in building brand awareness and driving engagement. Expresiv Designs will integrate social media buttons and feeds into your website, making it easy for visitors to connect with you on platforms like Facebook, Instagram, and Twitter."
+            },
+            {
+                "title": "Affordable Pricing",
+                "icon": "/images/icon/sky-icon6.svg",
+                "description": "We understand that budget constraints can be a challenge for small businesses, which is why we offer affordable pricing packages tailored to your needs and budget. With transparent pricing and no hidden fees, you can trust Expresiv Designs to deliver maximum value for your investment."
+            }
+        ]
+    },
+    {
+        "slug": "sydney-based-website",
+        "title": "Sydney based website design experts",
+        "description": "At Expresiv Designs, we're proud to call Sydney home, and we're passionate about helping local businesses thrive in the digital world. With over 8 years of experience in website design and development, we have established ourselves as trusted partners for businesses of all sizes in the Sydney area. Our mission is simple: to deliver stunning website designs that capture the essence of your brand and drive real results for your business.",
+        "image": "/images/sydney.png",
+        "features": [
+            {
+                "title": "Local Understanding",
+                "description": "As a Sydney based website design agency, we have a deep understanding of the local market and the unique needs of businesses in the area. Whether you're a small boutique in Surry Hills or a tech startup in Pyrmont, we'll leverage our local knowledge to create a website that resonates with your target audience and sets you apart from the competition."
+            },
+            {
+                "title": "Personalized Service",
+                "description": "We believe in the power of personal connections, which is why we take a hands-on approach to every project we undertake. When you choose Expresiv Designs, you'll work directly with our team of experienced designers and developers who are dedicated to bringing your vision to life. From initial concept to final launch, we'll be with you every step of the way, ensuring that your website reflects your unique personality and goals."
+            },
+            {
+                "title": "Accessibility",
+                "description": "Being based in Sydney means that we're always just a phone call or a short drive away. Whether you have a question about your website or need assistance with updates and maintenance, you can count on us to provide prompt and reliable support. We're here to help you succeed, and we'll go above and beyond to ensure that your website continues to perform at its best."
+            }
+        ],
+        "serviceTilte": "Our Sydney Based Website Design Services",
+        "serviceImg": "/images/icon/sydney-services.svg",
+        "services": [
+            {
+                "title": "Custom Website Design",
+                "icon": "/images/icon/purple-icon1.svg",
+                "description": "Our team of talented designers specializes in creating custom website designs that are tailored to your specific needs and objectives. Whether you're looking for a sleek and modern design or something more traditional and elegant, we'll work with you to create a website that reflects your brand identity and resonates with your target audience."
+            },
+            {
+                "title": "Mobile Responsiveness",
+                "icon": "/images/icon/purple-icon2.svg",
+                "description": "In today's mobile-driven world, having a website that looks and functions flawlessly on all devices is essential. We'll ensure that your website is fully responsive, providing a seamless user experience for visitors on smartphones, tablets, and desktops alike."
+            },
+            {
+                "title": "E-commerce Solutions",
+                "icon": "/images/icon/purple-icon3.svg",
+                "description": "Ready to take your online store to the next level? Our e-commerce solutions are designed to drive sales and maximize revenue. From user-friendly product pages to secure payment gateways, we'll create a seamless shopping experience that keeps customers coming back for more."
+            },
+            {
+                "title": "SEO Optimization",
+                "icon": "/images/icon/purple-icon4.svg",
+                "description": "Getting found online is key to attracting new customers, and that's where our SEO optimization services come in. We'll optimize your website for search engines, using strategic keywords, meta tags, and content optimization techniques to improve your visibility and drive organic traffic to your site."
+            }
+        ]
+    },
+    {
+        "slug": "ecommerce-website-design",
+        "title": "Ecommerce Website Design Services",
+        "description": "In today's digital age, having a robust online presence is essential for success, and Expresiv Designs is here to help you achieve just that. Our mission is simple: to empower small businesses with stunning ecommerce websites that not only attract customers but also drive sales and growth.",
+        "features": [
+            {
+                "description": "In a world where consumers turn to the internet for everything from discovering new products to making purchases, having a professional ecommerce website is no longer a luxury – it's a necessity. A well-designed ecommerce site serves as the digital storefront for your business, offering a platform to showcase your products, brand identity, and customer service to a global audience 24/7."
+            }
+        ],
+        "serviceTilte": "How Expresiv Designs Can Help",
+        "serviceImg": "/images/icon/ecommerce.svg",
+        "services": [
+            {
+                "title": "Custom Ecommerce Website Design",
+                "icon": "/images/icon/pink-icon1.svg",
+                "description": "At Expresiv Designs, we understand that every small business is unique, which is why we take a personalized approach to ecommerce website design. Our team of experienced designers will work closely with you to create a custom ecommerce site that captures the essence of your brand and resonates with your target audience. From layout and color scheme to typography and imagery, we'll ensure that your website reflects the personality and values of your business."
+            },
+            {
+                "title": "Mobile Responsiveness",
+                "icon": "/images/icon/pink-icon2.svg",
+                "description": "With an increasing number of consumers shopping on mobile devices, having a mobile-responsive ecommerce website is crucial. Expresiv Designs ensures that your online store looks and functions flawlessly across all devices, providing a seamless user experience that keeps visitors engaged and encourages them to make purchases."
+            },
+            {
+                "title": "User-Friendly Navigation",
+                "icon": "/images/icon/pink-icon3.svg",
+                "description": "We understand that small businesses often have limited resources, which is why we prioritize simplicity and ease of use in our ecommerce website designs. Our intuitive navigation ensures that customers can find what they're looking for quickly and easily, whether it's browsing product categories, checking out customer reviews, or completing a purchase."
+            },
+            {
+                "title": "SEO Optimization",
+                "icon": "/images/icon/pink-icon4.svg",
+                "description": "Getting found online is key to driving sales, and that's where our SEO optimization services come in. We'll optimize your ecommerce website for search engines, using strategic keywords, meta tags, and content optimization techniques to improve your visibility and drive organic traffic to your site."
+            },
+            {
+                "title": "Social Media Integration",
+                "icon": "/images/icon/pink-icon5.svg",
+                "description": "In today's interconnected world, social media plays a crucial role in building brand awareness and driving engagement. Expresiv Designs will integrate social media buttons and feeds into your ecommerce website, making it easy for visitors to connect with you on platforms like Facebook, Instagram, and Twitter."
+            },
+            {
+                "title": "Affordable Pricing",
+                "icon": "/images/icon/pink-icon6.svg",
+                "description": "We understand that budget constraints can be a challenge for small businesses, which is why we offer affordable pricing packages tailored to your needs and budget. With transparent pricing and no hidden fees, you can trust Expresiv Designs to deliver maximum value for your investment."
+            }
+        ]
+    },
+    {
+        "slug": "dental-clinic-design",
+        "title": "Dental Clinic Website Design Services",
+        "description": "In today's digital age, having a strong online presence is essential for success, and Expresiv Designs is here to help you achieve just that. Our mission is simple: to empower dental clinics with stunning websites that not only attract patients but also enhance trust and growth.",
+        "features": [
+            {
+                "description": "In a world where patients turn to the internet to find healthcare providers and make informed decisions, having a professional website is no longer a luxury – it's a necessity. A well-designed website serves as the digital storefront for your dental clinic, offering a platform to showcase your services, team, and patient care philosophy to a global audience 24/7."
+            }
+        ],
+        "serviceTilte": "How Expresiv Designs Can Help",
+        "serviceImg": "/images/icon/dental.svg",
+        "services": [
+            {
+                "title": "Custom Dental Clinic Website Design",
+                "icon": "/images/icon/green-icon1.svg",
+                "description": "At Expresiv Designs, we understand that every dental clinic is unique, which is why we take a personalized approach to website design. Our team of experienced designers will work closely with you to create a custom website that captures the essence of your practice and resonates with your target audience. From layout and color scheme to typography and imagery, we'll ensure that your website reflects the professionalism and values of your clinic."
+            },
+            {
+                "title": "Mobile Responsiveness",
+                "icon": "/images/icon/green-icon2.svg",
+                "description": "With an increasing number of patients accessing the internet on mobile devices, having a mobile-responsive website is crucial. Expresiv Designs ensures that your dental clinic’s website looks and functions flawlessly across all devices, providing a seamless user experience that keeps visitors engaged and encourages them to book appointments."
+            },
+            {
+                "title": "User-Friendly Navigation",
+                "icon": "/images/icon/green-icon3.svg",
+                "description": "We understand that small businesses often have limited resources, which is why we prioritize simplicity and ease of use in our ecommerce website designs. Our intuitive navigation ensures that customers can find what they're looking for quickly and easily, whether it's browsing product categories, checking out customer reviews, or completing a purchase."
+            },
+            {
+                "title": "SEO Optimization",
+                "icon": "/images/icon/green-icon4.svg",
+                "description": "Getting found online is key to driving sales, and that's where our SEO optimization services come in. We'll optimize your ecommerce website for search engines, using strategic keywords, meta tags, and content optimization techniques to improve your visibility and drive organic traffic to your site."
+            },
+            {
+                "title": "Social Media Integration",
+                "icon": "/images/icon/green-icon5.svg",
+                "description": "Convenience is key for your patients. Expresiv Designs integrates online appointment booking systems into your website, making it easy for patients to schedule their visits. This not only improves patient satisfaction but also streamlines your administrative processes."
+            },
+            {
+                "title": "Online Appointment Booking",
+                "icon": "/images/icon/green-icon6.svg",
+                "description": "In today's interconnected world, social media plays a crucial role in building brand awareness and driving engagement. Expresiv Designs will integrate social media buttons and feeds into your website, making it easy for visitors to connect with you on platforms like Facebook, Instagram, and Twitter."
+            },
+            {
+                "title": "Affordable Pricing",
+                "icon": "/images/icon/green-icon7.svg",
+                "description": "We understand that budget constraints can be a challenge for small businesses, which is why we offer affordable pricing packages tailored to your needs and budget. With transparent pricing and no hidden fees, you can trust Expresiv Designs to deliver maximum value for your investment."
+            }
+        ]
+    },
+    {
+        "slug": "cleaning-company-website-design",
+        "title": "Cleaning Company Website Design Services",
+        "description": "In today's digital age, having a strong online presence is essential for success, and Expresiv Designs is here to help you achieve just that. Our mission is simple: to empower dental clinics with stunning websites that not only attract patients but also enhance trust and growth.",
+        "features": [
+            {
+                "description": "In a world where consumers turn to the internet for everything from finding local services to making purchasing decisions, having a professional website is no longer a luxury – it's a necessity. A well-designed website serves as the digital storefront for your cleaning company, providing a platform to showcase your services, team, and customer testimonials to a global audience 24/7."
+            }
+        ],
+        "serviceTilte": "How Expresiv Designs Can Help",
+        "serviceImg": "/images/icon/cleaning.svg",
+        "services": [
+            {
+                "title": "Custom Cleaning Company Website Design",
+                "icon": "/images/icon/yellow-icon1.svg",
+                "description": "At Expresiv Designs, we understand that every cleaning company is unique, which is why we take a personalized approach to website design. Our team of experienced designers will work closely with you to create a custom website that captures the essence of your business and resonates with your target audience. From layout and color scheme to typography and imagery, we'll ensure that your website reflects the professionalism and values of your company."
+            },
+            {
+                "title": "Mobile Responsiveness",
+                "icon": "/images/icon/yellow-icon2.svg",
+                "description": "With an increasing number of patients accessing the internet on mobile devices, having a mobile-responsive website is crucial. Expresiv Designs ensures that your dental clinic’s website looks and functions flawlessly across all devices, providing a seamless user experience that keeps visitors engaged and encourages them to book appointments."
+            },
+            {
+                "title": "User-Friendly Navigation",
+                "icon": "/images/icon/yellow-icon3.svg",
+                "description": "We understand that small businesses often have limited resources, which is why we prioritize simplicity and ease of use in our ecommerce website designs. Our intuitive navigation ensures that customers can find what they're looking for quickly and easily, whether it's browsing product categories, checking out customer reviews, or completing a purchase."
+            },
+            {
+                "title": "SEO Optimization",
+                "icon": "/images/icon/yellow-icon4.svg",
+                "description": "Getting found online is key to driving sales, and that's where our SEO optimization services come in. We'll optimize your ecommerce website for search engines, using strategic keywords, meta tags, and content optimization techniques to improve your visibility and drive organic traffic to your site."
+            },
+            {
+                "title": "Social Media Integration",
+                "icon": "/images/icon/yellow-icon5.svg",
+                "description": "In today's interconnected world, social media plays a crucial role in building brand awareness and driving engagement. Expresiv Designs will integrate social media buttons and feeds into your website, making it easy for visitors to connect with you on platforms like Facebook, Instagram, and Twitter."
+            },
+            {
+                "title": "Online Booking and Quote Requests",
+                "icon": "/images/icon/yellow-icon6.svg",
+                "description": "Convenience is key for your customers. Expresiv Designs integrates online booking and quote request systems into your website, making it easy for customers to schedule services or request pricing. This not only improves customer satisfaction but also streamlines your administrative processes."
+            },
+            {
+                "title": "Affordable Pricing",
+                "icon": "/images/icon/yellow-icon7.svg",
+                "description": "We understand that budget constraints can be a challenge for small businesses, which is why we offer affordable pricing packages tailored to your needs and budget. With transparent pricing and no hidden fees, you can trust Expresiv Designs to deliver maximum value for your investment."
             }
         ]
     }
