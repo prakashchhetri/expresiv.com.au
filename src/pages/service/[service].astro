@@ -5,114 +5,121 @@ import Container from "../../components/Container.astro";
 import WhyExpresive from "../../components/SingleService/WhyExpresive.astro";
 import "../../styles/index.css";
 
-// Import the services data
 import services from "../../data/services.json";
+import TypesOfWebsite from "../../components/SingleService/TypesOfWebsite.astro";
 
-// Define the getStaticPaths function
 export async function getStaticPaths() {
   return services.map(service => ({
-    params: { service: service.slug }
+    params: { service: service.slug },
   }));
 }
 
-// Get the current service slug from the URL
 const { service } = Astro.params;
-
-// Find the service data based on the slug
 const currentService = services.find(s => s.slug === service);
 
 if (!currentService) {
   throw new Error(`Service not found for slug: ${service}`);
 }
 
-const { title, description, image, features, services: serviceList, serviceImg, serviceTilte } = currentService;
+const {
+  title,
+  description,
+  image,
+  features,
+  services: serviceList,
+  serviceImg,
+  serviceTitle,
+} = currentService;
 ---
 
 <Layout>
-    <main class="space-y-40">
-        <div class="relative" id="home">
-            <div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
-                <div class="blur-[106px] h-32 bg-gradient-to-r from-sky-700 to-sky-700"></div>
-                <div class="blur-[106px] h-32 bg-gradient-to-r from-purple-700 to-fuchsia-600"></div>
+  <main class="space-y-40">
+    <div class="relative" id="home">
+      <div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
+        <div class="blur-[106px] h-32 bg-gradient-to-r from-sky-700 to-sky-700"></div>
+        <div class="blur-[106px] h-32 bg-gradient-to-r from-purple-700 to-fuchsia-600"></div>
+      </div>
+
+      <!-- Hero Section -->
+      <section class="relative pt-[200px] pb-[120px]">
+        <Container>
+          <div class="flex flex-col md:flex-row items-center gap-5 md:gap-20">
+            <div class="w-[100%]">
+              <h1 class="lg:leading-relaxed leading-10 text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl w-[55%]">
+                {title}
+              </h1>
+              <p class="mb-6 font-normal text-gray-800 dark:text-gray-400 md:text-lg mt-5">
+                {description}
+              </p>
+              <div class="flex">
+                <a href="/" class="relative flex h-12 items-center justify-center px-8 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max">
+                  <span class="relative text-sm font-semibold text-white">Quick Quote</span>
+                </a>
+              </div>
             </div>
+            {image && (
+              <div class="w-[335px]">
+                <img src={image} alt={title} class="m-auto" />
+              </div>
+            )}
+          </div>
+        </Container>
+      </section>
 
-            <!-- hero section -->
-            <section class="relative pt-[200px] pb-[120px]">
-                <Container>
-                    <div class="flex flex-col md:flex-row items-center gap-5 md:gap-20">
-                        <div class="w-[100%]">
-                            <div class="">
-                                <h1 class="lg:leading-relaxed leading-10 text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl w-[55%]">
-                                    {title}
-                                </h1>
-                                <p class="mb-6 font-normal text-gray-800 dark:text-gray-400 md:text-lg mt-5">
-                                    {description}
-                                </p>
-                                <div class="flex">
-                                    <a href="/" class="relative flex h-12 items-center justify-center px-8 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max">
-                                        <span class="relative text-sm font-semibold text-white">Quick Quote</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        {image && (
-                        <div class="w-[335px]">
-                            <img src={image} alt="" class=" m-auto" />
-                        </div>
+      <!-- Features Section -->
+      <section class="relative pb-[120px] z-10">
+        <Container>
+          {features && features.length > 0 && (
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pb-[150px]">
+              <div class="w-[70%]">
+                <h3 class="text-3xl text-gray-900 dark:text-white font-bold">Why {title}?</h3>
+              </div>
+              <div>
+                <ul class="tick-list mt-6">
+                  {features.map(feature => (
+                    <li key={feature.title}>
+                      <img src='/images/tick.svg' alt="tick" />
+                      <div>
+                        {feature.title && (
+                          <div class="text-lg font-medium">{feature.title}</div>
                         )}
-                    </div>
-                </Container>
-            </section>
+                        <p class="mt-[10px]">{feature.description}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
 
-            
-            <section class="relative pb-[120px] z-10">
-                <Container>
-                    {features && features.length > 0 && (
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pb-[150px]">
-                        <div class="w-[70%]">
-                            <h3 class="text-3xl text-gray-900 dark:text-white font-bold">Why {title}?</h3>
-                        </div>
-                        <div>
-                            <ul class="tick-list mt-6">
-                                {features?.map(feature => (
-                                    <li>
-                                        <img src='/images/tick.svg' alt="" />
-                                        <div>
-                                            {feature?.title && (
-                                            <div class="text-lg font-medium">{feature.title}</div>
-                                            )}
-                                            <p class="mt-[10px]">{feature?.description}</p>
-                                        </div>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                    )}
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="service-content">
+              <h2>{serviceTitle}</h2>
+              {serviceList.map(service => (
+                <div class="service-box" key={service.title}>
+                  <div class="icon-wrap">
+                    <img src={service.icon} alt={service.title} />
+                  </div>
+                  <h4>{service.title}</h4>
+                  <p>{service.description}</p>
+                </div>
+              ))}
+            </div>
+            <div>
+              <img src={serviceImg} alt={serviceTitle} class="img-fluid sticky-img" />
+            </div>
+          </div>
+        </Container>
+      </section>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="service-content">
-                            <h2>{serviceTilte}</h2>
-                            {serviceList?.map(service => (
-                                <div class="service-box">
-                                    <div class="icon-wrap"><img src={service.icon} alt=""></div>
-                                    <h4>{service.title}</h4>
-                                    <p>{service.description}</p>
-                                </div>
-                            ))}
-                        </div>
-                        <div>
-                            <img src={serviceImg} alt="" class="img-fluid sticky-img">
-                        </div>
-                    </div>
-                </Container>
-            </section>
+      <!-- TYPES -->
+      <TypesOfWebsite />
 
-            <!-- why section -->
-            <WhyExpresive/>
+      <!-- Why Section -->
+      <WhyExpresive />
 
-            <!-- Call to action -->
-            <MainCallToAction />
-        </div>
-    </main>
+      <!-- Call to Action -->
+      <MainCallToAction />
+    </div>
+  </main>
 </Layout>
