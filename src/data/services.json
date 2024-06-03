@@ -22,7 +22,7 @@
                 "description": "WordPress is inherently optimized for search engines, with clean code and built-in features that help improve your site's visibility and ranking on search engine results pages. With our expertise in SEO best practices, we'll ensure that your WordPress site is primed for success from day one."
             }
         ],
-        "serviceTilte": "Our WordPress Development Services",
+        "serviceTitle": "Our WordPress Development Services",
         "serviceImg": "/images/icon/wp-new.svg",
         "services": [
             {
@@ -80,7 +80,7 @@
                 "description": "Security is paramount in today's digital landscape, and Laravel takes it seriously. With features like CSRF protection, encryption, and password hashing, Laravel helps us build secure web applications that protect your data and safeguard your users' privacy."
             }
         ],
-        "serviceTilte": "Our Laravel Development Services",
+        "serviceTitle": "Our Laravel Development Services",
         "serviceImg": "/images/laravel-service.png",
         "services": [
             {
@@ -119,7 +119,7 @@
         "slug": "website-development",
         "title": "Website Development",
         "description": "At Expresiv Designs, we believe in a collaborative approach to website development. We work closely with our clients to understand their unique goals, audience, and brand identity. By combining creativity with technical prowess, we create tailored solutions that exceed expectations.",
-        "serviceTilte": "Services Offered",
+        "serviceTitle": "Services Offered",
         "serviceImg": "/images/icon/web-dev.svg",
         "services": [
             {
@@ -163,7 +163,7 @@
                 "description": "In a world where consumers turn to the internet for everything from finding local services to making purchasing decisions, having a professional website is no longer a luxury – it's a necessity. A well-designed website serves as the digital storefront for your business, providing a platform to showcase your products, services, and brand identity to a global audience 24/7."
             }
         ],
-        "serviceTilte": "How Expresiv Designs Can Help",
+        "serviceTitle": "How Expresiv Designs Can Help",
         "serviceImg": "/images/icon/small-business.svg",
         "services": [
             {
@@ -217,7 +217,7 @@
                 "description": "Being based in Sydney means that we're always just a phone call or a short drive away. Whether you have a question about your website or need assistance with updates and maintenance, you can count on us to provide prompt and reliable support. We're here to help you succeed, and we'll go above and beyond to ensure that your website continues to perform at its best."
             }
         ],
-        "serviceTilte": "Our Sydney Based Website Design Services",
+        "serviceTitle": "Our Sydney Based Website Design Services",
         "serviceImg": "/images/icon/sydney-services.svg",
         "services": [
             {
@@ -251,7 +251,7 @@
                 "description": "In a world where consumers turn to the internet for everything from discovering new products to making purchases, having a professional ecommerce website is no longer a luxury – it's a necessity. A well-designed ecommerce site serves as the digital storefront for your business, offering a platform to showcase your products, brand identity, and customer service to a global audience 24/7."
             }
         ],
-        "serviceTilte": "How Expresiv Designs Can Help",
+        "serviceTitle": "How Expresiv Designs Can Help",
         "serviceImg": "/images/icon/ecommerce.svg",
         "services": [
             {
@@ -295,7 +295,7 @@
                 "description": "In a world where patients turn to the internet to find healthcare providers and make informed decisions, having a professional website is no longer a luxury – it's a necessity. A well-designed website serves as the digital storefront for your dental clinic, offering a platform to showcase your services, team, and patient care philosophy to a global audience 24/7."
             }
         ],
-        "serviceTilte": "How Expresiv Designs Can Help",
+        "serviceTitle": "How Expresiv Designs Can Help",
         "serviceImg": "/images/icon/dental.svg",
         "services": [
             {
@@ -344,7 +344,7 @@
                 "description": "In a world where consumers turn to the internet for everything from finding local services to making purchasing decisions, having a professional website is no longer a luxury – it's a necessity. A well-designed website serves as the digital storefront for your cleaning company, providing a platform to showcase your services, team, and customer testimonials to a global audience 24/7."
             }
         ],
-        "serviceTilte": "How Expresiv Designs Can Help",
+        "serviceTitle": "How Expresiv Designs Can Help",
         "serviceImg": "/images/icon/cleaning.svg",
         "services": [
             {
@@ -381,6 +381,179 @@
                 "title": "Affordable Pricing",
                 "icon": "/images/icon/yellow-icon7.svg",
                 "description": "We understand that budget constraints can be a challenge for small businesses, which is why we offer affordable pricing packages tailored to your needs and budget. With transparent pricing and no hidden fees, you can trust Expresiv Designs to deliver maximum value for your investment."
+            }
+        ]
+    },
+    {
+        "slug": "mobie-app-development",
+        "title": "Mobile App Development",
+        "description": "At Expresiv Designs, we're proud to call Sydney home, and we're passionate about helping local businesses thrive in the digital world. With over 8 years of experience in website design and development, we have established ourselves as trusted partners for businesses of all sizes in the Sydney area. Our mission is simple: to deliver stunning website designs that capture the essence of your brand and drive real results for your business.",
+        "features": [
+            {
+                "title": "User Engagement",
+                "description": "Mobile apps provide a direct channel to engage with your customers, offering a personalized experience that can enhance customer loyalty and satisfaction."
+            },
+            {
+                "title": "Brand Visibility",
+                "description": "An app keeps your brand at the fingertips of your customers, increasing visibility and recognition"
+            },
+            {
+                "title": "Accessibility",
+                "description": "Mobile apps offer the convenience of accessing your services anywhere, anytime, which can lead to higher user retention and satisfaction."
+            },
+            {
+                "title": "Enhanced Features",
+                "description": "Leverage the full potential of mobile device capabilities like GPS, camera, and push notifications to offer unique and engaging features."
+            }
+        ],
+        "serviceTitle": "Our Mobile App Development Services",
+        "serviceImg": "/images/mobile-development.svg",
+        "services": [
+            {
+                "title": "Custom Mobile App Development",
+                "icon": "/images/icon/mb-icon.svg",
+                "description": "Our team excels in developing custom mobile applications tailored to your unique business needs. From concept to deployment, we ensure that your app aligns perfectly with your brand and delivers an exceptional user experience. Whether you need a consumer-facing app or a complex enterprise solution, we’ve got you covered."
+            },
+            {
+                "title": "iOS App Development",
+                "icon": "/images/icon/apple.svg",
+                "description": "Specializing in iOS app development, we create applications that are not only functional but also align with Apple’s stringent guidelines. Our apps are optimized for performance and offer a seamless user experience on all iOS devices."
+            },
+            {
+                "title": "Android App Development",
+                "icon": "/images/icon/android.svg",
+                "description": "With expertise in Android app development, we build robust and scalable apps for the world’s most popular mobile platform. Our Android apps are designed to provide an intuitive user experience and are compatible with a wide range of devices."
+            },
+            {
+                "title": "Cross-Platform App Development",
+                "icon": "/images/icon/crossplatform.svg",
+                "description": "Need an app that works across multiple platforms? Our cross-platform development services ensure that your app delivers a consistent user experience on both iOS and Android devices. By using frameworks like Flutter and React Native, we save development time and costs while maintaining high quality."
+            },
+            {
+                "title": "Mobile App UI/UX Design",
+                "icon": "/images/icon/ux.svg",
+                "description": "A great app starts with a great design. Our UI/UX designers create intuitive and visually appealing interfaces that provide an exceptional user experience. From wireframes to final design, we focus on usability and engagement."
+            },
+            {
+                "title": "App Testing and QA",
+                "icon": "/images/icon/testing.svg",
+                "description": "We understand the importance of a bug-free app. Our rigorous testing and quality assurance processes ensure that your app performs flawlessly. We conduct comprehensive testing across various devices and operating systems to deliver a seamless experience to your users."
+            },
+            {
+                "title": "App Maintenance and Support",
+                "icon": "/images/icon/maintain.svg",
+                "description": "Our commitment doesn’t end with the launch. We provide ongoing maintenance and support to keep your app updated and running smoothly. From regular updates to troubleshooting, we ensure your app remains relevant and effective."
+            }
+        ]
+    },
+    {
+        "slug": "digital-Marketing",
+        "title": "Digital Marketing",
+        "description": "In the digital age, a strong online presence is essential for business success. At Expresiv Designs, we offer comprehensive digital marketing services that drive traffic, boost engagement, and increase conversions. Our expert team leverages the latest strategies and tools to help you achieve your marketing goals and grow your business.",
+        "features": [
+            {
+                "title": "Increased Visibility",
+                "description": "Digital marketing enhances your online presence, making it easier for potential customers to find you."
+            },
+            {
+                "title": "Targeted Reach",
+                "description": "Reach your ideal audience with precision through targeted marketing strategies."
+            },
+            {
+                "title": "Cost-Effective",
+                "description": "Digital marketing offers a high return on investment compared to traditional marketing methods."
+            },
+            {
+                "title": "Measurable Results",
+                "description": "Track and analyze the performance of your campaigns in real-time, allowing for continuous optimization and improvement."
+            }
+        ],
+        "serviceTitle": "Our Digital Marketing Services",
+        "serviceImg": "/images/icon/marketing.svg",
+        "services": [
+            {
+                "title": "Search Engine Optimization (SEO)",
+                "icon": "/images/icon/d-icon1.svg",
+                "description": "Boost your website’s visibility on search engines and drive organic traffic with our SEO services. From keyword research and on-page optimization to link building and content creation, we implement effective strategies that improve your search engine rankings and attract qualified leads."
+            },
+            {
+                "title": "Pay-Per-Click (PPC) Advertising",
+                "icon": "/images/icon/d-icon2.svg",
+                "description": "Maximize your ROI with our targeted PPC advertising campaigns. We create and manage ads on platforms like Google Ads and social media, ensuring your ads reach the right audience at the right time. Our PPC services include keyword research, ad creation, campaign management, and performance analysis."
+            },
+            {
+                "title": "Social Media Marketing",
+                "icon": "/images/icon/d-icon3.svg",
+                "description": "Engage with your audience and build your brand on social media platforms. Our social media marketing services include content creation, community management, and targeted advertising. We help you connect with your audience, foster relationships, and drive engagement across platforms like Facebook, Instagram, Twitter, and LinkedIn."
+            },
+
+            {
+                "title": "Content Marketing",
+                "icon": "/images/icon/d-icon4.svg",
+                "description": "Attract and retain customers with high-quality, relevant content. Our content marketing services include strategy development, content creation, and distribution. From blog posts and articles to videos and infographics, we create content that resonates with your audience and drives action."
+            },
+            {
+                "title": "Email Marketing",
+                "icon": "/images/icon/d-icon5.svg",
+                "description": "Nurture leads and build customer loyalty with our email marketing services. We design and execute email campaigns that engage your audience and drive conversions. Our services include list management, campaign design, content creation, and performance tracking."
+            },
+            {
+                "title": "Conversion Rate Optimization (CRO)",
+                "icon": "/images/icon/d-icon6.svg",
+                "description": "Increase the effectiveness of your website with our CRO services. We analyze user behavior and implement strategies to improve your website’s conversion rate. From A/B testing to user experience enhancements, we help you turn visitors into customers."
+            }
+        ]
+    },
+    {
+        "slug": "ui-ux",
+        "title": "Professional UI/UX Design Services in Australia",
+        "description": "At Expresiv, we specialize in creating exceptional UI/UX designs that elevate your digital presence. Our comprehensive UI/UX design services are designed to enhance user engagement and satisfaction, ensuring your website or app is both visually stunning and highly functional.",
+        "features": [
+            {
+                "title": "User-Centered Design",
+                "description": "We prioritize user experience, creating intuitive and engaging interfaces tailored to your audience’s needs."
+            },
+            {
+                "title": "Collaborative Approach",
+                "description": "Partner with us through every step, from initial concept to final implementation, ensuring your vision is brought to life."
+            },
+            {
+                "title": "Innovative Design Solutions",
+                "description": "We utilize the latest design trends and technologies to deliver innovative UI/UX solutions that set your brand apart."
+            },
+            {
+                "title": "Iterative Testing and Feedback",
+                "description": "Our rigorous testing process ensures optimal usability and performance, refining designs based on user feedback."
+            }
+        ],
+        "serviceTitle": "Our UI/UX Design Services",
+        "serviceImg": "/images/uiux.svg",
+        "services": [
+            {
+                "title": "User Research and Analysis",
+                "icon": "/images/icon/ui-icon1.svg",
+                "description": "Our user research process delves deep into understanding your target audience's behaviors, needs, and motivations. By conducting surveys, interviews, and usability testing, we gather valuable insights that inform every aspect of our design process, ensuring the final product resonates with your users."
+            },
+            {
+                "title": "Wireframing and Prototyping",
+                "icon": "/images/icon/ui-icon2.svg",
+                "description": "We bring your ideas to life with detailed wireframes and interactive prototypes. These visual blueprints allow you to see and interact with your project's structure and functionality before development begins, making it easier to identify and address potential issues early on."
+            },
+            {
+                "title": "Visual Design",
+                "icon": "/images/icon/ui-icon3.svg",
+                "description": "Our visual design services create aesthetically pleasing interfaces that capture your brand's essence. We focus on color schemes, typography, imagery, and layout to develop cohesive and engaging designs that leave a lasting impression on users and enhance their overall experience."
+            },
+
+            {
+                "title": "Usability Testing",
+                "icon": "/images/icon/ui-icon4.svg",
+                "description": "Usability testing is a critical step in our design process. We conduct thorough testing sessions with real users to identify usability issues and gather feedback. This iterative process helps us refine and improve the design, ensuring it is intuitive, user-friendly, and effective in achieving your business goals."
+            },
+            {
+                "title": "Responsive Design",
+                "icon": "/images/icon/ui-icon5.svg",
+                "description": "In today's multi-device world, responsive design is essential. We ensure your website or app delivers a seamless user experience across all devices, from desktops to smartphones and tablets. Our responsive designs adapt to different screen sizes and orientations, providing users with a consistent and enjoyable experience regardless of how they access your site."
             }
         ]
     }
