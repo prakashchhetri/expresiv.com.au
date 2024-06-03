@@ -3,7 +3,7 @@
 }
 
 .light-bg {
-    background-image: linear-gradient(to right, #64ffda75, #00bfa5c9);
+    background-image: linear-gradient(to right, #b064ff75, #8d0eebc9);
     opacity: 0.2;
     transition: all 0.5s ease-in-out;
 }

@@ -1,76 +1,34 @@
 ---
 import Container from "../Container.astro";
+
+const { typesOfWebsites } = Astro.props;
 ---
 
 <section class="relative pt-[100px] pb-[80px]">
-    <Container>
-        <div class="grid grid-cols-1 md:grid-cols-2 types-grid">
-            <div>
-                <h2 class="leading-relaxed text-gray-900 dark:text-white font-bold text-3xl md:text-4xl xl:text-4xl">Types of Websites We Provide</h2>
+  <Container>
+    <div class="grid grid-cols-1 md:grid-cols-2 types-grid">
+      <div>
+        <h2 class="leading-relaxed text-gray-900 dark:text-white font-bold text-3xl md:text-4xl xl:text-4xl">Types of Websites We Provide</h2>
+      </div>
+      <div class="grid grid-cols-2 rounded-3xl relative overflow-hidden border border-[#E4E4E7]">
+        {typesOfWebsites.map((type) => (
+          <div class="group relative border-solid p-6 transition hover:z-[1] types-border transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10" key={type.title}>
+            <div class="bg-gradient-to-br from-purple-100 to-blue-100 rounded-[20px] h-[60px] w-[60px] p-3 flex items-center justify-center">
+              <img src={type.icon} alt={type.title} />
             </div>
-            <div class="grid grid-cols-2 rounded-3xl relative overflow-hidden border border-[#E4E4E7]">
-                <div class="group relative border-solid  p-6 transition hover:z-[1]  types-border transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
-                    <div class="bg-gradient-to-br from-purple-100 to-blue-100 rounded-[20px] h-[60px] w-[60px] p-3 flex items-center justify-center">
-                        <img src="/public/images/icon/w.svg" alt="">
-                    </div>
-                    <h4 class="mt-5 text-lg font-semibold group-hover:text-secondary">Small Business Websites</h4>
-                    <p class="mt-1">Perfect for startups and local businesses looking to establish an online presence.</p>
-                    <div class="mt-8">
-                        <a href="small-business-website" class="flex items-center justify-between group-hover:text-secondary">
-                            <span class="text-sm">Read More</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
-                            <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clip-rule="evenodd" />
-                            </svg>                
-                        </a>
-                    </div>
-                </div>
-                <div class="group relative border-solid  p-6 transition hover:z-[1]  types-border transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
-                    <div class="bg-gradient-to-br from-purple-100 to-blue-100 rounded-[20px] h-[60px] w-[60px] p-3 flex items-center justify-center">
-                        <img src="/public/images/icon/home.svg" alt="">
-                    </div>
-                    <h4 class="mt-5 text-lg font-semibold group-hover:text-secondary">E-commerce Websites</h4>
-                    <p class="mt-1">Designed to drive sales and maximize revenue for your online store.</p>
-                    <div class="mt-8">
-                        <a href="ecommerce-website-design" class="flex items-center justify-between group-hover:text-secondary">
-                            <span class="text-sm">Read More</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
-                            <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clip-rule="evenodd" />
-                            </svg>                
-                        </a>
-                    </div>
-                </div>
-                <div class="group relative border-solid  p-6 transition hover:z-[1]  types-border transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
-                    <div class="bg-gradient-to-br from-purple-100 to-blue-100 rounded-[20px] h-[60px] w-[60px] p-3 flex items-center justify-center">
-                        <img src="/public/images/icon/teeth.svg" alt="">
-                    </div>
-                    <h4 class="mt-5 text-lg font-semibold group-hover:text-secondary">Dental Clinic Websites</h4>
-                    <p class="mt-1">Tailored for dental practices to attract and inform patients.</p>
-                    <div class="mt-8">
-                        <a href="dental-clinic-design" class="flex items-center justify-between group-hover:text-secondary">
-                            <span class="text-sm">Read More</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
-                            <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clip-rule="evenodd" />
-                            </svg>                
-                        </a>
-                    </div>
-                </div>
-                <div class="group relative border-solid  p-6 transition hover:z-[1]  types-border transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
-                    <div class="bg-gradient-to-br from-purple-100 to-blue-100 rounded-[20px] h-[60px] w-[60px] p-3 flex items-center justify-center">
-                        <img src="/public/images/icon/stars.svg" alt="">
-                    </div>
-                    <h4 class="mt-5 text-lg font-semibold group-hover:text-secondary">Cleaning Company Websites</h4>
-                    <p class="mt-1">Ideal for cleaning services looking to attract new clients and manage bookings.</p>
-                    <div class="mt-8">
-                        <a href="cleaning-company-website-design" class="flex items-center justify-between group-hover:text-secondary">
-                            <span class="text-sm">Read More</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
-                            <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clip-rule="evenodd" />
-                            </svg>                
-                        </a>
-                    </div>
-                </div>
-
+            <h4 class="mt-5 text-lg font-semibold group-hover:text-secondary">{type.title}</h4>
+            <p class="mt-1">{type.description}</p>
+            <div class="mt-8">
+              <a href={type.link} class="flex items-center justify-between group-hover:text-secondary">
+                <span class="text-sm">Read More</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+                  <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clip-rule="evenodd" />
+                </svg>                
+              </a>
             </div>
-        </div>
-    </Container>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Container>
 </section>

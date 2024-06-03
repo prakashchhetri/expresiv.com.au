@@ -9,16 +9,17 @@ import services from "../../data/services.json";
 import TypesOfWebsite from "../../components/SingleService/TypesOfWebsite.astro";
 
 export async function getStaticPaths() {
-  return services.map(service => ({
-    params: { service: service.slug },
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
   }));
 }
 
-const { service } = Astro.params;
-const currentService = services.find(s => s.slug === service);
+const { slug } = Astro.params;
+const currentService = services.find((s) => s.slug === slug);
 
 if (!currentService) {
-  throw new Error(`Service not found for slug: ${service}`);
+  throw new Error(`Service not found for slug: ${slug}`);
 }
 
 const {
@@ -29,6 +30,7 @@ const {
   services: serviceList,
   serviceImg,
   serviceTitle,
+  typesOfWebsites
 } = currentService;
 ---
 
@@ -105,15 +107,20 @@ const {
                 </div>
               ))}
             </div>
-            <div>
-              <img src={serviceImg} alt={serviceTitle} class="img-fluid sticky-img" />
-            </div>
+            {serviceImg && (
+              <div>
+                <img src={serviceImg} alt={serviceTitle} class="img-fluid sticky-img" />
+              </div>
+            )}
           </div>
         </Container>
       </section>
 
       <!-- TYPES -->
-      <TypesOfWebsite />
+      {typesOfWebsites && typesOfWebsites.length > 0 && (
+        <TypesOfWebsite typesOfWebsites={typesOfWebsites} />
+        )
+      }
 
       <!-- Why Section -->
       <WhyExpresive />
