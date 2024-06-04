@@ -12,12 +12,12 @@ import '../../styles/IconCard.css';
         </div>
         <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-                { title: "UI/UX Design", url: '/ui-ux', description: "We create visually appealing and user-friendly designs that transform your ideas into digital realities.", icon: "/images/icon/uiux.svg" },
-                { title: "Website Development", url: '/website-development', description: "Our team builds robust and scalable websites tailored to your business needs, ensuring a seamless user experience.", icon: "/images/icon/grid.svg" },
-                { title: "Mobile App Development", url: '/mobie-app-development', description: "We specialize in developing intuitive and engaging mobile applications for both iOS and Android platforms.", icon: "/images/icon/mobile.svg" },
-                { title: "Digital Marketing", url: '/digital-marketing', description: "Boost your online presence with our comprehensive digital marketing strategies, including social media, email marketing, and PPC campaigns.", icon: "/images/icon/diamond.svg" },
-                { title: "WordPress Development", url: '/wordpress-development', description: "Create and manage dynamic, customizable websites with our expert WordPress development services.", icon: "/images/icon/wp.svg" },
-                { title: "Laravel Development", url: '/laravel-development', description: "Develop powerful and scalable web applications with our advanced Laravel development services.", icon: "/images/icon/triangle.svg" }
+                { title: "UI/UX Design", url: 'services/ui-ux', description: "We create visually appealing and user-friendly designs that transform your ideas into digital realities.", icon: "/images/icon/uiux.svg" },
+                { title: "Website Development", url: 'services/website-development', description: "Our team builds robust and scalable websites tailored to your business needs, ensuring a seamless user experience.", icon: "/images/icon/grid.svg" },
+                { title: "Mobile App Development", url: 'services/mobie-app-development', description: "We specialize in developing intuitive and engaging mobile applications for both iOS and Android platforms.", icon: "/images/icon/mobile.svg" },
+                { title: "Digital Marketing", url: 'services/digital-marketing', description: "Boost your online presence with our comprehensive digital marketing strategies, including social media, email marketing, and PPC campaigns.", icon: "/images/icon/diamond.svg" },
+                { title: "WordPress Development", url: 'services/wordpress-development', description: "Create and manage dynamic, customizable websites with our expert WordPress development services.", icon: "/images/icon/wp.svg" },
+                { title: "Laravel Development", url: 'services/laravel-development', description: "Develop powerful and scalable web applications with our advanced Laravel development services.", icon: "/images/icon/triangle.svg" }
             ].map((card, index) => (
                 <IconCard title={card.title} description={card.description} icon={card.icon} url={card?.url} key={index}/>
             ))}
