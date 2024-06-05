@@ -55,39 +55,13 @@
                 "icon": "/images/icon/grey-icon1.svg",
                 "description": "Don't let slow loading times and poor performance hinder your online success. Our performance optimization services will fine-tune your WordPress site for speed, reliability, and scalability, ensuring a smooth and seamless user experience for your visitors."
             }
-        ],
-        "typesOfWebsites": [
-            {
-                "title": "Small Business Websites",
-                "description": "Perfect for startups and local businesses looking to establish an online presence.",
-                "icon": "/public/images/icon/w.svg",
-                "link": "small-business-website"
-            },
-            {
-                "title": "E-commerce Websites",
-                "description": "Designed to drive sales and maximize revenue for your online store.",
-                "icon": "/public/images/icon/home.svg",
-                "link": "ecommerce-website-design"
-            },
-            {
-                "title": "Dental Clinic Websites",
-                "description": "Tailored for dental practices to attract and inform patients.",
-                "icon": "/public/images/icon/teeth.svg",
-                "link": "dental-clinic-design"
-            },
-            {
-                "title": "Cleaning Company Websites",
-                "description": "Ideal for cleaning services looking to attract new clients and manage bookings.",
-                "icon": "/public/images/icon/stars.svg",
-                "link": "cleaning-company-website-design"
-            }
         ]
     },
     {
         "slug": "laravel-development",
         "title": "Laravel Development",
         "description": "As Laravel enthusiasts, we're passionate about harnessing the power of this robust PHP framework to build dynamic and scalable web applications that push the boundaries of possibility. Whether you're a startup looking to disrupt the market or an established enterprise seeking innovation, we have the expertise to turn your ideas into reality.",
-        "image": "/images/laravel.png",
+        "image": "/images/laravel.svg",
         "features": [
             {
                 "title": "Elegant Syntax and Structure",
@@ -107,7 +81,7 @@
             }
         ],
         "serviceTitle": "Our Laravel Development Services",
-        "serviceImg": "/images/laravel-service.png",
+        "serviceImg": "/images/laravel-service.svg",
         "services": [
             {
                 "title": "Custom Laravel Web Application Development",
@@ -151,32 +125,58 @@
             {
                 "title": "Custom Website Development",
                 "icon": "/images/icon/blue-icon1.svg",
-                "description": "Our team of experienced Laravel developers specializes in creating custom web applications tailored to your unique business needs. Whether you're looking to automate processes, streamline workflows, or revolutionize your industry, we'll leverage the power of Laravel to build a solution that exceeds your expectations."
+                "description": "Our team of experienced developers specializes in creating bespoke websites tailored to your specific needs. Whether you're a small business or a large enterprise, we'll design and develop a site that perfectly reflects your brand and engages your audience. We offer a variety of website types, including:"
             },
             {
                 "title": "Responsive Design",
                 "icon": "/images/icon/blue-icon2.svg",
-                "description": "Unlock the full potential of your web application with our Laravel API development services. Whether you need to integrate with third-party services, build a mobile app, or enable seamless communication between different parts of your application, we'll design and develop RESTful APIs that facilitate smooth data exchange and enhance functionality."
+                "description": "In today's digital landscape, mobile responsiveness is non-negotiable. We ensure that your website looks and functions flawlessly across all devices, providing a seamless user experience that enhances engagement and conversion rates."
             },
             {
                 "title": "E-commerce Solutions",
                 "icon": "/images/icon/blue-icon3.svg",
-                "description": "Take your online store to the next level with our Laravel e-commerce solutions. From customizing existing platforms like Magento and Shopify to building bespoke e-commerce applications from scratch, we'll create a seamless shopping experience that drives sales and maximizes revenue."
+                "description": "Ready to take your online store to the next level? Our e-commerce solutions are designed to drive sales and maximize revenue. From intuitive navigation to secure payment gateways, we'll build a platform that streamlines the buying process for your customers."
             },
             {
                 "title": "Content Management Systems (CMS)",
                 "icon": "/images/icon/blue-icon4.svg",
-                "description": "Ready to migrate your existing application to Laravel or upgrade to the latest version? Our migration and upgrade services ensure a smooth transition with minimal disruption to your business. We'll handle the technical details so you can focus on growing your business with confidence."
+                "description": "Take control of your website with our user-friendly content management systems. Whether you're updating blog posts or adding new products, our CMS solutions empower you to manage your site effortlessly, saving you time and resources."
             },
             {
                 "title": "SEO Optimization",
                 "icon": "/images/icon/blue-icon5.svg",
-                "description": "Need guidance on how to make the most of Laravel for your project? Our team of Laravel experts is here to help. From architecture and design to optimization and troubleshooting, we provide comprehensive consulting and support services to ensure the success of your Laravel project."
+                "description": "Boost your visibility and reach with our SEO optimization services. From keyword research to on-page optimization, we'll enhance your website's ranking on search engine results pages, driving organic traffic and generating qualified leads."
             },
             {
                 "title": "Maintenance and Support",
                 "icon": "/images/icon/blue-icon6.svg",
-                "description": "Enhance the speed and efficiency of your Laravel applications with our optimization services. From codebase analysis to server configuration tweaks, we'll fine-tune your system for improved scalability and responsiveness, ensuring an optimal user experience."
+                "description": "Our commitment to your success doesn't end with the launch of your website. We provide ongoing maintenance and support to ensure that your site remains secure, up-to-date, and performing at its best. From software updates to troubleshooting, we're here to support you every step of the way."
+            }
+        ],
+        "typesOfWebsites": [
+            {
+                "title": "Small Business Websites",
+                "description": "Perfect for startups and local businesses looking to establish an online presence.",
+                "icon": "/public/images/icon/w.svg",
+                "link": "small-business-website"
+            },
+            {
+                "title": "E-commerce Websites",
+                "description": "Designed to drive sales and maximize revenue for your online store.",
+                "icon": "/public/images/icon/home.svg",
+                "link": "ecommerce-website-design"
+            },
+            {
+                "title": "Dental Clinic Websites",
+                "description": "Tailored for dental practices to attract and inform patients.",
+                "icon": "/public/images/icon/teeth.svg",
+                "link": "dental-clinic-design"
+            },
+            {
+                "title": "Cleaning Company Websites",
+                "description": "Ideal for cleaning services looking to attract new clients and manage bookings.",
+                "icon": "/public/images/icon/stars.svg",
+                "link": "cleaning-company-website-design"
             }
         ]
     },
@@ -228,7 +228,7 @@
         "slug": "sydney-based-website",
         "title": "Sydney based website design experts",
         "description": "At Expresiv Designs, we're proud to call Sydney home, and we're passionate about helping local businesses thrive in the digital world. With over 8 years of experience in website design and development, we have established ourselves as trusted partners for businesses of all sizes in the Sydney area. Our mission is simple: to deliver stunning website designs that capture the essence of your brand and drive real results for your business.",
-        "image": "/images/sydney.png",
+        "image": "/images/sydney.svg",
         "features": [
             {
                 "title": "Local Understanding",
