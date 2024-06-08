@@ -36,6 +36,11 @@
                 "description": "Don't settle for a cookie-cutter design. Our theme customization services allow you to personalize your WordPress site to reflect your unique style and preferences. Whether you're starting from scratch or revamping an existing site, we'll tailor your theme to suit your needs and specifications."
             },
             {
+                "title": "WordPress Website Migration and Upgrades",
+                "icon": "/images/icon/grey-icon5.svg",
+                "description": "Ready to make the switch to WordPress or upgrade to the latest version? Our migration and upgrade services ensure a smooth transition with minimal disruption to your business. We'll handle the technical details so you can focus on what you do best."
+            },
+            {
                 "title": "Plugin Development and Integration",
                 "icon": "/images/icon/grey-icon4.svg",
                 "description": "Extend the functionality of your WordPress site with custom plugins tailored to your specific requirements. Whether you need advanced e-commerce features, membership functionality, or enhanced security measures, our developers will build and integrate plugins that take your site to the next level."
