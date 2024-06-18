@@ -173,6 +173,49 @@ li {
     grid-template-columns: 1fr 1.4fr;
 }
 
+.gradient-bg {
+    background: linear-gradient(
+        to right,
+        #f0f0f0,
+        #e0f7ff
+    ); /* Adjust colors as needed */
+}
+
+/* SINGLE PAGE BG */
+.bg-blue {
+    background: radial-gradient(#00a9ff, #5ab5ff);
+}
+
+.bg-grey {
+    background: radial-gradient(#19322b, #021c1c);
+}
+
+.bg-yellow {
+    background: radial-gradient(#f1d42b, #f1c70b);
+}
+
+.bg-red {
+    background: radial-gradient(#fc7250, #eb0303);
+}
+
+.bg-pink {
+    background: radial-gradient(#fc50a0, #eb0364);
+}
+
+.bg-purple {
+    background: radial-gradient(#748ffc, #1e47ee);
+}
+
+.bg-cyan {
+    background: radial-gradient(#26cdbf, #67f8d9);
+}
+
+.bg-green {
+    background: radial-gradient(#27ad71, #12d17b);
+}
+
+/* SINGLE PAGE BG */
+
 @media only screen and (max-width: 768px) {
     .single-content h1 {
         font-size: 30px;

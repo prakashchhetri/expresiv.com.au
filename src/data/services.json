@@ -1,5 +1,10 @@
 [
     {
+        "metaTitle": "Expresiv Designs | WordPress Development (Websites, E-commerce, SEO)",
+        "metaDescription": "Build stunning, user-friendly & SEO-friendly WordPress websites with Expresiv. Custom designs, themes, plugins & WooCommerce. Free Quote!",
+        "metaKeywords": "WordPress development, WordPress website design, theme customization, plugin development, WooCommerce development, WordPress migration, WordPress upgrades, WordPress SEO, WordPress performance optimization, Australia",
+        "bg1": "bg-blue",
+        "bg2": "bg-grey",
         "slug": "wordpress-development",
         "title": "WordPress Development",
         "description": "As experts in WordPress development, we're here to harness the power of this versatile platform to create stunning websites that elevate your brand and drive results. Whether you're a small business, a budding blogger, or an e-commerce entrepreneur, we have the expertise to bring your vision to life.",
@@ -63,6 +68,11 @@
         ]
     },
     {
+        "metaTitle": "Expresiv Designs | Build Scalable Laravel Apps",
+        "metaDescription": "Power your web application with Laravel! Expresiv offers custom development, APIs, e-commerce & more. Secure, scalable & high-performance. Free Quote!",
+        "metaKeywords": "Laravel development, Laravel web application development, Laravel API development, Laravel e-commerce solutions, Laravel migration, Laravel upgrade, Laravel consulting, Laravel support, Laravel performance optimization, Australia",
+        "bg1": "bg-yellow",
+        "bg2": "bg-red",
         "slug": "laravel-development",
         "title": "Laravel Development",
         "description": "As Laravel enthusiasts, we're passionate about harnessing the power of this robust PHP framework to build dynamic and scalable web applications that push the boundaries of possibility. Whether you're a startup looking to disrupt the market or an established enterprise seeking innovation, we have the expertise to turn your ideas into reality.",
@@ -121,6 +131,11 @@
         ]
     },
     {
+        "metaTitle": "Expresiv Designs | Web Design",
+        "metaDescription": "Build a website you'll love! Expresiv Designs creates custom websites, e-commerce stores, and uses SEO to drive results. Get a free quote today!",
+        "metaKeywords": "website development, web design, e-commerce website, SEO services, responsive design, content management system, CMS",
+        "bg1": "bg-pink",
+        "bg2": "bg-purple",
         "slug": "website-development",
         "title": "Website Development",
         "description": "At Expresiv Designs, we believe in a collaborative approach to website development. We work closely with our clients to understand their unique goals, audience, and brand identity. By combining creativity with technical prowess, we create tailored solutions that exceed expectations.",
@@ -162,30 +177,35 @@
             {
                 "title": "Small Business Websites",
                 "description": "Perfect for startups and local businesses looking to establish an online presence.",
-                "icon": "/public/images/icon/w.svg",
-                "link": "/services/small-business-website"
+                "icon": "/images/icon/w.svg",
+                "link": "small-business-website"
             },
             {
                 "title": "E-commerce Websites",
                 "description": "Designed to drive sales and maximize revenue for your online store.",
-                "icon": "/public/images/icon/home.svg",
-                "link": "/services/ecommerce-website-design"
+                "icon": "/images/icon/home.svg",
+                "link": "ecommerce-website-design"
             },
             {
                 "title": "Dental Clinic Websites",
                 "description": "Tailored for dental practices to attract and inform patients.",
-                "icon": "/public/images/icon/teeth.svg",
-                "link": "/services/dental-clinic-design"
+                "icon": "/images/icon/teeth.svg",
+                "link": "dental-clinic-design"
             },
             {
                 "title": "Cleaning Company Websites",
                 "description": "Ideal for cleaning services looking to attract new clients and manage bookings.",
-                "icon": "/public/images/icon/stars.svg",
-                "link": "/services/cleaning-company-website-design"
+                "icon": "/images/icon/stars.svg",
+                "link": "cleaning-company-website-design"
             }
         ]
     },
     {
+        "metaTitle": "",
+        "metaDescription": "",
+        "metaKeywords": "",
+        "bg1": "bg-cyan",
+        "bg2": "bg-blue",
         "slug": "small-business-website",
         "title": "Small Business Website",
         "description": "In today's digital age, having a strong online presence is essential for success, and we're here to help you achieve just that. Our mission is simple: to empower small businesses like yours with stunning websites that not only attract customers but also drive growth and prosperity.",
@@ -230,6 +250,11 @@
         ]
     },
     {
+        "metaTitle": "",
+        "metaDescription": "",
+        "metaKeywords": "",
+        "bg1": "bg-cyan",
+        "bg2": "bg-purple",
         "slug": "sydney-based-website",
         "title": "Sydney based website design experts",
         "description": "At Expresiv Designs, we're proud to call Sydney home, and we're passionate about helping local businesses thrive in the digital world. With over 8 years of experience in website design and development, we have established ourselves as trusted partners for businesses of all sizes in the Sydney area. Our mission is simple: to deliver stunning website designs that capture the essence of your brand and drive real results for your business.",
@@ -274,6 +299,11 @@
         ]
     },
     {
+        "metaTitle": "Expresiv Designs | Stunning Ecommerce Websites for Small Businesses ",
+        "metaDescription": "Grow your sales with a mobile-friendly, user-friendly ecommerce website designed to showcase your brand and convert visitors into customers. Affordable packages for small businesses. Expresiv Designs - We help you stand out online.",
+        "metaKeywords": "Ecommerce website design, small business website, mobile-friendly website, user-friendly website, brand identity, customer conversion, affordable website design, ecommerce website packages",
+        "bg1": "bg-cyan",
+        "bg2": "bg-red",
         "slug": "ecommerce-website-design",
         "title": "Ecommerce Website Design Services",
         "description": "In today's digital age, having a robust online presence is essential for success, and Expresiv Designs is here to help you achieve just that. Our mission is simple: to empower small businesses with stunning ecommerce websites that not only attract customers but also drive sales and growth.",
@@ -318,6 +348,11 @@
         ]
     },
     {
+        "metaTitle": "Expresiv Designs | Dental Website Design",
+        "metaDescription": "Showcase your expertise & build trust with a stunning, mobile-friendly dental clinic website. Boost SEO, online booking & patient engagement. Affordable design solutions by Expresiv Designs.",
+        "metaKeywords": "Dental clinic website design, dental SEO, online appointment booking, mobile-friendly website, patient engagement, dental marketing, affordable website design, dental website packages",
+        "bg1": "bg-yellow",
+        "bg2": "bg-green",
         "slug": "dental-clinic-design",
         "title": "Dental Clinic Website Design Services",
         "description": "In today's digital age, having a strong online presence is essential for success, and Expresiv Designs is here to help you achieve just that. Our mission is simple: to empower dental clinics with stunning websites that not only attract patients but also enhance trust and growth.",
@@ -367,6 +402,11 @@
         ]
     },
     {
+        "metaTitle": "Expresiv Designs |  Cleaning Co. Website Design ",
+        "metaDescription": "Expresiv Designs creates stunning cleaning company websites that showcase services, build trust, and generate leads. Get a mobile-friendly, SEO-optimized website with online booking and social media integration. Affordable packages available.",
+        "metaKeywords": "cleaning company website design, cleaning service website, web design for cleaners, attract cleaning clients, mobile-friendly cleaning website, SEO for cleaning companies, online booking for cleaning services, cleaning company social media, affordable website design for cleaners",
+        "bg1": "bg-cyan",
+        "bg2": "bg-yellow",
         "slug": "cleaning-company-website-design",
         "title": "Cleaning Company Website Design Services",
         "description": "In today's digital age, having a strong online presence is essential for success, and Expresiv Designs is here to help you achieve just that. Our mission is simple: to empower dental clinics with stunning websites that not only attract patients but also enhance trust and growth.",
@@ -416,6 +456,11 @@
         ]
     },
     {
+        "metaTitle": "Expresiv Designs | Sydney Mobile App Developers (iOS, Android, Cross-Platform)",
+        "metaDescription": "Award-winning mobile app development in Sydney! Build your dream app with Expresiv. Custom solutions, iOS, Android & Cross-Platform. Free Quote!",
+        "metaKeywords": "mobile app development Sydney, iPhone app development, Android app development, cross-platform app development, mobile UI/UX design, app testing, app maintenance, Australia",
+        "bg1": "bg-pink",
+        "bg2": "bg-purple",
         "slug": "mobie-app-development",
         "title": "Mobile App Development",
         "description": "At Expresiv Designs, we're proud to call Sydney home, and we're passionate about helping local businesses thrive in the digital world. With over 8 years of experience in website design and development, we have established ourselves as trusted partners for businesses of all sizes in the Sydney area. Our mission is simple: to deliver stunning website designs that capture the essence of your brand and drive real results for your business.",
@@ -478,6 +523,11 @@
         ]
     },
     {
+        "metaTitle": "Expresiv Designs | Digital Marketing",
+        "metaDescription": "Boost website traffic, engagement & conversions with Expresiv's data-driven digital marketing services. SEO, PPC, Social Media & more. Free Quote!",
+        "metaKeywords": "digital marketing services, SEO optimization, PPC advertising, social media marketing, content marketing, email marketing, CRO, conversion rate optimization, Australia",
+        "bg1": "bg-pink",
+        "bg2": "bg-red",
         "slug": "digital-Marketing",
         "title": "Digital Marketing",
         "description": "In the digital age, a strong online presence is essential for business success. At Expresiv Designs, we offer comprehensive digital marketing services that drive traffic, boost engagement, and increase conversions. Our expert team leverages the latest strategies and tools to help you achieve your marketing goals and grow your business.",
@@ -536,6 +586,11 @@
         ]
     },
     {
+        "metaTitle": "Expresiv Designs | Award-Winning UI/UX Design",
+        "metaDescription": "Craft exceptional user experiences with Expresiv's UI/UX design services in Australia. Boost user engagement & conversions. Free Quote!",
+        "metaKeywords": "UI/UX design, user experience, user interface, web design, app design, Australia, user research, wireframing, prototyping, responsive design",
+        "bg1": "bg-red",
+        "bg2": "bg-purple",
         "slug": "ui-ux",
         "title": "Professional UI/UX Design Services in Australia",
         "description": "At Expresiv, we specialize in creating exceptional UI/UX designs that elevate your digital presence. Our comprehensive UI/UX design services are designed to enhance user engagement and satisfaction, ensuring your website or app is both visually stunning and highly functional.",
