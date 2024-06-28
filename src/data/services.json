@@ -178,25 +178,25 @@
                 "title": "Small Business Websites",
                 "description": "Perfect for startups and local businesses looking to establish an online presence.",
                 "icon": "/images/icon/w.svg",
-                "link": "small-business-website"
+                "link": "/services/small-business-website"
             },
             {
                 "title": "E-commerce Websites",
                 "description": "Designed to drive sales and maximize revenue for your online store.",
                 "icon": "/images/icon/home.svg",
-                "link": "ecommerce-website-design"
+                "link": "/services/ecommerce-website-design"
             },
             {
                 "title": "Dental Clinic Websites",
                 "description": "Tailored for dental practices to attract and inform patients.",
                 "icon": "/images/icon/teeth.svg",
-                "link": "dental-clinic-design"
+                "link": "/services/dental-clinic-design"
             },
             {
                 "title": "Cleaning Company Websites",
                 "description": "Ideal for cleaning services looking to attract new clients and manage bookings.",
                 "icon": "/images/icon/stars.svg",
-                "link": "cleaning-company-website-design"
+                "link": "/services/cleaning-company-website-design"
             }
         ]
     },
