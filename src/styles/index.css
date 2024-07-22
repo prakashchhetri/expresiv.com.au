@@ -1,4 +1,9 @@
 /* main or global css */
+
+* {
+    font-family: "Kumbh Sans", sans-serif;
+}
+
 p {
     color: rgba(33, 31, 49, 0.8) !important;
 }
@@ -11,10 +16,12 @@ h5,
 h6,
 .text-gray-900 {
     color: #171546;
+    font-family: "Kumbh Sans", sans-serif;
 }
 
 h2 {
     font-size: 32px !important;
+    font-family: "Kumbh Sans", sans-serif;
 }
 
 /* single blog css */
