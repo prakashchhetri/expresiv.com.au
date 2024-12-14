@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  astrolus:
+    image: node:18-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - '3000:3000'
+    command: npx astro dev
+    environment:
+      - NODE_ENV=development
