@@ -7,9 +7,14 @@ import Testimonials from '../components/Testimonials.astro';
 import CallToAction from '../components/CallToAction.astro';
 import Blog from '../components/Blog.astro';
 import Container from "../components/Container.astro";
+import TechStack from "../components/ServicesPage/TechStack.astro";
+import DesignProcess from "../components/ServicesPage/DesignProcess.astro";
+import MainCallToAction from "../components/MainCallToAction.astro";
+import OfferSection from "../components/ServicesPage/OfferSection.astro";
+import BrandingSection from "../components/ServicesPage/BrandingSection.astro";
 ---
 
-<Layout title="Website design and application development agency based in granville 2142 , Sydney">
+<Layout title="Website design and application development agency based in Granville 2142, Sydney">
     <main class="space-y-40 mb-40">
         <div class="relative" id="home">
             <div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
@@ -18,11 +23,16 @@ import Container from "../components/Container.astro";
             </div>
             <Container>
                 <div class="relative pt-2 ml-auto">
-
+                    <HeroSection2
+                            title="Granville Website Design and Application Development"
+                            description="We are a leading website design and application development agency based in Granville, Sydney. Our team of experts is dedicated to creating innovative digital solutions that help businesses thrive online."
+                            buttonText="Get Started"
+                            buttonLink="/contact"
+                    />
                 </div>
             </Container>
         </div>
+
+
     </main>
-
-
 </Layout>
