@@ -1,24 +1,6 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Container from "../../components/Container.astro";
-
-export async function getStaticPaths() {
-    const slugs = ['sample', 'example', 'test']; // Replace with your actual slugs
-    return {
-        paths: slugs.map(slug => ({ params: { slug } })),
-        fallback: false
-    };
-}
-
-const { slug } = Astro.params;
-
-if (slug === 'works') {
-    return {
-        props: {
-            isWorksPage: true
-        }
-    };
-}
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/Container.astro";
 ---
 
 <Layout>
@@ -37,4 +19,4 @@ if (slug === 'works') {
         </div>
     </main>
     {Astro.request.url.includes('ref=') && <p>Reference: {new URLSearchParams(Astro.request.url).get('ref')}</p>}
-</Layout>
+</Layout> 
