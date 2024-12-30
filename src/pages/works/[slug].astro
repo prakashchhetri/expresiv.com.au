@@ -4,10 +4,7 @@ import Container from "../../components/Container.astro";
 
 export async function getStaticPaths() {
     const slugs = ['sample', 'example', 'test']; // Replace with your actual slugs
-    return {
-        paths: slugs.map(slug => ({ params: { slug } })),
-        fallback: false
-    };
+    return slugs.map(slug => ({ params: { slug } })); // Return an array of paths
 }
 
 const { slug } = Astro.params;
