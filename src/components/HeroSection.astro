@@ -1,6 +1,14 @@
 ---
 import Container from "./Container.astro"
 
+// Destructure props with default values
+const { 
+    title = "Crafting Digital Solutions for Small Business Success.", 
+    description = "At Expreiv, we design digital success for small businesses. From captivating websites to custom applications and strategic social media, our solutions elevate your online presence and streamline operations, ensuring a thriving digital future for your business.", 
+    buttonText = "Quick Quote", 
+    buttonLink = "#" 
+} = Astro.props;
+
 ---
 
 <div class="relative" id="home">
@@ -11,25 +19,20 @@ import Container from "./Container.astro"
     <Container>
         <div class="relative pt-36 ml-auto">
             <div class="lg:w-2/3 text-center mx-auto">
-                <h1 class="leading-relaxedtext-gray-900 dark:text-white font-bold text-5xl md:text-6xl xl:text-6xl">Crafting Digital Solutions for <span class="text-primary dark:text-white">Small Business Success.</span></h1>
-                <p class="mt-8 text-gray-700 dark:text-gray-300">At Expreiv, we design digital success for small businesses. From captivating websites to custom applications and strategic social media, our solutions elevate your online presence and streamline operations, ensuring a thriving digital future for your business.</p>
+                <h1 class="leading-relaxed text-gray-900 dark:text-white font-bold text-5xl md:text-6xl xl:text-6xl">{title}</h1>
+                <p class="mt-8 text-gray-700 dark:text-gray-300">{description}</p>
                 <div class="mt-16 flex flex-wrap justify-center gap-y-4 gap-x-6">
                     <a
-                      href="#"
+                      href={buttonLink}
                       class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
                     >
-                      <span class="relative text-base font-semibold text-white"
-                        >Quick Quote</span
-                      >
+                      <span class="relative text-base font-semibold text-white">{buttonText}</span>
                     </a>
                     <a
                       href="#"
                       class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-primary/10 before:bg-gradient-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800 sm:w-max"
                     >
-                      <span
-                        class="relative text-base font-semibold text-primary dark:text-white"
-                        >Free Concept Design</span
-                      >
+                      <span class="relative text-base font-semibold text-primary dark:text-white">Free Concept Design</span>
                     </a>
                 </div>
                 <div class="hidden py-8 mt-16 border-y border-gray-100 dark:border-gray-800 sm:flex justify-between">

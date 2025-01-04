@@ -1,0 +1,32 @@
+[
+  {
+    "name": "OffshoreGenix",
+    "shortName": "osgx",
+    "domain": "osgx.com.au",
+    "url": "https://osgx.com.au",
+    "description": "OffshoreGenix is a digital marketing agency that provides services to businesses in Australia and New Zealand. The website is built using WordPress and Elementor.",
+    "servicesProvided": [
+      "Web Development",
+      "Web Design",
+      "SEO"
+    ],
+    "sections": [
+        {
+            "name": "Home",
+            "url": "https://osgx.com.au"
+        },
+        {
+            "name": "About",
+            "url": "https://osgx.com.au/about"
+        },
+        {
+            "name": "Services",
+            "url": "https://osgx.com.au/services"
+        },
+        {
+            "name": "Contact",
+            "url": "https://osgx.com.au/contact"
+        }
+    ]
+  }
+]

@@ -1,38 +1,49 @@
 ---
 import Stats from '../components/Stats.astro';
 import Features from '../components/Features.astro';
-import HeroSection2 from '../components/HeroSection2.astro';
+import HeroSection from '../components/HeroSection.astro';
 import Layout from '../layouts/Layout.astro';
 import Testimonials from '../components/Testimonials.astro';
 import CallToAction from '../components/CallToAction.astro';
-import Blog from '../components/Blog.astro';
 import Container from "../components/Container.astro";
 import TechStack from "../components/ServicesPage/TechStack.astro";
 import DesignProcess from "../components/ServicesPage/DesignProcess.astro";
-import MainCallToAction from "../components/MainCallToAction.astro";
 import OfferSection from "../components/ServicesPage/OfferSection.astro";
 import BrandingSection from "../components/ServicesPage/BrandingSection.astro";
 ---
 
-<Layout title="Website design and application development agency based in Granville 2142, Sydney">
+<Layout title="Website Design and Development Agency in Granville, Sydney">
     <main class="space-y-40 mb-40">
-        <div class="relative" id="home">
-            <div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
-                <div class="blur-[106px] h-56 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500"></div>
-                <div class="blur-[106px] h-32 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200"></div>
-            </div>
-            <Container>
-                <div class="relative pt-2 ml-auto">
-                    <HeroSection2
-                            title="Granville Website Design and Application Development"
-                            description="We are a leading website design and application development agency based in Granville, Sydney. Our team of experts is dedicated to creating innovative digital solutions that help businesses thrive online."
-                            buttonText="Get Started"
-                            buttonLink="/contact"
-                    />
-                </div>
-            </Container>
-        </div>
-
-
+        <HeroSection
+            title="Website Design and Development Services in Granville"
+            description="At Expresiv Designs, we are proud to serve the Granville community with tailored website design and development services. Our team understands the unique needs of local businesses and is dedicated to helping you establish a strong online presence."
+            buttonText="Get Started"
+            buttonLink="/contact"
+        />
+        <Container>
+            <h2 class="text-3xl font-bold mt-10">Why Choose Us for Your Granville Business?</h2>
+            <p class="mb-6 font-normal text-gray-800 dark:text-gray-400 md:text-lg mt-5">
+                We specialize in creating websites that not only look great but also drive results. Our local expertise means we understand the Granville market and can provide solutions that resonate with your target audience. Whether you need a simple website or a complex e-commerce platform, we have the skills and experience to deliver.
+            </p>
+            <h2 class="text-3xl font-bold mt-10">Our Services</h2>
+            <ul class="list-disc list-inside mt-4">
+                <li>Custom Website Design</li>
+                <li>Responsive Web Development</li>
+                <li>E-commerce Solutions</li>
+                <li>SEO Optimization for Local Search</li>
+                <li>Branding and Identity Design</li>
+            </ul>
+            <h2 class="text-3xl font-bold mt-10">Community-Focused Approach</h2>
+            <p class="mb-6 font-normal text-gray-800 dark:text-gray-400 md:text-lg mt-5">
+                We believe in building strong relationships with our clients. By understanding your business goals and the local market, we create websites that not only meet your needs but also help you connect with your community. Our commitment to Granville means we are always here to support you.
+            </p>
+        </Container>
+        <Features />
+        <TechStack />
+        <DesignProcess />
+        <OfferSection />
+        <BrandingSection />
+        <Testimonials />
+        <CallToAction />
     </main>
 </Layout>
