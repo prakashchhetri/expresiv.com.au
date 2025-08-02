@@ -1,0 +1,458 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Container from '../components/Container.astro';
+import MainCallToAction from '../components/MainCallToAction.astro';
+import IconCard from '../components/IconCard.astro';
+import Features from '../components/Features.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Stats from '../components/Stats.astro';
+import CallToAction from '../components/CallToAction.astro';
+
+// SEO-optimized content
+const pageTitle = "Website Development Service in Bathurst and Orange | Professional Web Design";
+const pageDescription = "Expert website development services in Bathurst and Orange. Professional web design, e-commerce solutions, and digital marketing. Get a free quote today!";
+const pageKeywords = "website development bathurst, web design orange, website design bathurst, web development orange, e-commerce website bathurst, digital marketing bathurst orange, SEO bathurst, responsive web design, local web developer bathurst orange";
+const canonicalUrl = "https://expresiv.com.au/website-development-bathurst-orange";
+
+// Local business structured data
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Expresiv Designs",
+  "description": "Professional website development and web design services in Bathurst and Orange, NSW",
+  "url": "https://expresiv.com.au",
+  "telephone": "+61-2-1234-5678",
+  "email": "info@expresiv.com.au",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bathurst",
+    "addressRegion": "NSW",
+    "addressCountry": "AU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "-33.4167",
+    "longitude": "149.5806"
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Bathurst"
+    },
+    {
+      "@type": "City", 
+      "name": "Orange"
+    }
+  ],
+  "serviceArea": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": "-33.4167",
+      "longitude": "149.5806"
+    },
+    "geoRadius": "50000"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Website Development Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Website Design",
+          "description": "Professional website design services for businesses in Bathurst and Orange"
+        }
+      },
+      {
+        "@type": "Offer", 
+        "itemOffered": {
+          "@type": "Service",
+          "name": "E-commerce Development",
+          "description": "Online store development and e-commerce solutions"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service", 
+          "name": "SEO Services",
+          "description": "Search engine optimization to improve your website's visibility"
+        }
+      }
+    ]
+  }
+};
+---
+
+<Layout title={pageTitle}>
+  <head>
+    <meta name="description" content={pageDescription} />
+    <meta name="keywords" content={pageKeywords} />
+    <link rel="canonical" href={canonicalUrl} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content="https://expresiv.com.au/images/web-development-bathurst-orange.jpg" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content={pageTitle} />
+    <meta property="twitter:description" content={pageDescription} />
+    <meta property="twitter:image" content="https://expresiv.com.au/images/web-development-bathurst-orange.jpg" />
+    
+    <!-- Local SEO -->
+    <meta name="geo.region" content="AU-NSW" />
+    <meta name="geo.placename" content="Bathurst, Orange" />
+    <meta name="geo.position" content="-33.4167;149.5806" />
+    <meta name="ICBM" content="-33.4167, 149.5806" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Expresiv Designs" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="distribution" content="global" />
+    <meta name="rating" content="general" />
+  </head>
+
+  <main class="space-y-40">
+    <div class="relative" id="home">
+      <div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
+        <div class="blur-[106px] h-32 bg-gradient-to-r from-sky-700 to-sky-700"></div>
+        <div class="blur-[106px] h-32 bg-gradient-to-r from-purple-700 to-fuchsia-600"></div>
+      </div>
+
+      <!-- Hero Section -->
+      <section class="relative pt-[200px] pb-[120px]">
+        <Container>
+          <div class="flex flex-col md:flex-row items-center gap-5 md:gap-20">
+            <div class="w-[100%]">
+              <h1 class="lg:leading-relaxed leading-10 text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl w-[60%]">
+                Professional Website Development Services in <span class="text-primary">Bathurst & Orange</span>
+              </h1>
+              <p class="mb-6 font-normal text-gray-800 dark:text-gray-400 md:text-lg mt-5">
+                Transform your business with expert website development services in Bathurst and Orange. We create stunning, responsive websites that drive results and help your business grow online. Get a free quote today!
+              </p>
+              <div class="flex flex-col sm:flex-row gap-4">
+                <a href="/contact" class="relative flex h-12 items-center justify-center px-8 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max">
+                  <span class="relative text-sm font-semibold text-white">Get Free Quote</span>
+                </a>
+                <a href="tel:+61-2-1234-5678" class="relative flex h-12 items-center justify-center px-8 before:absolute before:inset-0 before:rounded-full before:border-2 before:border-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max">
+                  <span class="relative text-sm font-semibold text-primary">Call Now</span>
+                </a>
+              </div>
+            </div>
+            <div class="w-[335px]">
+              <img src="/images/web-development-bathurst-orange.jpg" alt="Website Development Services Bathurst Orange" class="m-auto rounded-lg shadow-lg" />
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <!-- Why Choose Us Section -->
+      <section class="relative pb-[120px] z-10">
+        <Container>
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Why Choose Our Website Development Services in Bathurst & Orange?
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              We're your local web development experts, serving Bathurst, Orange, and surrounding areas with professional, results-driven websites.
+            </p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+              <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                <img src="/images/icon/development.svg" alt="Local Expertise" class="w-6 h-6" />
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Local Expertise</h3>
+              <p class="text-gray-600 dark:text-gray-400">We understand the Bathurst and Orange business landscape and create websites that resonate with your local audience.</p>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+              <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                <img src="/images/icon/responsive.svg" alt="Responsive Design" class="w-6 h-6" />
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Responsive Design</h3>
+              <p class="text-gray-600 dark:text-gray-400">All our websites are mobile-friendly and work perfectly on all devices - desktop, tablet, and smartphone.</p>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+              <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                <img src="/images/icon/seo.svg" alt="SEO Optimized" class="w-6 h-6" />
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">SEO Optimized</h3>
+              <p class="text-gray-600 dark:text-gray-400">Built with search engine optimization in mind to help your business rank higher in local search results.</p>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+              <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                <img src="/images/icon/support.svg" alt="Ongoing Support" class="w-6 h-6" />
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Ongoing Support</h3>
+              <p class="text-gray-600 dark:text-gray-400">We provide continuous support and maintenance to keep your website running smoothly and securely.</p>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+              <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                <img src="/images/icon/ecommerce.svg" alt="E-commerce Solutions" class="w-6 h-6" />
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">E-commerce Solutions</h3>
+              <p class="text-gray-600 dark:text-gray-400">Complete online store development with secure payment gateways and inventory management systems.</p>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+              <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                <img src="/images/icon/analytics.svg" alt="Analytics & Reporting" class="w-6 h-6" />
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Analytics & Reporting</h3>
+              <p class="text-gray-600 dark:text-gray-400">Comprehensive analytics and reporting to track your website's performance and visitor behavior.</p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <!-- Services Section -->
+      <section class="relative pb-[120px] z-10">
+        <Container>
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Our Website Development Services
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              From simple business websites to complex e-commerce platforms, we offer comprehensive web development solutions for businesses in Bathurst and Orange.
+            </p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900 dark:to-blue-800 p-8 rounded-lg">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Business Website Design</h3>
+              <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+                <li class="flex items-center">
+                  <img src="/images/tick.svg" alt="✓" class="w-5 h-5 mr-3" />
+                  Professional business websites
+                </li>
+                <li class="flex items-center">
+                  <img src="/images/tick.svg" alt="✓" class="w-5 h-5 mr-3" />
+                  Contact forms and lead generation
+                </li>
+                <li class="flex items-center">
+                  <img src="/images/tick.svg" alt="✓" class="w-5 h-5 mr-3" />
+                  Google Maps integration
+                </li>
+                <li class="flex items-center">
+                  <img src="/images/tick.svg" alt="✓" class="w-5 h-5 mr-3" />
+                  Local SEO optimization
+                </li>
+              </ul>
+            </div>
+            
+            <div class="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900 dark:to-green-800 p-8 rounded-lg">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">E-commerce Development</h3>
+              <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+                <li class="flex items-center">
+                  <img src="/images/tick.svg" alt="✓" class="w-5 h-5 mr-3" />
+                  Online store development
+                </li>
+                <li class="flex items-center">
+                  <img src="/images/tick.svg" alt="✓" class="w-5 h-5 mr-3" />
+                  Payment gateway integration
+                </li>
+                <li class="flex items-center">
+                  <img src="/images/tick.svg" alt="✓" class="w-5 h-5 mr-3" />
+                  Inventory management
+                </li>
+                <li class="flex items-center">
+                  <img src="/images/tick.svg" alt="✓" class="w-5 h-5 mr-3" />
+                  Order tracking system
+                </li>
+              </ul>
+            </div>
+            
+            <div class="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900 dark:to-purple-800 p-8 rounded-lg">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">SEO & Digital Marketing</h3>
+              <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+                <li class="flex items-center">
+                  <img src="/images/tick.svg" alt="✓" class="w-5 h-5 mr-3" />
+                  Search engine optimization
+                </li>
+                <li class="flex items-center">
+                  <img src="/images/tick.svg" alt="✓" class="w-5 h-5 mr-3" />
+                  Local SEO for Bathurst & Orange
+                </li>
+                <li class="flex items-center">
+                  <img src="/images/tick.svg" alt="✓" class="w-5 h-5 mr-3" />
+                  Google My Business optimization
+                </li>
+                <li class="flex items-center">
+                  <img src="/images/tick.svg" alt="✓" class="w-5 h-5 mr-3" />
+                  Content marketing strategies
+                </li>
+              </ul>
+            </div>
+            
+            <div class="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900 dark:to-orange-800 p-8 rounded-lg">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Website Maintenance</h3>
+              <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+                <li class="flex items-center">
+                  <img src="/images/tick.svg" alt="✓" class="w-5 h-5 mr-3" />
+                  Regular updates and security
+                </li>
+                <li class="flex items-center">
+                  <img src="/images/tick.svg" alt="✓" class="w-5 h-5 mr-3" />
+                  Performance optimization
+                </li>
+                <li class="flex items-center">
+                  <img src="/images/tick.svg" alt="✓" class="w-5 h-5 mr-3" />
+                  Backup and recovery
+                </li>
+                <li class="flex items-center">
+                  <img src="/images/tick.svg" alt="✓" class="w-5 h-5 mr-3" />
+                  24/7 technical support
+                </li>
+              </ul>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <!-- Local Areas Served -->
+      <section class="relative pb-[120px] z-10">
+        <Container>
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Serving Bathurst, Orange & Surrounding Areas
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              We provide website development services to businesses throughout the Central West region of NSW.
+            </p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Bathurst</h3>
+              <p class="text-gray-600 dark:text-gray-400">Professional web design services for Bathurst businesses</p>
+            </div>
+            
+            <div class="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Orange</h3>
+              <p class="text-gray-600 dark:text-gray-400">Website development solutions for Orange companies</p>
+            </div>
+            
+            <div class="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Dubbo</h3>
+              <p class="text-gray-600 dark:text-gray-400">E-commerce and business website solutions</p>
+            </div>
+            
+            <div class="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Mudgee</h3>
+              <p class="text-gray-600 dark:text-gray-400">Digital marketing and SEO services</p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <!-- Process Section -->
+      <section class="relative pb-[120px] z-10">
+        <Container>
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Our Website Development Process
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              We follow a proven process to deliver exceptional websites that drive results for your business.
+            </p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-white font-bold text-xl">1</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Discovery & Planning</h3>
+              <p class="text-gray-600 dark:text-gray-400">We analyze your business needs, target audience, and goals to create a strategic plan.</p>
+            </div>
+            
+            <div class="text-center">
+              <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-white font-bold text-xl">2</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Design & Prototyping</h3>
+              <p class="text-gray-600 dark:text-gray-400">Our designers create stunning mockups and prototypes for your approval.</p>
+            </div>
+            
+            <div class="text-center">
+              <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-white font-bold text-xl">3</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Development & Testing</h3>
+              <p class="text-gray-600 dark:text-gray-400">We build your website with clean code and thoroughly test all functionality.</p>
+            </div>
+            
+            <div class="text-center">
+              <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-white font-bold text-xl">4</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Launch & Support</h3>
+              <p class="text-gray-600 dark:text-gray-400">We launch your website and provide ongoing support and maintenance.</p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="relative pb-[120px] z-10">
+        <Container>
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              Common questions about our website development services in Bathurst and Orange.
+            </p>
+          </div>
+          
+          <div class="max-w-4xl mx-auto space-y-6">
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">How much does a website cost in Bathurst and Orange?</h3>
+              <p class="text-gray-600 dark:text-gray-400">Website costs vary based on your specific needs. We offer packages starting from $1,500 for basic business websites up to $15,000+ for complex e-commerce solutions. Contact us for a free quote tailored to your business.</p>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">How long does it take to build a website?</h3>
+              <p class="text-gray-600 dark:text-gray-400">A typical business website takes 2-4 weeks to complete, while e-commerce websites may take 4-8 weeks. We'll provide you with a detailed timeline during our initial consultation.</p>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Do you provide ongoing support after the website is launched?</h3>
+              <p class="text-gray-600 dark:text-gray-400">Yes, we offer comprehensive maintenance packages that include regular updates, security monitoring, backups, and technical support. We're here to ensure your website continues to perform optimally.</p>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Will my website be optimized for local search in Bathurst and Orange?</h3>
+              <p class="text-gray-600 dark:text-gray-400">Absolutely! We implement local SEO strategies specifically for Bathurst and Orange businesses, including Google My Business optimization, local keyword targeting, and location-based content.</p>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Can you help with existing websites that need updates or improvements?</h3>
+              <p class="text-gray-600 dark:text-gray-400">Yes, we can help improve existing websites with redesigns, functionality updates, SEO optimization, or complete overhauls. We'll assess your current site and recommend the best approach.</p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <!-- Call to Action -->
+      <MainCallToAction />
+    </div>
+  </main>
+</Layout> 

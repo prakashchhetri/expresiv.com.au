@@ -65,7 +65,7 @@ export async function getStaticPaths() {
 						NEWS & INSIGHTS
 					</h1>
 					<img
-							src={post._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url}
+							src={post._embedded['wp:featuredmedia'][0].media_details.sizes.full?.source_url}
 							alt=""
 							class="w-full mt-[60px]"
 					/>
