@@ -1,5 +1,6 @@
 ---
 import Container from "./Container.astro"
+import Button from "./Button.astro"
 
 // Destructure props with default values
 const { 
@@ -22,18 +23,8 @@ const {
                 <h1 class="leading-relaxed text-gray-900 dark:text-white font-bold text-5xl md:text-6xl xl:text-6xl">{title}</h1>
                 <p class="mt-8 text-gray-700 dark:text-gray-300">{description}</p>
                 <div class="mt-16 flex flex-wrap justify-center gap-y-4 gap-x-6">
-                    <a
-                      href={buttonLink}
-                      class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
-                    >
-                      <span class="relative text-base font-semibold text-white">{buttonText}</span>
-                    </a>
-                    <a
-                      href="#"
-                      class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-primary/10 before:bg-gradient-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800 sm:w-max"
-                    >
-                      <span class="relative text-base font-semibold text-primary dark:text-white">Free Concept Design</span>
-                    </a>
+                    <Button href={buttonLink} variant="primary" size="md">{buttonText}</Button>
+                    <Button href="#" variant="secondary" size="md">Free Concept Design</Button>
                 </div>
                 <div class="hidden py-8 mt-16 border-y border-gray-100 dark:border-gray-800 sm:flex justify-between">
                     <div class="text-left">

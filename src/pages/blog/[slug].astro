@@ -7,9 +7,20 @@ import "../../styles/index.css";
 
 const { slug } = Astro.params;
 console.log(slug)
-let res = await fetch(`https://blog.expresiv.com.au/wp-json/wp/v2/posts?slug=${slug}&_embed`);
-console.log(res);
-let [post] = await res.json();
+let post = null;
+try {
+  let res = await fetch(`https://blog.expresiv.com.au/wp-json/wp/v2/posts?slug=${slug}&_embed`);
+  console.log(res);
+  if (!res.ok) {
+    throw new Error(`HTTP error! status: ${res.status}`);
+  }
+  let posts = await res.json();
+  [post] = posts;
+} catch (error) {
+  console.error('Failed to fetch blog post:', error);
+  // Return a 404 page or redirect
+  return Astro.redirect('/404');
+}
 
 // if the post doesnt have featured image, create a dummy image
 if (!post._embedded["wp:featuredmedia"]) {
@@ -29,13 +40,22 @@ if (!post._embedded["wp:featuredmedia"]) {
 // The getStaticPaths() is required for static Astro sites.
 // If using SSR, you will not need this function.
 export async function getStaticPaths() {
-    let data = await fetch("https://blog.expresiv.com.au/wp-json/wp/v2/posts");
-    let posts = await data.json();
+    try {
+        let data = await fetch("https://blog.expresiv.com.au/wp-json/wp/v2/posts");
+        if (!data.ok) {
+            console.error('Failed to fetch posts for static paths:', data.status);
+            return []; // Return empty array to prevent build failure
+        }
+        let posts = await data.json();
 
-    return posts.map((post) => ({
-        params: { slug: post.slug },
-        props: { post: post },
-    }));
+        return posts.map((post) => ({
+            params: { slug: post.slug },
+            props: { post: post },
+        }));
+    } catch (error) {
+        console.error('Error in getStaticPaths:', error);
+        return []; // Return empty array to prevent build failure
+    }
 }
 ---
 
@@ -64,24 +84,28 @@ export async function getStaticPaths() {
 					>
 						NEWS & INSIGHTS
 					</h1>
-					<img
-							src={post._embedded['wp:featuredmedia'][0].media_details.sizes.full?.source_url}
-							alt=""
-							class="w-full mt-[60px]"
-					/>
+					{post && post._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.full?.source_url && (
+						<img
+								src={post._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url}
+								alt=""
+								class="w-full mt-[60px]"
+						/>
+					)}
 					<div
 							class="grid grid-cols-1 lg:grid-cols-3 gap-[40px] lg:gap-[80px] mt-12"
 					>
-						<div class="col-span-1">
-							<h1
-                                    set:html={post.title.rendered}
-									class="text-gray-900 dark:text-white font-bold text-4xl md:text-5xl"
-							>
-							</h1>
-						</div>
-						<div class="col-span-2 single-content" set:html={post.content.rendered}>
-
-						</div>
+						{post && (
+							<>
+								<div class="col-span-1">
+									<h1
+											set:html={post.title?.rendered || 'Post Not Found'}
+											class="text-gray-900 dark:text-white font-bold text-4xl md:text-5xl"
+									>
+									</h1>
+								</div>
+								<div class="col-span-2 single-content" set:html={post.content?.rendered || '<p>Content not available.</p>'}></div>
+							</>
+						)}
 					</div>
 				</Container>
 			</section>

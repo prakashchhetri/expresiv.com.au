@@ -22,6 +22,7 @@
     "react-helmet-async": "^2.0.4"
   },
   "devDependencies": {
-    "@astrojs/tailwind": "^5.1.0"
+    "@astrojs/tailwind": "^5.1.0",
+    "@tailwindcss/typography": "^0.5.16"
   }
 }

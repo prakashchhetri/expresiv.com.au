@@ -33,11 +33,14 @@ import "../styles/global.css";
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y1HKE41C83"></script>
 	<script>
+        // @ts-nocheck
+        // @ts-ignore Google Analytics
         window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+        // @ts-ignore
+        function gtag(){ dataLayer.push(arguments); }
+        // @ts-ignore
         gtag('js', new Date());
+        // @ts-ignore
         gtag('config', 'G-Y1HKE41C83');
 	</script>
 	<ViewTransitions />
@@ -46,6 +49,21 @@ import "../styles/global.css";
 <AppHeader/>
 <slot/>
 <AppFooter/>
+<script>
+  // @ts-nocheck
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  });
+</script>
 </body>
 </html>
 <style>

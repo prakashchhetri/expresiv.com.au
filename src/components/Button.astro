@@ -1,0 +1,40 @@
+---
+const {
+  href = '',
+  variant = 'primary',
+  size = 'md',
+  target = undefined,
+  rel = undefined,
+  class: additional = ''
+} = Astro.props;
+
+const sizeClasses = {
+  sm: 'h-8 px-4 text-sm',
+  md: 'h-10 px-5 text-base',
+  lg: 'h-12 px-6 text-lg',
+};
+
+const variantClasses = {
+  primary:
+    'before:bg-primary text-white before:rounded-full before:absolute before:inset-0 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95',
+  secondary:
+    'before:bg-primary/10 text-primary dark:text-white before:rounded-full before:absolute before:inset-0 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95',
+  outline:
+    'border border-primary text-primary bg-transparent hover:bg-primary/10',
+};
+
+const base =
+  'relative inline-flex items-center justify-center font-semibold overflow-hidden rounded-full transition focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 ' +
+  sizeClasses[size] +
+  ' ' +
+  (variantClasses[variant] || variantClasses.primary);
+---
+{href ? (
+  <a href={href} target={target} rel={rel} class={`${base} ${additional}`}>
+    <span class="relative"><slot /></span>
+  </a>
+) : (
+  <button class={`${base} ${additional}`}>
+    <span class="relative"><slot /></span>
+  </button>
+)} 

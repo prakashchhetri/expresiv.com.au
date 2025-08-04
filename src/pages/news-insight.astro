@@ -4,29 +4,42 @@ import Container from "../components/Container.astro";
 import MainCallToAction from "../components/MainCallToAction.astro";
 import NewsComponent from "../components/NewInsight/NewsComponent.astro";
 
-const res = await fetch("https://blog.expresiv.com.au/wp-json/wp/v2/posts?_embed");
-const posts = await res.json();
+let posts = [];
+let heroPost = null;
 
-// for every post, check if feature image exists, if not create a dummy image
-posts.forEach((post) => {
-    if (!post._embedded['wp:featuredmedia']) {
-        post._embedded['wp:featuredmedia'] = [
-            {
-                media_details: {
-                    sizes: {
-                        medium: {
-                            source_url: "https://picsum.photos/389/201"
+try {
+    const res = await fetch("https://blog.expresiv.com.au/wp-json/wp/v2/posts?_embed");
+    if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+    }
+    posts = await res.json();
+
+    // for every post, check if feature image exists, if not create a dummy image
+    posts.forEach((post) => {
+        if (!post._embedded['wp:featuredmedia']) {
+            post._embedded['wp:featuredmedia'] = [
+                {
+                    media_details: {
+                        sizes: {
+                            medium: {
+                                source_url: "https://picsum.photos/389/201"
+                            }
                         }
                     }
                 }
-            }
-        ]
-    }
-});
+            ]
+        }
+    });
 
-// I am displaying first post in the hero section, so I will remove it from the list
-// capture the first post
-const heroPost = posts.shift();
+    // I am displaying first post in the hero section, so I will remove it from the list
+    // capture the first post
+    heroPost = posts.shift();
+} catch (error) {
+    console.error('Failed to fetch blog posts:', error);
+    // Provide fallback content
+    posts = [];
+    heroPost = null;
+}
 ---
 
 <Layout>
@@ -54,15 +67,17 @@ const heroPost = posts.shift();
                     </h1>
                 </Container>
             </section>
-            <section class="pb-[100px] relative">
-                <Container>
-                    <NewsComponent
-                        image={heroPost._embedded['wp:featuredmedia'][0].media_details.sizes.medium.source_url}
-                        title={heroPost.title.rendered}
-                        link={heroPost.slug}
-                    />
-                </Container>
-            </section>
+            {heroPost && (
+                <section class="pb-[100px] relative">
+                    <Container>
+                        <NewsComponent
+                            image={heroPost._embedded['wp:featuredmedia'][0].media_details.sizes.medium.source_url}
+                            title={heroPost.title.rendered}
+                            link={heroPost.slug}
+                        />
+                    </Container>
+                </section>
+            )}
 
             <section class="relative pb-[150px]">
                 <Container>
@@ -73,23 +88,21 @@ const heroPost = posts.shift();
                             Latest articles
                         </h2>
                     </div>
-                    <div
-                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10"
-                    >
-
-                        {
-                            posts.map((post) => (
-		                            <NewsComponent
-				                            image={post._embedded['wp:featuredmedia'][0].media_details.sizes.medium.source_url}
-				                            title={post.title.rendered}
-				                            link={post.slug}
-		                            />
-				                    // <h2 set:html={post.title.rendered} />
-				                    // <p set:html={post.content.rendered} />
-                            ))
-                        }
-
-                    </div>
+                    {posts.length > 0 ? (
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+                            {posts.map((post) => (
+                                <NewsComponent
+                                    image={post._embedded['wp:featuredmedia'][0].media_details.sizes.medium.source_url}
+                                    title={post.title.rendered}
+                                    link={post.slug}
+                                />
+                            ))}
+                        </div>
+                    ) : (
+                        <div class="text-center py-12">
+                            <p class="text-gray-600 dark:text-gray-400">No articles available at the moment. Check back soon!</p>
+                        </div>
+                    )}
                 </Container>
             </section>
 

@@ -1,5 +1,6 @@
 ---
 import Container from "./Container.astro";
+import Button from "./Button.astro";
 ---
 
 <header>
@@ -34,6 +35,16 @@ import Container from "./Container.astro";
                         >
                     </a>
 
+                    <!-- Dark mode toggle -->
+                    <button id="theme-toggle" aria-label="Toggle dark mode" class="ml-4 p-2 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 lg:ml-8">
+                        <svg id="theme-toggle-light-icon" class="h-5 w-5 text-gray-800 dark:hidden" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path d="M10 16a6 6 0 100-12 6 6 0 000 12z"></path>
+                        </svg>
+                        <svg id="theme-toggle-dark-icon" class="h-5 w-5 text-gray-200 hidden dark:block" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+
                     <div class="relative flex items-center lg:hidden max-h-10">
                         <label
                             role="button"
@@ -63,7 +74,7 @@ import Container from "./Container.astro";
                 >
                 </div>
                 <div
-                    class="flex-col z-20 flex-wrap gap-6 p-8 rounded-3xl border border-gray-100 bg-white shadow-2xl shadow-gray-600/10 justify-end w-full invisible opacity-0 translate-y-1 absolute top-full left-0 transition-all duration-300 scale-95 origin-top lg:relative lg:scale-100 lg:peer-checked:translate-y-0 lg:translate-y-0 lg:flex lg:flex-row lg:items-center lg:gap-0 lg:p-0 lg:bg-transparent lg:w-7/12 lg:visible lg:opacity-100 lg:border-none peer-checked:scale-100 peer-checked:opacity-100 peer-checked:visible lg:shadow-none dark:shadow-none dark:bg-gray-800 dark:border-gray-700"
+                    class="fixed z-20 top-0 right-0 h-screen w-64 flex flex-col gap-6 p-8 bg-white dark:bg-gray-800 shadow-2xl transform transition-transform duration-300 translate-x-full peer-checked:translate-x-0 lg:static lg:flex-row lg:items-center lg:h-auto lg:w-auto lg:p-0 lg:bg-transparent lg:shadow-none lg:translate-x-0"
                 >
                     <div
                         class="text-gray-800 dark:text-gray-300 lg:pr-4 lg:w-auto w-full lg:pt-0"
@@ -121,16 +132,7 @@ import Container from "./Container.astro";
                     </div>
 
                     <div class="mt-12 lg:mt-0">
-                        <a
-                            href="/contact"
-                            data-astro-prefetch
-                            class="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
-                        >
-                            <span
-                                class="relative text-sm font-semibold text-white"
-                                >Get Started</span
-                            >
-                        </a>
+                        <Button href="/contact" size="sm" variant="primary">Get Started</Button>
                     </div>
                 </div>
             </div>
@@ -147,3 +149,32 @@ import Container from "./Container.astro";
         @apply -rotate-45 -translate-y-1;
     }
 </style>
+
+<script is:inline>
+(() => {
+  const storageKey = 'theme';
+  const classNameDark = 'dark';
+  const html = document.documentElement;
+  const toggleBtn = document.getElementById('theme-toggle');
+
+  const applyTheme = (theme) => {
+    if (theme === 'dark') {
+      html.classList.add(classNameDark);
+    } else {
+      html.classList.remove(classNameDark);
+    }
+  };
+
+  // Initial
+  const stored = localStorage.getItem(storageKey);
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(stored ? stored : systemPrefersDark ? 'dark' : 'light');
+
+  toggleBtn && toggleBtn.addEventListener('click', () => {
+    const current = html.classList.contains(classNameDark) ? 'dark' : 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    localStorage.setItem(storageKey, next);
+  });
+})();
+</script>

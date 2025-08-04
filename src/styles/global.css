@@ -2,3 +2,11 @@
 * {
     font-family: "Kumbh Sans", sans-serif;
 }
+
+/* Scroll reveal utility */
+.fade-in {
+    @apply opacity-0 translate-y-4 transition-all duration-700 ease-out;
+}
+.fade-in.visible {
+    @apply opacity-100 translate-y-0;
+}
