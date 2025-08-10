@@ -1,11 +1,10 @@
 ---
-import {Image} from 'astro:assets'
 const { image, title, link } = Astro.props;
 ---
 
 <div class="pb-8 md:pb-10">
     <a href={'/blog/'+link} title={title}>
-        {image ? <Image src={image} alt="" class="w-full" inferSize/> : ''}
+        {image ? <img src={image} alt={title} class="w-full h-auto" loading="lazy" width="600" height="350" /> : ''}
 
         <h4 class="text-lg md:text-xl text-gray-900 dark:text-white font-[500] mt-3">{title}</h4>
     </a>
