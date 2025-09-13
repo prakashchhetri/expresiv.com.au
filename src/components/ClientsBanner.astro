@@ -4,8 +4,8 @@ import Container from "./Container.astro";
 <section class="py-16 fade-in bg-gray-50 dark:bg-gray-800">
   <Container>
     <h3 class="sr-only">Trusted by leading brands</h3>
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 items-center opacity-70 grayscale hover:opacity-100 hover:grayscale-0 transition">
-      {['airbnb.svg','beautyandnails.svg','ge.svg','google.svg','microsoft.svg','netflix.svg'].map(name => (
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 items-center opacity-70 grayscale hover:opacity-100 hover:grayscale-0 transition">
+      {['beautyandnails.svg','ge.svg'].map(name => (
         <img src={`/images/clients/${name}`} alt={name.replace('.svg','')} class="mx-auto h-8 w-auto" loading="lazy" width="120" height="32" />
       ))}
     </div>

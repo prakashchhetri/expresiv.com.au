@@ -1,0 +1,880 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="SERP Competitor Analysis | Expresiv">
+  <main class="space-y-16 py-20">
+    <!-- Hero Section -->
+    <section class="fade-in bg-gradient-to-br from-primary/5 via-transparent to-blue-500/5 py-16">
+      <div class="mx-auto max-w-4xl px-4 text-center">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-2xl mb-6">
+          <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+          </svg>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
+          SERP Competitor Analysis
+        </h1>
+        <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+          Discover who your competitors are in Google search results. Get AI-powered insights into your competitive landscape with visibility scores and keyword analysis.
+        </p>
+        
+        <!-- Analysis Form -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 max-w-2xl mx-auto">
+          <form id="competitor-form" class="space-y-6">
+            <div class="space-y-4">
+              <div class="relative">
+                <input 
+                  id="domain" 
+                  name="domain" 
+                  placeholder="Enter your competitor's domain (e.g., example.com.au)" 
+                  class="w-full px-6 py-4 text-lg rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all duration-200" 
+                  required 
+                />
+                <div class="absolute inset-y-0 right-0 flex items-center pr-4">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"></path>
+                  </svg>
+                </div>
+              </div>
+              
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <input 
+                    id="bypass-cache" 
+                    name="bypass-cache" 
+                    type="checkbox" 
+                    class="w-5 h-5 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary dark:focus:ring-primary dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
+                  />
+                  <label for="bypass-cache" class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Force fresh analysis
+                  </label>
+                </div>
+                <button 
+                  id="submit-btn" 
+                  type="submit" 
+                  class="px-8 py-4 bg-gradient-to-r from-primary to-blue-600 text-white font-semibold rounded-xl hover:from-primary/90 hover:to-blue-600/90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                >
+                  <span id="btn-text" class="flex items-center space-x-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    <span>Analyze Competitors</span>
+                  </span>
+                  <span id="btn-loading" class="hidden flex items-center space-x-2">
+                    <svg class="animate-spin w-5 h-5 text-white" fill="none" viewBox="0 0 24 24">
+                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span>Analyzing...</span>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </form>
+          
+          <div id="error" class="hidden mt-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl text-red-700 dark:text-red-300 text-sm"></div>
+          
+          <!-- Keyword Management Section -->
+          <div id="keyword-section" class="hidden mt-6">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl border-2 border-gray-100 dark:border-gray-700 p-6">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Keywords to Analyze</h3>
+                <button 
+                  id="analyze-keywords-btn"
+                  class="px-6 py-3 bg-gradient-to-r from-primary to-blue-600 text-white font-semibold rounded-xl hover:from-primary/90 hover:to-blue-600/90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                >
+                  <span id="analyze-keywords-text" class="flex items-center space-x-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span>Analyze Keywords</span>
+                  </span>
+                  <span id="analyze-keywords-loading" class="hidden flex items-center space-x-2">
+                    <svg class="animate-spin w-5 h-5 text-white" fill="none" viewBox="0 0 24 24">
+                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span>Analyzing...</span>
+                  </span>
+                </button>
+              </div>
+              
+              <!-- Keyword Chips Container -->
+              <div id="keyword-chips" class="mb-4">
+                <!-- Keywords will be populated here -->
+              </div>
+              
+              <!-- Add Keyword Input -->
+              <div class="flex items-center space-x-3">
+                <input 
+                  id="add-keyword-input" 
+                  type="text" 
+                  placeholder="Add a keyword..."
+                  class="flex-1 px-4 py-2 border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/20"
+                />
+                <button 
+                  id="add-keyword-btn"
+                  class="px-4 py-2 bg-gray-100 dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 text-gray-700 dark:text-gray-300 rounded-lg transition-colors"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl">
+            <div class="flex items-start space-x-3">
+              <svg class="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <div class="text-sm text-blue-800 dark:text-blue-200">
+                <p class="font-medium mb-1">How it works:</p>
+                <p>We analyze your competitor's website content using AI to extract relevant keywords, then search Google to find who else ranks for those terms. Results are cached for 30 days to reduce costs.</p>
+                <p class="mt-2">
+                  <strong>Related Tool:</strong> 
+                  <a href="/seo-audit" class="underline hover:no-underline">Try our SEO Audit tool</a> to analyze your website's technical SEO health.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="results-section" class="fade-in">
+      <div class="mx-auto max-w-6xl px-4">
+        <!-- Loading Indicator -->
+        <div id="loader" class="hidden">
+          <div class="text-center py-12">
+            <div class="inline-flex items-center justify-center w-16 h-16 mb-4">
+              <div class="animate-spin rounded-full h-16 w-16 border-b-2 border-primary"></div>
+            </div>
+            <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">Analyzing Competitors</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">This may take 10-30 seconds...</p>
+            <div class="max-w-md mx-auto">
+              <div class="bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                <div id="progress-bar" class="bg-primary h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+              </div>
+              <p id="progress-text" class="text-sm text-gray-500 dark:text-gray-400 mt-2">Initializing analysis...</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Results -->
+        <div id="results" class="hidden">
+          <div id="summary" class="mb-8"></div>
+          <div id="competitors" class="grid gap-6"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calendly CTA Section -->
+    <section class="fade-in bg-gray-50 dark:bg-gray-800 py-16">
+      <div class="mx-auto max-w-3xl px-4 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          Ready to Outrank Your Competitors?
+        </h2>
+        <p class="text-gray-700 dark:text-gray-300 mb-6">
+          Get a comprehensive SEO strategy to improve your search rankings and beat your competitors.
+        </p>
+        <a href="https://calendly.com/expresiv/seo-consultation" 
+           target="_blank" 
+           class="inline-block px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors">
+          Book Free SEO Consultation
+        </a>
+      </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button 
+      id="back-to-top" 
+      class="fixed bottom-8 right-8 w-12 h-12 bg-primary text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 opacity-0 pointer-events-none z-50"
+      aria-label="Back to top"
+    >
+      <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+      </svg>
+    </button>
+  </main>
+</Layout>
+
+<script>
+  // @ts-nocheck
+  const form = document.getElementById('competitor-form');
+  const domainEl = document.getElementById('domain');
+  const bypassCacheEl = document.getElementById('bypass-cache');
+  const errorEl = document.getElementById('error');
+  const loader = document.getElementById('loader');
+  const results = document.getElementById('results');
+  const summary = document.getElementById('summary');
+  const competitors = document.getElementById('competitors');
+  const submitBtn = document.getElementById('submit-btn');
+  const btnText = document.getElementById('btn-text');
+  const btnLoading = document.getElementById('btn-loading');
+  const backToTopBtn = document.getElementById('back-to-top');
+  
+  // Keyword management elements
+  const keywordSection = document.getElementById('keyword-section');
+  const keywordChips = document.getElementById('keyword-chips');
+  const addKeywordInput = document.getElementById('add-keyword-input');
+  const addKeywordBtn = document.getElementById('add-keyword-btn');
+  const analyzeKeywordsBtn = document.getElementById('analyze-keywords-btn');
+  const analyzeKeywordsText = document.getElementById('analyze-keywords-text');
+  const analyzeKeywordsLoading = document.getElementById('analyze-keywords-loading');
+  
+  // Store extracted keywords
+  let extractedKeywords = [];
+  let selectedKeywords = [];
+
+  // Keyword chip functions
+  function createKeywordChip(keyword, isExtracted = true) {
+    return `
+      <span class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium ${isExtracted ? 'bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200' : 'bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200'} mr-2 mb-2">
+        <span class="mr-2">${keyword}</span>
+        <button 
+          onclick="removeKeyword('${keyword}')" 
+          class="inline-flex items-center justify-center w-4 h-4 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+        >
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </span>
+    `;
+  }
+
+  function renderKeywordChips() {
+    if (selectedKeywords.length === 0) {
+      keywordChips.innerHTML = '<p class="text-gray-500 dark:text-gray-400 text-sm">No keywords selected. Add keywords above or extract them from the domain.</p>';
+      return;
+    }
+
+    keywordChips.innerHTML = selectedKeywords.map(keyword => 
+      createKeywordChip(keyword, extractedKeywords.includes(keyword))
+    ).join('');
+  }
+
+  function addKeyword(keyword) {
+    const trimmedKeyword = keyword.trim().toLowerCase();
+    if (trimmedKeyword && !selectedKeywords.includes(trimmedKeyword)) {
+      selectedKeywords.push(trimmedKeyword);
+      renderKeywordChips();
+      addKeywordInput.value = '';
+      updateAnalyzeButton();
+    }
+  }
+
+  function removeKeyword(keyword) {
+    selectedKeywords = selectedKeywords.filter(k => k !== keyword);
+    renderKeywordChips();
+    updateAnalyzeButton();
+  }
+
+  function updateAnalyzeButton() {
+    analyzeKeywordsBtn.disabled = selectedKeywords.length === 0;
+  }
+
+  // Event listeners for keyword management
+  addKeywordBtn.addEventListener('click', () => {
+    const keyword = addKeywordInput.value.trim();
+    if (keyword) {
+      addKeyword(keyword);
+    }
+  });
+
+  addKeywordInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      const keyword = addKeywordInput.value.trim();
+      if (keyword) {
+        addKeyword(keyword);
+      }
+    }
+  });
+
+  // Make removeKeyword globally available
+  window.removeKeyword = removeKeyword;
+
+  // Analyze keywords button functionality
+  analyzeKeywordsBtn.addEventListener('click', async () => {
+    if (selectedKeywords.length === 0) return;
+
+    // Show loading state
+    analyzeKeywordsBtn.disabled = true;
+    analyzeKeywordsText.classList.add('hidden');
+    analyzeKeywordsLoading.classList.remove('hidden');
+
+    try {
+      const domain = domainEl.value.trim();
+      
+      const response = await fetch('https://serp-analysis.expresiv.com.au/api/serp-competitors/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          domain: domain,
+          bypass_cache: bypassCacheEl.checked,
+          keywords: selectedKeywords  // Send selected keywords
+        }),
+      });
+
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to analyze competitors');
+      }
+
+      // Hide keyword section and show results
+      keywordSection.classList.add('hidden');
+      results.classList.remove('hidden');
+
+      // Display summary
+      summary.innerHTML = summaryCard(data);
+
+      // Display competitors
+      if (data.competitors && data.competitors.length > 0) {
+        competitors.innerHTML = `
+          <div class="text-center mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Top Competitors by Visibility Score</h2>
+            <p class="text-gray-600 dark:text-gray-400">Based on AI-extracted keywords and Google search results</p>
+          </div>
+          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            ${data.competitors.map((competitor, index) => competitorCard(competitor, index)).join('')}
+          </div>
+        `;
+      }
+
+      // Display keyword rankings analysis
+      if (data.keyword_rankings) {
+        const keywordRankingsHtml = generateKeywordRankings(data);
+        if (keywordRankingsHtml) {
+          competitors.innerHTML += `
+            <div class="mt-12">
+              <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Keyword Rankings Analysis</h2>
+              <div class="space-y-6">
+                ${keywordRankingsHtml}
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      // Scroll to results
+      document.getElementById('results-section').scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+
+    } catch (err) {
+      errorEl.textContent = err.message || 'Failed to analyze keywords. Please try again.';
+      errorEl.classList.remove('hidden');
+    } finally {
+      // Reset button state
+      analyzeKeywordsBtn.disabled = false;
+      analyzeKeywordsText.classList.remove('hidden');
+      analyzeKeywordsLoading.classList.add('hidden');
+    }
+  });
+
+  function competitorCard(competitor, index) {
+    const rankColor = competitor.rank <= 3 ? 'text-green-600 dark:text-green-400' : 
+                     competitor.rank <= 5 ? 'text-yellow-600 dark:text-yellow-400' : 
+                     'text-gray-600 dark:text-gray-400';
+    
+    const rankBgColor = competitor.rank <= 3 ? 'bg-green-100 dark:bg-green-900/30' : 
+                       competitor.rank <= 5 ? 'bg-yellow-100 dark:bg-yellow-900/30' : 
+                       'bg-gray-100 dark:bg-gray-700';
+    
+    // Extract domain from URL for favicon
+    const domain = competitor.competitor_url.replace(/^https?:\/\//, '').replace(/^www\./, '').split('/')[0];
+    const faviconUrl = `https://www.google.com/s2/favicons?domain=${domain}&sz=32`;
+    
+    return `
+      <div class="group p-6 rounded-2xl border-2 border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-primary/30 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <!-- Header with rank and visibility score -->
+        <div class="flex items-start justify-between mb-4">
+          <div class="flex items-center space-x-3">
+            <span class="px-3 py-1.5 rounded-full ${rankBgColor} text-sm font-bold ${rankColor}">
+              #${competitor.rank}
+            </span>
+            <span class="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-medium">
+              ${competitor.keyword}
+            </span>
+          </div>
+          <div class="text-right">
+            <div class="text-2xl font-bold text-primary">${competitor.visibility_score}</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400">visibility</div>
+          </div>
+        </div>
+        
+        <!-- Keyword positions -->
+        ${competitor.keyword_positions && Object.keys(competitor.keyword_positions).length > 0 ? `
+          <div class="mb-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+            <div class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">Keyword Positions:</div>
+            <div class="flex flex-wrap gap-2">
+              ${Object.entries(competitor.keyword_positions).map(([keyword, position]) => `
+                <span class="px-2 py-1 bg-white dark:bg-gray-600 rounded-md text-xs">
+                  <span class="font-medium">${keyword}:</span> 
+                  <span class="text-primary font-bold">#${position}</span>
+                </span>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+        
+        <!-- Logo and title section -->
+        <div class="flex items-start space-x-4 mb-4">
+          <div class="flex-shrink-0">
+            <img 
+              src="${faviconUrl}" 
+              alt="${domain} logo" 
+              class="w-12 h-12 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 p-2"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="w-12 h-12 rounded-xl border border-gray-200 dark:border-gray-600 bg-gradient-to-br from-primary/10 to-blue-500/10 flex items-center justify-center hidden">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+              ${competitor.title}
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
+              ${competitor.snippet}
+            </p>
+          </div>
+        </div>
+        
+        <!-- URL and visit button -->
+        <div class="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
+          <a href="${competitor.competitor_url}" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary transition-colors truncate flex-1 mr-3">
+            ${competitor.competitor_url}
+          </a>
+          <a href="${competitor.competitor_url}" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary font-medium rounded-lg transition-colors text-sm flex items-center space-x-1">
+            <span>Visit</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    `;
+  }
+
+  function generateKeywordRankings(data) {
+    // Use the new keyword_rankings data from API
+    const keywordRankings = data.keyword_rankings || {};
+    const analyzedDomain = data.domain;
+
+    // Generate HTML for each keyword
+    return Object.keys(keywordRankings).map(keyword => {
+      const rankings = keywordRankings[keyword];
+      const domainPosition = rankings.find(r => {
+        const cleanAnalyzedDomain = analyzedDomain.replace('www.', '').replace('https://', '').replace('http://', '');
+        const cleanResultDomain = r.domain.replace('www.', '');
+        return cleanResultDomain === cleanAnalyzedDomain;
+      });
+
+      return `
+        <div class="bg-white dark:bg-gray-800 rounded-2xl border-2 border-gray-100 dark:border-gray-700 p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h4 class="text-lg font-semibold text-gray-900 dark:text-white">"${keyword}"</h4>
+            <div class="flex items-center space-x-2">
+              <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-sm rounded-full">
+                ${rankings.length} results
+              </span>
+              ${domainPosition ? `
+                <span class="px-3 py-1 bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200 text-sm rounded-full">
+                  Your domain: #${domainPosition.position}
+                </span>
+              ` : `
+                <span class="px-3 py-1 bg-red-100 dark:bg-red-900/50 text-red-800 dark:text-red-200 text-sm rounded-full">
+                  Your domain: Not found
+                </span>
+              `}
+            </div>
+          </div>
+          
+          <div class="space-y-3">
+            ${rankings.slice(0, 10).map((ranking, index) => {
+              const cleanAnalyzedDomain = analyzedDomain.replace('www.', '').replace('https://', '').replace('http://', '');
+              const cleanResultDomain = ranking.domain.replace('www.', '');
+              const isAnalyzedDomain = cleanResultDomain === cleanAnalyzedDomain;
+              const faviconUrl = `https://www.google.com/s2/favicons?domain=${ranking.domain}&sz=16`;
+              
+              return `
+                <div class="flex items-center space-x-4 p-3 rounded-lg ${isAnalyzedDomain ? 'bg-primary/10 border-2 border-primary/30' : 'bg-gray-50 dark:bg-gray-700'}">
+                  <div class="flex items-center space-x-3 flex-1">
+                    <span class="w-8 h-8 rounded-full ${ranking.position <= 3 ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200' : ranking.position <= 5 ? 'bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200' : 'bg-gray-100 dark:bg-gray-600 text-gray-800 dark:text-gray-200'} flex items-center justify-center text-sm font-bold">
+                      ${ranking.position}
+                    </span>
+                    <img 
+                      src="${faviconUrl}" 
+                      alt="${ranking.domain} favicon" 
+                      class="w-5 h-5 rounded"
+                      onerror="this.style.display='none'"
+                    />
+                    <div class="flex-1 min-w-0">
+                      <div class="font-medium text-gray-900 dark:text-white truncate">
+                        ${ranking.title}
+                      </div>
+                      <div class="text-sm text-gray-500 dark:text-gray-400 truncate">
+                        ${ranking.domain}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <div class="text-xs text-gray-500 dark:text-gray-400">Position ${ranking.position}</div>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+          
+          ${rankings.length > 10 ? `
+            <div class="mt-4 text-center">
+              <span class="text-sm text-gray-500 dark:text-gray-400">
+                +${rankings.length - 10} more results
+              </span>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }).join('');
+  }
+
+  function summaryCard(data) {
+    return `
+      <div class="bg-gradient-to-br from-primary/5 to-blue-500/5 rounded-2xl p-8 mb-8">
+        <div class="text-center mb-6">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Analysis Summary</h2>
+          <p class="text-gray-600 dark:text-gray-400">${data.cached ? 'Results from cache' : 'Fresh analysis completed'}</p>
+        </div>
+        
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div class="p-6 rounded-xl border-2 border-white/50 dark:border-gray-700/50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+            <div class="flex items-center space-x-3 mb-3">
+              <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"></path>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-gray-900 dark:text-white">Domain</h3>
+            </div>
+            <div class="text-xl font-bold text-primary">${data.domain}</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">analyzed</div>
+          </div>
+          
+          <div class="p-6 rounded-xl border-2 border-white/50 dark:border-gray-700/50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+            <div class="flex items-center space-x-3 mb-3">
+              <div class="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center">
+                <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-gray-900 dark:text-white">Keywords</h3>
+            </div>
+            <div class="text-xl font-bold text-blue-500">${data.keywords.length}</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">AI-extracted</div>
+          </div>
+          
+          <div class="p-6 rounded-xl border-2 border-white/50 dark:border-gray-700/50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+            <div class="flex items-center space-x-3 mb-3">
+              <div class="w-10 h-10 bg-green-500/10 rounded-lg flex items-center justify-center">
+                <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-gray-900 dark:text-white">Competitors</h3>
+            </div>
+            <div class="text-xl font-bold text-green-500">${data.competitors.length}</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">found</div>
+          </div>
+          
+          <div class="p-6 rounded-xl border-2 border-white/50 dark:border-gray-700/50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+            <div class="flex items-center space-x-3 mb-3">
+              <div class="w-10 h-10 bg-yellow-500/10 rounded-lg flex items-center justify-center">
+                <svg class="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-gray-900 dark:text-white">Quota Left</h3>
+            </div>
+            <div class="text-xl font-bold text-yellow-500">${data.quota_remaining_today}</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">calls today</div>
+          </div>
+        </div>
+        
+        ${data.keywords.length > 0 ? `
+          <div class="mt-6 space-y-4">
+            <div class="p-4 bg-white/50 dark:bg-gray-800/50 rounded-xl">
+              <h4 class="font-semibold text-gray-900 dark:text-white mb-3">Keywords Analyzed:</h4>
+              <div class="flex flex-wrap gap-2">
+                ${data.keywords.map(keyword => `
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
+                    ${keyword}
+                  </span>
+                `).join('')}
+              </div>
+            </div>
+            
+            <div class="p-4 bg-white/50 dark:bg-gray-800/50 rounded-xl">
+              <h4 class="font-semibold text-gray-900 dark:text-white mb-3">Competitive Landscape:</h4>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-green-500">${getDomainRankings(data).found}</div>
+                  <div class="text-gray-600 dark:text-gray-400">Keywords where your domain ranks</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-red-500">${getDomainRankings(data).notFound}</div>
+                  <div class="text-gray-600 dark:text-gray-400">Keywords where your domain is missing</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-blue-500">${getDomainRankings(data).avgRank}</div>
+                  <div class="text-gray-600 dark:text-gray-400">Average ranking position</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ` : ''}
+      </div>
+    `;
+  }
+
+  function getDomainRankings(data) {
+    const analyzedDomain = data.domain;
+    const keywordGroups = {};
+    
+    // Group competitors by keyword
+    data.competitors.forEach(competitor => {
+      const keyword = competitor.keyword;
+      if (!keywordGroups[keyword]) {
+        keywordGroups[keyword] = [];
+      }
+      keywordGroups[keyword].push(competitor);
+    });
+    
+    let found = 0;
+    let notFound = 0;
+    let totalRank = 0;
+    let foundCount = 0;
+    
+    Object.keys(keywordGroups).forEach(keyword => {
+      const domainPosition = keywordGroups[keyword].find(c => 
+        c.competitor_url.includes(analyzedDomain.replace('www.', ''))
+      );
+      
+      if (domainPosition) {
+        found++;
+        totalRank += domainPosition.rank;
+        foundCount++;
+      } else {
+        notFound++;
+      }
+    });
+    
+    const avgRank = foundCount > 0 ? Math.round(totalRank / foundCount) : 0;
+    
+    return { found, notFound, avgRank };
+  }
+
+  // Progress simulation function
+  function simulateProgress() {
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+    
+    const steps = [
+      { progress: 10, text: 'Validating domain...' },
+      { progress: 25, text: 'Fetching website content...' },
+      { progress: 40, text: 'Extracting keywords...' },
+      { progress: 60, text: 'Searching Google results...' },
+      { progress: 80, text: 'Analyzing competitors...' },
+      { progress: 95, text: 'Calculating visibility scores...' },
+      { progress: 100, text: 'Finalizing results...' }
+    ];
+    
+    let currentStep = 0;
+    
+    const updateProgress = () => {
+      if (currentStep < steps.length) {
+        const step = steps[currentStep];
+        progressBar.style.width = step.progress + '%';
+        progressText.textContent = step.text;
+        currentStep++;
+        
+        // Random delay between 1-3 seconds for each step
+        const delay = Math.random() * 2000 + 1000;
+        setTimeout(updateProgress, delay);
+      }
+    };
+    
+    updateProgress();
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorEl.classList.add('hidden');
+    loader.classList.remove('hidden');
+    results.classList.add('hidden');
+    keywordSection.classList.add('hidden');
+    
+    // Disable button and show loading state
+    submitBtn.disabled = true;
+    btnText.classList.add('hidden');
+    btnLoading.classList.remove('hidden');
+    
+    // Start progress simulation
+    simulateProgress();
+    
+    try {
+      const domain = domainEl.value.trim();
+      const bypassCache = bypassCacheEl.checked;
+      
+      if (!domain) {
+        throw new Error('Please enter a domain');
+      }
+
+      // First, extract keywords only
+      const response = await fetch('https://serp-analysis.expresiv.com.au/api/serp-competitors/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          domain: domain,
+          bypass_cache: bypassCache,
+          extract_only: true  // New parameter to only extract keywords
+        }),
+      });
+
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to extract keywords');
+      }
+
+      // Complete progress bar
+      const progressBar = document.getElementById('progress-bar');
+      const progressText = document.getElementById('progress-text');
+      progressBar.style.width = '100%';
+      progressText.textContent = 'Keywords extracted!';
+
+      // Small delay to show completion
+      await new Promise(resolve => setTimeout(resolve, 500));
+
+      // Store extracted keywords and populate the keyword management section
+      extractedKeywords = data.keywords || [];
+      selectedKeywords = [...extractedKeywords]; // Start with all extracted keywords
+      
+      // Show keyword management section
+      keywordSection.classList.remove('hidden');
+      renderKeywordChips();
+      updateAnalyzeButton();
+      
+      // Scroll to keyword section
+      keywordSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+      
+      // Display competitors
+      if (data.competitors && data.competitors.length > 0) {
+        competitors.innerHTML = `
+          <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Competitor Analysis Results</h2>
+            <p class="text-gray-600 dark:text-gray-400">Based on AI-extracted keywords and Google search results</p>
+          </div>
+          
+          <!-- Keyword Rankings Section -->
+          <div class="mb-12">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">Keyword Rankings Analysis</h3>
+            <div class="space-y-8">
+              ${generateKeywordRankings(data)}
+            </div>
+          </div>
+          
+          <!-- Top Competitors Overview -->
+          <div class="mb-8">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">Top Competitors by Visibility Score</h3>
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              ${data.competitors.slice(0, 9).map((competitor, index) => competitorCard(competitor, index)).join('')}
+            </div>
+          </div>
+        `;
+      } else {
+        competitors.innerHTML = `
+          <div class="text-center py-16">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-2xl mb-6">
+              <svg class="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.5-.9-6.1-2.4l-.9.9a9 9 0 1112.7 0l-.9-.9z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">No Competitors Found</h3>
+            <p class="text-gray-600 dark:text-gray-400 max-w-md mx-auto">
+              We couldn't find any competitors for this domain. This might indicate a very niche market or the domain might not be well-indexed in Google.
+            </p>
+          </div>
+        `;
+      }
+
+      results.classList.remove('hidden');
+      
+      // Scroll to results section after a short delay
+      setTimeout(() => {
+        const resultsSection = document.getElementById('results-section');
+        resultsSection.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start',
+          inline: 'nearest'
+        });
+      }, 300);
+      
+    } catch (err) {
+      errorEl.textContent = err?.message || 'Something went wrong. Please check the domain and try again.';
+      errorEl.classList.remove('hidden');
+    } finally {
+      loader.classList.add('hidden');
+      
+      // Re-enable button and reset button state
+      submitBtn.disabled = false;
+      btnText.classList.remove('hidden');
+      btnLoading.classList.add('hidden');
+    }
+  });
+
+  // Back to top button functionality
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTopBtn.style.opacity = '1';
+      backToTopBtn.style.pointerEvents = 'auto';
+    } else {
+      backToTopBtn.style.opacity = '0';
+      backToTopBtn.style.pointerEvents = 'none';
+    }
+  });
+
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

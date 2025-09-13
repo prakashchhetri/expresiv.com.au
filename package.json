@@ -16,6 +16,7 @@
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.23",
     "astro": "^4.5.16",
+    "cheerio": "^1.1.0",
     "lucide-react": "^0.359.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
