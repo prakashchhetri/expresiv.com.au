@@ -19,3 +19,11 @@ export function getApiUrl(endpoint: keyof typeof API_CONFIG.ENDPOINTS): string {
 // Development vs Production detection
 export const isDevelopment = import.meta.env.DEV;
 export const isProduction = import.meta.env.PROD;
+
+
+
+
+
+
+
+

@@ -1,0 +1,176 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { config } from '../lib/api-config.ts';
+
+// Fetch all competitor analysis pages
+let pages: any[] = [];
+try {
+  const response = await fetch(config.endpoints.competitorAnalysisPages);
+  const data = await response.json();
+  pages = data.pages || [];
+} catch (error) {
+  console.error('Error fetching competitor analysis pages:', error);
+}
+---
+
+<Layout title="Competitor Analysis Pages - SEO Content Library" description="Browse our comprehensive library of competitor analysis pages covering various industries and locations across Australia.">
+  <main class="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <!-- Hero Section -->
+    <section class="relative py-16 bg-gradient-to-br from-indigo-600 via-purple-700 to-pink-600 text-white">
+      <div class="absolute inset-0 bg-gradient-to-r from-purple-900/30 to-pink-900/30"></div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            Competitor Analysis Library
+          </h1>
+          <p class="text-xl md:text-2xl text-purple-100 mb-8 max-w-4xl mx-auto">
+            Comprehensive SEO content covering top businesses across Australia. 
+            Discover market insights, competitor rankings, and growth opportunities.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4 text-sm text-purple-200">
+            <span class="flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+              {pages.length} Analysis Pages
+            </span>
+            <span class="flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              Multiple Locations
+            </span>
+            <span class="flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              AI-Generated Content
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pages Grid -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Debug Info -->
+        {process.env.NODE_ENV === 'development' && (
+          <div class="mb-8 p-4 bg-yellow-100 border border-yellow-300 rounded-lg">
+            <p class="text-sm text-yellow-800">Debug: Found {pages.length} pages</p>
+            {pages.length > 0 && (
+              <pre class="text-xs text-yellow-700 mt-2">{JSON.stringify(pages.slice(0, 1), null, 2)}</pre>
+            )}
+          </div>
+        )}
+        
+        {pages.length > 0 ? (
+          <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {pages.map((page: any) => (
+              <article class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group border border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600">
+                <div class="p-8">
+                  <div class="flex items-start justify-between mb-4">
+                    <div class="flex-1">
+                      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                        {page.title}
+                      </h2>
+                      <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                        Analysis for <span class="font-medium">{page.domain}</span>
+                      </p>
+                    </div>
+                    <div class="ml-4 text-right">
+                      <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">
+                        #{page.view_count}
+                      </div>
+                      <div class="text-xs text-gray-500 dark:text-gray-400">
+                        Views
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-200 rounded-full text-sm font-medium">
+                      {page.business_type}
+                    </span>
+                    {page.location && (
+                      <span class="px-3 py-1 bg-pink-100 dark:bg-pink-900/50 text-pink-800 dark:text-pink-200 rounded-full text-sm font-medium">
+                        {page.location}
+                      </span>
+                    )}
+                  </div>
+                  
+                  <div class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mb-4">
+                    <span>
+                      {new Date(page.created_at).toLocaleDateString('en-AU', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric'
+                      })}
+                    </span>
+                  </div>
+                  
+                  <a 
+                    href={page.url}
+                    class="block w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform group-hover:-translate-y-1"
+                  >
+                    View Analysis
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div class="text-center py-16">
+            <div class="w-24 h-24 mx-auto mb-8 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center">
+              <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              No Analysis Pages Yet
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-md mx-auto">
+              Start by analyzing your first competitor to generate SEO content pages automatically.
+            </p>
+            <a 
+              href="/competitor-analysis" 
+              class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-colors"
+            >
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+              </svg>
+              Start Analysis
+            </a>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          Want Your Own Analysis?
+        </h2>
+        <p class="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
+          Get a comprehensive competitor analysis for your business and join our SEO content library.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="/competitor-analysis" 
+            class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-3 rounded-xl font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+          >
+            Analyze Your Competitors
+          </a>
+          <a 
+            href="/seo-audit" 
+            class="bg-white dark:bg-gray-700 text-purple-600 dark:text-purple-400 px-8 py-3 rounded-xl font-semibold hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all duration-300 border-2 border-purple-200 dark:border-purple-700 hover:border-purple-300 dark:hover:border-purple-600"
+          >
+            SEO Audit Your Website
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

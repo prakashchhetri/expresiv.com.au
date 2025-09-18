@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { config } from "../lib/api-config.ts";
 ---
 
 <Layout title="SEO Audit Snapshot | Expresiv">
@@ -143,7 +144,7 @@ import Layout from "../layouts/Layout.astro";
   </main>
 </Layout>
 
-<script>
+<script define:vars={{ config }}>
   // @ts-nocheck
   const form = document.getElementById('audit-form');
   const urlEl = document.getElementById('url');
@@ -225,7 +226,7 @@ import Layout from "../layouts/Layout.astro";
     showLoading();
     
     try {
-      const response = await fetch('https://serp-analysis.expresiv.com.au/api/seo-audit/', {
+      const response = await fetch(config.endpoints.seoAudit, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

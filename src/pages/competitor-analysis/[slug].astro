@@ -1,0 +1,252 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { config } from '../../lib/api-config.ts';
+
+export async function getStaticPaths() {
+  // Fetch all published competitor analysis pages from the API
+  try {
+    const response = await fetch(config.endpoints.competitorAnalysisPages);
+    const data = await response.json();
+    
+    if (data.pages && data.pages.length > 0) {
+      // Fetch full page data for each page
+      const pagesWithData = await Promise.all(
+        data.pages.map(async (page: any) => {
+          try {
+            const pageResponse = await fetch(config.endpoints.competitorAnalysisPage(page.slug));
+            const pageData = await pageResponse.json();
+            return {
+              params: { slug: page.slug },
+              props: { pageData }
+            };
+          } catch (error) {
+            console.error(`Error fetching data for page ${page.slug}:`, error);
+            return null;
+          }
+        })
+      );
+      
+      // Filter out any failed requests
+      return pagesWithData.filter(Boolean);
+    }
+  } catch (error) {
+    console.error('Error fetching competitor analysis pages:', error);
+  }
+  
+  // Return empty array if no pages found or API error
+  return [];
+}
+
+interface Props {
+  slug: string;
+  pageData?: any;
+}
+
+const { slug } = Astro.params;
+const pageData = Astro.props.pageData;
+
+// Handle 404 if page data is not found
+if (!pageData) {
+  return Astro.redirect('/404');
+}
+
+const {
+  page_title,
+  page_description,
+  content_intro,
+  content_conclusion,
+  domain,
+  business_type,
+  location,
+  keywords_analyzed,
+  competitors,
+  created_at,
+  view_count
+} = pageData;
+
+// Generate structured data for SEO
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": page_title || "Competitor Analysis",
+  "description": page_description || "Comprehensive competitor analysis and market insights",
+  "author": {
+    "@type": "Organization",
+    "name": "Expresiv",
+    "url": "https://expresiv.com.au"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Expresiv",
+    "url": "https://expresiv.com.au"
+  },
+  "datePublished": created_at || new Date().toISOString(),
+  "dateModified": created_at || new Date().toISOString(),
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://expresiv.com.au/competitor-analysis/${slug}/`
+  },
+  "about": {
+    "@type": "Thing",
+    "name": business_type || "business analysis",
+    "description": `Competitor analysis for ${business_type || 'businesses'} in ${location || 'the market'}`
+  }
+};
+---
+
+<Layout title={page_title || "Competitor Analysis"} description={page_description || "Comprehensive competitor analysis and market insights"}>
+  <main class="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <!-- Hero Section -->
+    <section class="relative py-16 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 text-white">
+      <div class="absolute inset-0 bg-black/20"></div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            {page_title || 'Competitor Analysis'}
+          </h1>
+          <p class="text-xl md:text-2xl text-blue-100 mb-8 max-w-4xl mx-auto">
+            {page_description || 'Comprehensive competitor analysis and market insights.'}
+          </p>
+          <div class="flex flex-wrap justify-center gap-4 text-sm text-blue-200">
+            <span class="flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              Analysis for {domain || 'this domain'}
+            </span>
+            <span class="flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              {location || 'Market Analysis'}
+            </span>
+            <span class="flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+              </svg>
+              {view_count || 0} views
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Introduction -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 mb-12">
+          <div class="prose prose-lg dark:prose-invert max-w-none">
+            <p class="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
+              {content_intro || 'No introduction content available.'}
+            </p>
+          </div>
+        </div>
+
+        <!-- Keywords Analyzed -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Keywords Analyzed</h2>
+          <div class="flex flex-wrap gap-3">
+            {keywords_analyzed && keywords_analyzed.length > 0 ? keywords_analyzed.map((keyword: string) => (
+              <span class="px-4 py-2 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">
+                {keyword}
+              </span>
+            )) : (
+              <p class="text-gray-500 dark:text-gray-400">No keywords available</p>
+            )}
+          </div>
+        </div>
+
+        <!-- Competitors List -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">Top Competitors</h2>
+          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {competitors && competitors.length > 0 ? competitors.map((competitor: any, index: number) => (
+              <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                <div class="flex items-center justify-between mb-4">
+                  <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold">
+                      #{index + 1}
+                    </div>
+                    <div>
+                      <h3 class="font-semibold text-gray-900 dark:text-white text-lg">
+                        {competitor.title?.substring(0, 50)}...
+                      </h3>
+                      <p class="text-sm text-gray-600 dark:text-gray-400">
+                        {competitor.domain}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                      {competitor.visibility_score}
+                    </div>
+                    <div class="text-xs text-gray-500 dark:text-gray-400">
+                      Visibility Score
+                    </div>
+                  </div>
+                </div>
+                
+                <p class="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
+                  {competitor.snippet}
+                </p>
+                
+                <a 
+                  href={competitor.competitor_url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm font-medium"
+                >
+                  Visit Website
+                  <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </a>
+              </div>
+            )) : (
+              <div class="col-span-full text-center py-12">
+                <p class="text-gray-500 dark:text-gray-400 text-lg">No competitors data available</p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 mb-12">
+          <div class="prose prose-lg dark:prose-invert max-w-none">
+            <p class="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
+              {content_conclusion || 'No conclusion content available.'}
+            </p>
+          </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-xl p-8 text-white text-center">
+          <h2 class="text-3xl font-bold mb-4">Need Your Own Competitor Analysis?</h2>
+          <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+            Get a comprehensive competitor analysis for your business and discover growth opportunities.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a 
+              href="/competitor-analysis" 
+              class="bg-white text-blue-600 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors"
+            >
+              Analyze Your Competitors
+            </a>
+            <a 
+              href="/seo-audit" 
+              class="bg-blue-700 text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-800 transition-colors"
+            >
+              SEO Audit Your Website
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+</Layout>
