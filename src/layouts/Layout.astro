@@ -51,7 +51,7 @@ import "../styles/global.css";
 <AppFooter/>
 <script>
   // @ts-nocheck
-  document.addEventListener('DOMContentLoaded', () => {
+  function initializeAnimations() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -62,7 +62,11 @@ import "../styles/global.css";
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  });
+  }
+
+  // Initialize on both DOMContentLoaded and astro:page-load for View Transitions compatibility
+  document.addEventListener('DOMContentLoaded', initializeAnimations);
+  document.addEventListener('astro:page-load', initializeAnimations);
 </script>
 </body>
 </html>
