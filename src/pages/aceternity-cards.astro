@@ -1,40 +1,25 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import CardStack, { type Card } from "../components/ui/CardStack";
-const items: Card[] = [
+import CardStack from "../components/ui/CardStack";
+
+const items = [
   {
     id: 1,
     name: "Manu Arora",
     designation: "Senior Software Engineer",
-    content: (
-      <div>
-        These cards are amazing, I want to use them in my project. Framer motion
-        is a godsend.
-      </div>
-    ),
+    content: "These cards are amazing, I want to use them in my project. Framer motion is a godsend.",
   },
   {
     id: 2,
     name: "Elon Musk",
     designation: "Senior Shitposter",
-    content: (
-      <div>
-        I dont like this Twitter thing, deleting it right away because yolo.
-        Instead, I would like to call it X.com so that it can easily be confused
-        with adult sites.
-      </div>
-    ),
+    content: "I dont like this Twitter thing, deleting it right away because yolo. Instead, I would like to call it X.com so that it can easily be confused with adult sites.",
   },
   {
     id: 3,
     name: "Tyler Durden",
     designation: "Manager Project Mayhem",
-    content: (
-      <div>
-        The first rule of Fight Club is that you do not talk about fight club.
-        The second rule of Fight club is that you DO NOT TALK about fight club.
-      </div>
-    ),
+    content: "The first rule of Fight Club is that you do not talk about fight club. The second rule of Fight club is that you DO NOT TALK about fight club.",
   },
 ];
 ---
