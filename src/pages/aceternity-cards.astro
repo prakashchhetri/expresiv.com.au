@@ -1,0 +1,60 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CardStack, { type Card } from "../components/ui/CardStack";
+const items: Card[] = [
+  {
+    id: 1,
+    name: "Manu Arora",
+    designation: "Senior Software Engineer",
+    content: (
+      <div>
+        These cards are amazing, I want to use them in my project. Framer motion
+        is a godsend.
+      </div>
+    ),
+  },
+  {
+    id: 2,
+    name: "Elon Musk",
+    designation: "Senior Shitposter",
+    content: (
+      <div>
+        I dont like this Twitter thing, deleting it right away because yolo.
+        Instead, I would like to call it X.com so that it can easily be confused
+        with adult sites.
+      </div>
+    ),
+  },
+  {
+    id: 3,
+    name: "Tyler Durden",
+    designation: "Manager Project Mayhem",
+    content: (
+      <div>
+        The first rule of Fight Club is that you do not talk about fight club.
+        The second rule of Fight club is that you DO NOT TALK about fight club.
+      </div>
+    ),
+  },
+];
+---
+
+<Layout>
+  <section class="py-16 md:py-24">
+    <div class="container mx-auto px-6 md:px-8">
+      <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-gray-900 dark:text-white mb-6">
+        Aceternity UI – CardStack Demo
+      </h1>
+      <p class="text-gray-600 dark:text-gray-300 max-w-2xl mb-10">
+        This page showcases an animated rotating card stack component powered by Motion for
+        React and styled with Tailwind. Content is placeholder and can be replaced with
+        testimonials or feature highlights.
+      </p>
+      <div class="flex items-center justify-center">
+        <CardStack items={items} />
+      </div>
+    </div>
+  </section>
+</Layout>
+
+

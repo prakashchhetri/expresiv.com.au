@@ -76,3 +76,4 @@ const response = await fetch(config.endpoints.serpCompetitors, {
 
 
 
+

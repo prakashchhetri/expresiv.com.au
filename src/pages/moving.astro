@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro";
+import WavyBackground from "../components/ui/WavyBackground.tsx";
+import Sparkles from "../components/ui/Sparkles.tsx";
+---
+
+<Layout>
+  <main class="relative min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-blue-900 via-indigo-950 to-fuchsia-900">
+    <section
+      class="relative rounded-full overflow-hidden shadow-2xl"
+      style="width: min(90vw, 90vh); height: min(90vw, 90vh);"
+    >
+      <WavyBackground
+        client:load
+        containerClassName="h-full w-full"
+        className="h-full w-full"
+        backgroundFill="transparent"
+        colors={["#60a5fa", "#818cf8", "#c084fc", "#e879f9", "#22d3ee"]}
+        waveWidth={60}
+        blur={8}
+        speed="fast"
+        waveOpacity={0.5}
+      >
+        <Sparkles
+          client:load
+          className="mix-blend-screen"
+          particleColor="rgba(255,255,255,0.9)"
+          particleDensity={12}
+          minSize={0.6}
+          maxSize={2.4}
+          speed={24}
+        />
+      </WavyBackground>
+    </section>
+  </main>
+</Layout>
+
+

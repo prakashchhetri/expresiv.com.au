@@ -1,10 +1,11 @@
 ---
 import Container from "./Container.astro";
 import Button from "./Button.astro";
+import Sparkles from "./ui/Sparkles";
 
 const {
   title = "Empowering Small Businesses with Smart Digital Solutions",
-  subtitle = "Websites, applications and marketing strategies built to help your brand grow and thrive in today\'s market.",
+  subtitle = "Websites, applications and marketing strategies built to help your brand grow and thrive in today's market.",
   primaryLabel = "Get a Free Quote",
   primaryLink = "/contact",
   secondaryLabel = "Our Work",
@@ -12,12 +13,19 @@ const {
   image = "/images/ai_banner.png",
 } = Astro.props;
 ---
-<section class="relative isolate overflow-hidden pt-28 lg:pt-40 pb-20 lg:pb-32 bg-gradient-to-br from-primary to-purple-500/80 dark:from-gray-800 dark:to-gray-900 text-white fade-in">
-  <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-white/10 via-primary/10 to-purple-600/20 dark:from-gray-700/10"></div>
+<section class="relative isolate overflow-hidden pt-28 lg:pt-40 pb-20 lg:pb-32 bg-black text-white fade-in">
   <Container>
     <div class="grid lg:grid-cols-2 gap-16 items-center">
       <div>
-        <h1 class="font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-tight mb-6">{title}</h1>
+        <h1 class="font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-tight mb-4">{title}</h1>
+        <div class="relative w-full max-w-[40rem] h-40">
+          <div class="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm"></div>
+          <div class="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4"></div>
+          <div class="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm"></div>
+          <div class="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4"></div>
+          <Sparkles client:visible background="transparent" minSize={0.3} maxSize={0.8} particleDensity={10} className="w-full h-full" particleColor="rgba(255,255,255,0.8)" speed={10} />
+          <div class="absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
+        </div>
         <p class="text-lg lg:text-xl text-white/90 mb-10 max-w-xl">{subtitle}</p>
         <div class="flex flex-wrap gap-4">
           <Button href={primaryLink} size="lg" variant="primary">{primaryLabel}</Button>
@@ -29,4 +37,4 @@ const {
       </div>
     </div>
   </Container>
-</section> 
+</section>  
