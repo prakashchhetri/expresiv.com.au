@@ -1,47 +1,65 @@
 ---
 import Container from "./Container.astro";
 import WavyBackground from "./ui/WavyBackground";
+
+const strengths = [
+  {
+    badge: "01",
+    title: "Embedded leads, zero handoffs",
+    copy: "Principals stay on the tools from kickoff through optimisation so context lives with the people shipping."
+  },
+  {
+    badge: "02",
+    title: "Technical depth on tap",
+    copy: "Specialists in modern web, app and marketing stacks remove the usual ramp-up time and keep velocity predictable."
+  },
+  {
+    badge: "03",
+    title: "Experiments tied to metrics",
+    copy: "Every initiative starts with an agreed commercial KPI, so tests ladder directly into pipeline, revenue or retention."
+  },
+  {
+    badge: "04",
+    title: "Engagements that flex with you",
+    copy: "Spin up a cross-functional squad or plug specific disciplines into your internal team without losing rigor."
+  }
+];
 ---
-<section class="relative py-[100px] md:py-[150px]">
-  <WavyBackground client:visible containerClassName="rounded-none" backgroundFill="black" speed="slow" waveOpacity={0.35} colors={["#3b82f6","#22d3ee","#6366f1"]}>
+<section class="relative isolate overflow-hidden py-24 md:py-[140px]">
+  <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-[#030711] via-[#050e1f] to-[#010409]"></div>
+  <div aria-hidden="true" class="absolute inset-x-0 top-0 h-48 bg-primary/20 blur-[140px] opacity-40"></div>
+  <WavyBackground
+    client:visible
+    containerClassName="rounded-none"
+    backgroundFill="#030711"
+    speed="slow"
+    waveOpacity={0.2}
+    colors={["#38bdf8","#22d3ee","#a855f7"]}
+  >
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-black/70"></div>
     <Container>
-      <div class="text-center w-full md:w-[85%] ml-auto mr-auto">
-        <h2 class="leading-relaxed text-white font-bold text-3xl md:text-4xl xl:text-4xl">Why choose Expresiv?</h2>
-        <p class="mb-6 font-normal text-white/70 md:text-lg mt-5">We combine technical depth with pragmatic delivery to help your business grow.</p>
+      <div class="relative mx-auto text-center max-w-3xl">
+        <p class="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1 text-[11px] uppercase tracking-[0.4em] text-white/75">
+          Partnership mindset
+        </p>
+        <h2 class="mt-6 text-3xl md:text-4xl xl:text-[42px] font-semibold leading-tight text-white">
+          Why high-performing teams stay with Expresiv
+        </h2>
+        <p class="mt-4 text-base md:text-lg text-white/80">
+          We embed alongside your team, co-own the metrics that matter and keep momentum high from first workshop to optimisation.
+        </p>
       </div>
-      <div class="mt-[80px] grid grid-col-1 md:grid-cols-2 gap-10 md:gap-10">
-        <div class="border border-white/10 bg-white/5 backdrop-blur rounded-3xl p-10 relative overflow-hidden text-white">
-          <div aria-hidden="true" class="absolute inset-0 opacity-20 top-[-20px]"><div class="light-bg blur-[50px] h-10"></div></div>
-          <div class="bg-gradient-to-br from-purple-100/20 to-blue-100/20 rounded-3xl h-[60px] w-[60px] p-3 flex items-center justify-center">
-            <h3 class="text-xl text-white font-bold">1</h3>
-          </div>
-          <h4 class="mt-5 text-lg font-semibold">Extraordinary people, exceptional outcomes</h4>
-          <p class="mt-1 text-white/80">Our outstanding team translates objectives into solutions with clear communication and engineering rigor.</p>
-        </div>
-        <div class="border border-white/10 bg-white/5 backdrop-blur rounded-3xl p-10 relative overflow-hidden text-white">
-          <div aria-hidden="true" class="absolute inset-0 opacity-20 top-[-20px]"><div class="light-bg blur-[50px] h-10"></div></div>
-          <div class="bg-gradient-to-br from-purple-100/20 to-blue-100/20 rounded-3xl h-[60px] w-[60px] p-3 flex items-center justify-center">
-            <h3 class="text-xl text-white font-bold">2</h3>
-          </div>
-          <h4 class="mt-5 text-lg font-semibold">Deep technical expertise</h4>
-          <p class="mt-1 text-white/80">We focus on ecosystems where we excel and ship with reusable components to reduce cost.</p>
-        </div>
-        <div class="border border-white/10 bg-white/5 backdrop-blur rounded-3xl p-10 relative overflow-hidden text-white">
-          <div aria-hidden="true" class="absolute inset-0 opacity-20 top-[-20px]"><div class="light-bg blur-[50px] h-10"></div></div>
-          <div class="bg-gradient-to-br from-purple-100/20 to-blue-100/20 rounded-3xl h-[60px] w-[60px] p-3 flex items-center justify-center">
-            <h3 class="text-xl text-white font-bold">3</h3>
-          </div>
-          <h4 class="mt-5 text-lg font-semibold">Balanced innovation</h4>
-          <p class="mt-1 text-white/80">We avoid hype, focus on innovations with real commercial impact, and guide tech choices.</p>
-        </div>
-        <div class="border border-white/10 bg-white/5 backdrop-blur rounded-3xl p-10 relative overflow-hidden text-white">
-          <div aria-hidden="true" class="absolute inset-0 opacity-20 top-[-20px]"><div class="light-bg blur-[50px] h-10"></div></div>
-          <div class="bg-gradient-to-br from-purple-100/20 to-blue-100/20 rounded-3xl h-[60px] w-[60px] p-3 flex items-center justify-center">
-            <h3 class="text-xl text-white font-bold">4</h3>
-          </div>
-          <h4 class="mt-5 text-lg font-semibold">Flexible engagement</h4>
-          <p class="mt-1 text-white/80">From end-to-end delivery to embedded experts and retainers, we flex to your needs.</p>
-        </div>
+      <div class="relative mt-16 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        {strengths.map((item) => (
+          <article class="group relative isolate overflow-hidden rounded-3xl border border-white/10 bg-white/5 px-8 py-10 text-white shadow-[0_45px_120px_-60px_rgba(3,7,17,0.9)] transition duration-300 ease-out hover:-translate-y-1">
+            <div aria-hidden="true" class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-primary/20 via-cyan-400/10 to-transparent"></div>
+            <div class="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-lg font-semibold text-white">
+              {item.badge}
+            </div>
+            <h3 class="relative mt-6 text-2xl font-semibold">{item.title}</h3>
+            <p class="relative mt-3 text-white/75 text-base leading-relaxed">{item.copy}</p>
+          </article>
+        ))}
       </div>
     </Container>
   </WavyBackground>

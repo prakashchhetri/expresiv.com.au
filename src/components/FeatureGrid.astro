@@ -4,25 +4,31 @@ import { Award, Rocket, ShieldCheck, Layers3 } from "lucide-react";
 import WavyBackground from "./ui/WavyBackground";
 
 const features = [
-  { icon: Rocket, title: "Fast Delivery", description: "Launch your project in as little as one week without compromising on quality." },
-  { icon: ShieldCheck, title: "Secure & Reliable", description: "We follow industry best-practices to keep your data and your customers safe." },
-  { icon: Layers3, title: "Scalable Architecture", description: "Our solutions are built to grow with your business, from MVP to enterprise." },
-  { icon: Award, title: "Premium Design", description: "Pixel-perfect UI that elevates your brand and delights your customers." },
+  { icon: Rocket, title: "Launch in weeks", description: "Strategic sprints compress discovery, design and build so you can test ideas in market faster." },
+  { icon: ShieldCheck, title: "Production-grade delivery", description: "Accessibility, performance budgets and security reviews are baked into every release." },
+  { icon: Layers3, title: "Scalable systems", description: "Composable architecture and reusable components keep future iterations predictable." },
+  { icon: Award, title: "Brand-safe creativity", description: "Premium visual systems and content guidelines ensure every touchpoint feels intentional." },
 ];
 ---
 <section class="py-24 lg:py-32 fade-in">
   <WavyBackground client:visible backgroundFill="transparent" speed="slow" waveOpacity={0.35} colors={["#818cf8", "#22d3ee", "#3b82f6"]}>
     <Container>
       <div class="text-center max-w-2xl mx-auto mb-16">
-        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">Why Choose Expresiv</h2>
-        <p class="text-gray-600 dark:text-gray-300">We combine cutting-edge technology with creative vision to deliver solutions that make an impact.</p>
+        <p class="text-xs uppercase tracking-[0.3em] text-primary mb-4">How we work</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">Flexible delivery without compromise</h2>
+        <p class="text-gray-600 dark:text-gray-300">Every engagement pairs senior strategists with builders so you get tangible outcomes, not endless decks.</p>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {features.map(f => (
-          <div class="text-center p-6 rounded-xl bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition">
-            <f.icon className="h-10 w-10 text-primary mx-auto mb-4" />
-            <h3 class="font-semibold text-lg text-gray-900 dark:text-white mb-2">{f.title}</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">{f.description}</p>
+          <div class="relative group rounded-2xl border border-white/0 bg-white/80 dark:bg-gray-900/60 p-8 shadow-sm overflow-hidden">
+            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-primary/10 via-transparent to-purple-500/10"></div>
+            <div class="relative">
+              <div class="h-12 w-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-5">
+                <f.icon className="h-6 w-6" />
+              </div>
+              <h3 class="font-semibold text-lg text-gray-900 dark:text-white mb-3">{f.title}</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{f.description}</p>
+            </div>
           </div>
         ))}
       </div>

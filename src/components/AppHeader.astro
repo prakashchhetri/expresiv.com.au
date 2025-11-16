@@ -95,14 +95,55 @@ const navTextClass = isHome
                                     <span>Services</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="relative group">
                                 <a
-                                    href="/competitor-analysis"
+                                    href="/free-tools"
                                     data-astro-prefetch
                                     class="block md:px-4 transition hover:text-primary"
+                                    aria-haspopup="true"
                                 >
-                                    <span>Competitor Analysis</span>
+                                    <span>Free Tools</span>
                                 </a>
+                                <ul class="mt-2 space-y-2 pl-4 lg:hidden">
+                                    <li>
+                                        <a
+                                            href="/competitor-analysis"
+                                            data-astro-prefetch
+                                            class="block transition hover:text-primary"
+                                        >
+                                            <span>Competitor Analysis</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="/free-tools/seo-analysis"
+                                            data-astro-prefetch
+                                            class="block transition hover:text-primary"
+                                        >
+                                            <span>SEO Analysis</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="hidden group-hover:flex group-focus-within:flex flex-col gap-3 lg:absolute lg:top-full lg:left-0 lg:mt-3 lg:w-56 lg:rounded-xl lg:bg-white lg:dark:bg-gray-900 lg:p-4 lg:shadow-xl">
+                                    <li>
+                                        <a
+                                            href="/competitor-analysis"
+                                            data-astro-prefetch
+                                            class="transition hover:text-primary"
+                                        >
+                                            <span>Competitor Analysis</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="/free-tools/seo-analysis"
+                                            data-astro-prefetch
+                                            class="transition hover:text-primary"
+                                        >
+                                            <span>SEO Analysis</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
                                 <a

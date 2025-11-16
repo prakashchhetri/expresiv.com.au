@@ -29,9 +29,8 @@ import "../styles/global.css";
 
 	<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap">
-	<!-- @todo might need to search for a better alternative of adding google analytics-->
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y1HKE41C83"></script>
+	<!-- Google tag (gtag.js) - shared loader for Analytics (G-*) and Ads (AW-*) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17733981254"></script>
 	<script>
         // @ts-nocheck
         // @ts-ignore Google Analytics
@@ -41,7 +40,9 @@ import "../styles/global.css";
         // @ts-ignore
         gtag('js', new Date());
         // @ts-ignore
-        gtag('config', 'G-Y1HKE41C83');
+        gtag('config', 'G-Y1HKE41C83'); // Existing GA4 property
+        // @ts-ignore
+        gtag('config', 'AW-17733981254'); // New Google Ads conversion tag
 	</script>
 	<ViewTransitions />
 </head>
