@@ -1,6 +1,8 @@
 ---
 import BlogPost from '../components/BlogPost.astro';
 import { getBlogPosts } from '../lib/posts';
+import Layout from '../layouts/Layout.astro';
+import Container from '../components/Container.astro';
 
 let posts = [];
 try {
@@ -11,10 +13,23 @@ try {
 }
 ---
 
-<div class="blog-list">
-  {posts.length > 0 ? (
-    posts.map((post) => <BlogPost post={post} />)
-  ) : (
-    <p>Blog posts are temporarily unavailable. Please check back later.</p>
-  )}
-</div>
+<Layout title="Insights & News | Expresiv">
+  <main class="py-20 lg:py-32">
+    <Container>
+      <div class="max-w-2xl mx-auto text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Insights & News</h1>
+        <p class="text-lg text-gray-600 dark:text-gray-300">Latest thoughts on design, technology, and business growth.</p>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {posts.length > 0 ? (
+          posts.map((post) => <BlogPost post={post} />)
+        ) : (
+          <div class="col-span-full text-center py-12">
+            <p class="text-gray-500">Blog posts are temporarily unavailable. Please check back later.</p>
+          </div>
+        )}
+      </div>
+    </Container>
+  </main>
+</Layout>

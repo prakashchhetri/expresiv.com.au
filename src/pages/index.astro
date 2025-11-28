@@ -6,14 +6,97 @@ import ClientsBanner from '../components/ClientsBanner.astro';
 import Testimonials from '../components/Testimonials.astro';
 import CTASection from '../components/CTASection.astro';
 import WhyChooseExpresiv from '../components/WhyChooseExpresiv.astro';
+import StatCard from '../components/Premium/StatCard.astro';
+import LogoMarquee from '../components/Premium/LogoMarquee.astro';
+import FloatingCTA from '../components/Premium/FloatingCTA.astro';
+import Container from '../components/Container.astro';
+
+// Client logos for marquee
+const clientLogos = [
+  { src: '/images/clients/beautyandnails.svg', alt: 'Beauty & Nails' },
+  { src: '/images/clients/google.svg', alt: 'Google' },
+  { src: '/images/clients/microsoft.svg', alt: 'Microsoft' },
+  { src: '/images/clients/netflix.svg', alt: 'Netflix' },
+  { src: '/images/clients/airbnb.svg', alt: 'Airbnb' },
+  { src: '/images/clients/google-cloud.svg', alt: 'Google Cloud' },
+  { src: '/images/clients/ge.svg', alt: 'GE' },
+  { src: '/images/clients/hoistcare.png', alt: 'Hoistcare' },
+];
 ---
 <Layout title="Expresiv – Digital Solutions for Small Business">
-  <main class="space-y-40">
+  <main>
+    <!-- Hero Section -->
     <HeroModern />
-    <ClientsBanner />
-    <FeatureGrid />
-    <WhyChooseExpresiv />
-    <Testimonials />
+    
+    <!-- Logo Marquee - Infinite scrolling client logos -->
+    <section class="py-12 border-y border-gray-200 dark:border-gray-700">
+      <Container>
+        <p class="text-center text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide mb-8">
+          Trusted by leading brands
+        </p>
+      </Container>
+      <LogoMarquee logos={clientLogos} speed={40} />
+    </section>
+    
+    <!-- Results Section - Animated Stats -->
+    <section class="py-24 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 scroll-fade-in">
+      <Container>
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
+            💼 Results That Speak
+          </div>
+          <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
+            Real Results. Real Growth.
+          </h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            We don't just build websites. We build revenue-generating assets.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <StatCard 
+            value={247}
+            suffix="%"
+            label="Average ROI"
+            subtext="For our clients in year 1"
+            icon="📈"
+            delay={0}
+          />
+          <StatCard 
+            value={127}
+            suffix="+"
+            label="Projects Launched"
+            subtext="Websites, apps & campaigns"
+            icon="🚀"
+            delay={100}
+          />
+          <StatCard 
+            value={4.9}
+            label="Client Rating"
+            subtext="Based on 50+ reviews"
+            icon="⭐"
+            delay={200}
+          />
+        </div>
+      </Container>
+    </section>
+    
+    <!-- Original sections with spacing -->
+    <div class="space-y-32 py-16">
+      <FeatureGrid />
+      <WhyChooseExpresiv />
+      <Testimonials />
+    </div>
+    
+    <!-- CTA Section -->
     <CTASection />
+    
+    <!-- Floating CTA Bar (appears on scroll) -->
+    <FloatingCTA 
+      message="⏰ Limited Strategy Call Slots Available This Month"
+      ctaText="Book Your Free Call"
+      ctaLink="/contact"
+      triggerScrollY={600}
+    />
   </main>
 </Layout>

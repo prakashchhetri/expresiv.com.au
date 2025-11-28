@@ -1,0 +1,127 @@
+---
+interface Props {
+  value: number;
+  suffix?: string;
+  prefix?: string;
+  label: string;
+  subtext?: string;
+  icon?: string;
+  delay?: number;
+}
+
+const { value, suffix = '', prefix = '', label, subtext, icon, delay = 0 } = Astro.props;
+const uniqueId = `stat-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div 
+  class="stat-card group relative p-8 rounded-2xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+  style={`animation-delay: ${delay}ms;`}
+>
+  <!-- Gradient overlay on hover -->
+  <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+  
+  <div class="relative z-10">
+    <!-- Icon (optional) -->
+    {icon && (
+      <div class="mb-4">
+        <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-primary/10 to-purple-500/10 group-hover:scale-110 transition-transform duration-300">
+          <span class="text-2xl">{icon}</span>
+        </div>
+      </div>
+    )}
+    
+    <!-- Animated Number -->
+    <div class="flex items-baseline mb-2">
+      {prefix && <span class="text-2xl font-bold text-gray-700 dark:text-gray-300 mr-1">{prefix}</span>}
+      <span 
+        id={uniqueId}
+        class="text-5xl font-extrabold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent"
+        data-target={value}
+      >
+        0
+      </span>
+      {suffix && <span class="text-2xl font-bold text-gray-700 dark:text-gray-300 ml-1">{suffix}</span>}
+    </div>
+    
+    <!-- Label -->
+    <div class="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+      {label}
+    </div>
+    
+    <!-- Subtext (optional) -->
+    {subtext && (
+      <div class="text-sm text-gray-600 dark:text-gray-400">
+        {subtext}
+      </div>
+    )}
+  </div>
+</div>
+
+<script define:vars={{ uniqueId }}>
+  // Counter animation using Intersection Observer
+  const observerOptions = {
+    threshold: 0.5,
+    rootMargin: '0px'
+  };
+
+  const animateCounter = (element) => {
+    const target = parseInt(element.getAttribute('data-target'));
+    const duration = 2000; // 2 seconds
+    const steps = 60;
+    const increment = target / steps;
+    let current = 0;
+    
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        element.textContent = target.toLocaleString();
+        clearInterval(timer);
+      } else {
+        element.textContent = Math.floor(current).toLocaleString();
+      }
+    }, duration / steps);
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+        entry.target.classList.add('counted');
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Initialize on both DOMContentLoaded and astro:page-load for View Transitions
+  function initCounter() {
+    const element = document.getElementById(uniqueId);
+    if (element) {
+      observer.observe(element);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initCounter);
+  document.addEventListener('astro:page-load', initCounter);
+</script>
+
+<style>
+  .stat-card {
+    animation: fadeInUp 0.6s ease-out forwards;
+    animation-play-state: paused;
+  }
+
+  .stat-card.animate {
+    animation-play-state: running;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

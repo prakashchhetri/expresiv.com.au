@@ -2,8 +2,31 @@
 const { post } = Astro.props;
 ---
 
-<article class="blog-post">
-  <h2>{post.title}</h2>
-  <p>{post.excerpt}</p>
-  <!-- Add more post content as needed -->
-</article> 
+<article class="group relative flex flex-col items-start">
+  <div class="relative w-full aspect-[16/9] mb-4 overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-800">
+    {post.feature_image && (
+      <img
+        src={post.feature_image}
+        alt={post.title}
+        class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
+        loading="lazy"
+      />
+    )}
+  </div>
+  <div class="max-w-xl">
+    <div class="mt-2 flex items-center gap-x-4 text-xs">
+      <time datetime={post.published_at} class="text-gray-500 dark:text-gray-400">
+        {new Date(post.published_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+      </time>
+    </div>
+    <div class="group relative">
+      <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+        <a href={`/blog/${post.slug}`}>
+          <span class="absolute inset-0"></span>
+          {post.title}
+        </a>
+      </h3>
+      <p class="mt-3 line-clamp-3 text-sm leading-6 text-gray-600 dark:text-gray-400">{post.excerpt}</p>
+    </div>
+  </div>
+</article>

@@ -13,6 +13,7 @@ export const GET: APIRoute = async () => {
     '/services',
     '/work',
     '/testimonials',
+    '/blog',
   ];
 
   // Fetch dynamic competitor analysis pages from Django API

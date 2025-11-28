@@ -2,8 +2,12 @@
 const { image, title, link } = Astro.props;
 ---
 
-<div class="pb-8 md:pb-10">
-    <a href={link} title={title}>
-        <img src={image} alt="" class="w-full">
+<div class="pb-8 md:pb-10 group relative overflow-hidden rounded-2xl">
+    <a href={link} title={title} class="block relative">
+        <img src={image} alt={title} class="w-full transition duration-500 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-6">
+            <span class="text-white font-bold text-xl translate-y-4 group-hover:translate-y-0 transition duration-300">{title}</span>
+            <span class="text-white/80 text-sm mt-1 translate-y-4 group-hover:translate-y-0 transition duration-300 delay-75">View Case Study &rarr;</span>
+        </div>
     </a>
 </div>

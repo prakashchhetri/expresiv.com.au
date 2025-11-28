@@ -1,21 +1,3 @@
 User-agent: *
 Allow: /
-
-# Sitemap
-Sitemap: https://expresiv.com.au/sitemap.xml
-
-# Disallow admin and API routes
-Disallow: /admin/
-Disallow: /api/
-
-# Allow competitor analysis pages
-Allow: /competitor-analysis/
-
-
-
-
-
-
-
-
-
+Sitemap: https://expresiv.com.au/sitemap-index.xml

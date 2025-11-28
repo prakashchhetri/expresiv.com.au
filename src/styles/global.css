@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap");
+@import "./design-tokens.css";
+@import "./animations.css";
+
 * {
     font-family: "Kumbh Sans", sans-serif;
 }
@@ -7,6 +10,7 @@
 .fade-in {
     @apply opacity-0 translate-y-4 transition-all duration-700 ease-out;
 }
+
 .fade-in.visible {
     @apply opacity-100 translate-y-0;
 }

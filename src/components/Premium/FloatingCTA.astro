@@ -1,0 +1,106 @@
+---
+interface Props {
+  message?: string;
+  ctaText?: string;
+  ctaLink?: string;
+  triggerScrollY?: number; // Pixels scrolled before showing
+}
+
+const { 
+  message = "⏰ Limited spots available this month", 
+  ctaText = "Book Your Strategy Call",
+  ctaLink = "/contact",
+  triggerScrollY = 500
+} = Astro.props;
+---
+
+<div 
+  id="floating-cta" 
+  class="fixed bottom-0 left-0 right-0 z-50 transform translate-y-full transition-transform duration-500 ease-out"
+  data-trigger={triggerScrollY}
+>
+  <div class="bg-gradient-to-r from-primary via-purple-600 to-primary bg-[length:200%_100%] animate-gradient shadow-2xl">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4 gap-4">
+        <!-- Message -->
+        <div class="flex items-center gap-3">
+          <span class="hidden sm:inline-block w-2 h-2 rounded-full bg-white animate-ping"></span>
+          <p class="text-white font-semibold text-sm md:text-base">
+            {message}
+          </p>
+        </div>
+        
+        <!-- CTA and Close -->
+        <div class="flex items-center gap-4">
+          <a 
+            href={ctaLink}
+            class="px-6 py-2.5 bg-white text-primary font-bold rounded-lg hover:bg-gray-100 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 duration-200 text-sm md:text-base whitespace-nowrap"
+          >
+            {ctaText}
+          </a>
+          <button 
+            id="close-floating-cta"
+            class="text-white/80 hover:text-white transition-colors p-2"
+            aria-label="Close"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initFloatingCTA() {
+    const floatingCTA = document.getElementById('floating-cta');
+    const closeButton = document.getElementById('close-floating-cta');
+    
+    if (!floatingCTA || !closeButton) return;
+    
+    const triggerScrollY = parseInt(floatingCTA.getAttribute('data-trigger') || '500');
+    let isVisible = false;
+    let isDismissed = false;
+    
+    // Check if user previously dismissed
+    if (sessionStorage.getItem('floatingCTADismissed') === 'true') {
+      isDismissed = true;
+      return;
+    }
+    
+    // Show/hide based on scroll
+    function handleScroll() {
+      if (isDismissed) return;
+      
+      const scrollY = window.scrollY || window.pageYOffset;
+      
+      if (scrollY > triggerScrollY && !isVisible) {
+        floatingCTA.classList.remove('translate-y-full');
+        isVisible = true;
+      } else if (scrollY <= triggerScrollY && isVisible) {
+        floatingCTA.classList.add('translate-y-full');
+        isVisible = false;
+      }
+    }
+    
+    // Close handler
+    function handleClose() {
+      isDismissed = true;
+      floatingCTA.classList.add('translate-y-full');
+      sessionStorage.setItem('floatingCTADismissed', 'true');
+    }
+    
+    // Event listeners
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    closeButton.addEventListener('click', handleClose);
+    
+    // Initial check
+    handleScroll();
+  }
+  
+  // Initialize on both DOMContentLoaded and astro:page-load for View Transitions
+  document.addEventListener('DOMContentLoaded', initFloatingCTA);
+  document.addEventListener('astro:page-load', initFloatingCTA);
+</script>
