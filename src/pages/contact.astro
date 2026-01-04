@@ -143,6 +143,17 @@ import Container from "../components/Container.astro";
 				const result = await response.json();
 
 				if (result.success) {
+					// Track conversion in Google Ads
+					// @ts-ignore
+					if (typeof gtag !== 'undefined') {
+						// @ts-ignore
+						gtag('event', 'conversion', {
+							'send_to': 'AW-17733981254/placeholder_conversion_label',
+							'value': 1.0,
+							'currency': 'AUD'
+						});
+					}
+					
 					// Show success message
 					successText.textContent = result.message || "Thank you! We'll get back to you within 24 hours.";
 					successMessage.classList.remove('hidden');
