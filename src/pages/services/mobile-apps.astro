@@ -1,0 +1,7 @@
+---
+import AgencyService from '../../components/AgencyService.astro';
+import {services} from '../../data/agency';
+export const prerender = true;
+const service = services.find(item => item.slug === 'mobile-apps')!;
+---
+<AgencyService service={service}/>

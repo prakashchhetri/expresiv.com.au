@@ -1,69 +1,9 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import MainCallToAction from "../components/MainCallToAction.astro";
-import Container from "../components/Container.astro";
-import "../styles/index.css";
-import WorkComponent from "../components/WorkPage/WorkComponent.astro";
+import AgencyLayout from '../layouts/AgencyLayout.astro';
+import AgencyProjects from '../components/AgencyProjects.astro';
+export const prerender = true;
 ---
-
-<Layout>
-    <main class="space-y-40">
-        <div class="relative" id="home">
-            <div
-                aria-hidden="true"
-                class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20"
-            >
-                <div
-                    class="blur-[106px] h-32 bg-gradient-to-r from-sky-700 to-sky-700"
-                >
-                </div>
-                <div
-                    class="blur-[106px] h-32 bg-gradient-to-r from-purple-700 to-fuchsia-600"
-                >
-                </div>
-            </div>
-
-            <section class="pt-[150px] md:pt-[200px] relative">
-                <Container>
-                    <h1
-                        class="lg:leading-relaxed leading-10 text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl"
-                    >
-                        Our Recent Work
-                    </h1>
-                    <p
-                        class="mb-6 font-normal text-gray-800 dark:text-gray-400 md:text-lg mt-5"
-                    >
-                        See how we've helped local businesses transform their digital presence and drive real growth.
-                    </p>
-                </Container>
-            </section>
-
-            <section class="pb-[100px] md:pb-[150px] relative mt-10">
-                <Container>
-                    <div
-                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                    >
-                        <WorkComponent
-                            image="/images/work1.png"
-                            title="Web Networks"
-                            link="/works/web-networks"
-                        />
-                        <WorkComponent
-                            image="/images/work2.png"
-                            title="Beauty & Nails"
-                            link="/works/beauty-and-nails"
-                        />
-                        <WorkComponent
-                            image="/images/work3.png"
-                            title="OffshoreGeniX"
-                            link="/works/osgx"
-                        />
-                    </div>
-                </Container>
-            </section>
-
-            <!-- Call to action -->
-            <MainCallToAction />
-        </div>
-    </main>
-</Layout>
+<AgencyLayout title="Selected Work — Expresiv" description="Explore Expresiv’s Web Networks customer platform, OffshoreGeniX website and Beauty & Nails visual direction.">
+ <section class="wrap page-hero"><span class="eyebrow">01 / Selected work</span><h1>Ideas out<br/><em>in the world.</em></h1><div class="page-intro"><span class="eyebrow">Selected projects / 01—03</span><p>Different businesses. Different needs. A collection of digital experiences and visual directions, each with its own point of view.</p></div></section>
+ <section class="wrap portfolio" aria-label="Project portfolio"><div class="work-filters" role="group" aria-label="Filter projects" hidden><button data-filter="all" aria-pressed="true">All work <span>03</span></button><button data-filter="websites" aria-pressed="false">Websites</button><button data-filter="platforms" aria-pressed="false">Platforms & apps</button><button data-filter="identity" aria-pressed="false">Visual direction</button></div><p class="sr-only" role="status" data-filter-status>3 projects shown</p><h2 class="sr-only">Projects</h2><AgencyProjects/></section>
+</AgencyLayout>

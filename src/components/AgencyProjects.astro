@@ -1,0 +1,19 @@
+---
+import {Image} from 'astro:assets';
+import {projectImages} from '../data/project-images';
+import { projects } from '../data/agency';
+const { limit = projects.length } = Astro.props;
+---
+<div class="projects">
+ {projects.slice(0,limit).map(project => <article class="project" data-category={project.type} data-reveal>
+  <a href={`/works/${project.slug}`} class="project-link" aria-label={`View ${project.name} project`}>
+   <div class:list={['project-image', { 'project-device': project.image === 'webnetwork' }]} style={`--project-color:${project.color}`}>
+    <span class="project-type">E—{project.number} / {project.category}</span>
+    <Image src={projectImages[project.image]} alt={project.alt} widths={project.image === 'webnetwork' ? [480,960,1440] : [394]} sizes="(max-width: 760px) calc(100vw - 36px), 50vw" format="webp" quality={85} loading="lazy" decoding="async"/>
+    <span class="project-arrow" aria-hidden="true">↗</span>
+   </div>
+   <div class="project-caption"><h3>{project.name}</h3><span>{project.category}</span></div>
+  </a>
+  <p class="project-summary">{project.summary}</p>
+ </article>)}
+</div>

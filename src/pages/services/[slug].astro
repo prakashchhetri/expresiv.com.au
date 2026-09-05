@@ -19,7 +19,7 @@ const { slug } = Astro.params;
 const currentService = services.find((s) => s.slug === slug);
 
 if (!currentService) {
-  throw new Error(`Service not found for slug: ${slug}`);
+  return Astro.rewrite('/404');
 }
 
 const {

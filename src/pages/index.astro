@@ -1,102 +1,17 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import HeroModern from '../components/HeroModern.astro';
-import FeatureGrid from '../components/FeatureGrid.astro';
-import ClientsBanner from '../components/ClientsBanner.astro';
-import Testimonials from '../components/Testimonials.astro';
-import CTASection from '../components/CTASection.astro';
-import WhyChooseExpresiv from '../components/WhyChooseExpresiv.astro';
-import StatCard from '../components/Premium/StatCard.astro';
-import LogoMarquee from '../components/Premium/LogoMarquee.astro';
-import FloatingCTA from '../components/Premium/FloatingCTA.astro';
-import Container from '../components/Container.astro';
-
-// Client logos for marquee
-const clientLogos = [
-  { src: '/images/clients/beautyandnails.svg', alt: 'Beauty & Nails' },
-  { src: '/images/clients/google.svg', alt: 'Google' },
-  { src: '/images/clients/microsoft.svg', alt: 'Microsoft' },
-  { src: '/images/clients/netflix.svg', alt: 'Netflix' },
-  { src: '/images/clients/airbnb.svg', alt: 'Airbnb' },
-  { src: '/images/clients/google-cloud.svg', alt: 'Google Cloud' },
-  { src: '/images/clients/ge.svg', alt: 'GE' },
-  { src: '/images/clients/hoistcare.png', alt: 'Hoistcare' },
-];
+import AgencyLayout from '../layouts/AgencyLayout.astro';
+import AgencyProjects from '../components/AgencyProjects.astro';
+import {services} from '../data/agency';
+export const prerender = true;
 ---
-<Layout title="Expresiv – Digital Solutions for Small Business">
-  <main>
-    <!-- Hero Section -->
-    <HeroModern />
-    
-    <!-- Logo Marquee - Infinite scrolling client logos -->
-    <section class="py-12 border-y border-gray-200 dark:border-gray-700">
-      <Container>
-        <p class="text-center text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide mb-8">
-          Trusted by leading brands
-        </p>
-      </Container>
-      <LogoMarquee logos={clientLogos} speed={40} />
-    </section>
-    
-    <!-- Results Section - Animated Stats -->
-    <section class="py-24 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 scroll-fade-in">
-      <Container>
-        <div class="text-center mb-16">
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
-            💼 Results That Speak
-          </div>
-          <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
-            Real Results. Real Growth.
-          </h2>
-          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            We don't just build websites. We build revenue-generating assets.
-          </p>
-        </div>
-        
-        <div class="grid md:grid-cols-3 gap-8">
-          <StatCard 
-            value={247}
-            suffix="%"
-            label="Average ROI"
-            subtext="For our clients in year 1"
-            icon="📈"
-            delay={0}
-          />
-          <StatCard 
-            value={127}
-            suffix="+"
-            label="Projects Launched"
-            subtext="Websites, apps & campaigns"
-            icon="🚀"
-            delay={100}
-          />
-          <StatCard 
-            value={4.9}
-            label="Client Rating"
-            subtext="Based on 50+ reviews"
-            icon="⭐"
-            delay={200}
-          />
-        </div>
-      </Container>
-    </section>
-    
-    <!-- Original sections with spacing -->
-    <div class="space-y-32 py-16">
-      <FeatureGrid />
-      <WhyChooseExpresiv />
-      <Testimonials />
-    </div>
-    
-    <!-- CTA Section -->
-    <CTASection />
-    
-    <!-- Floating CTA Bar (appears on scroll) -->
-    <FloatingCTA 
-      message="⏰ Limited Strategy Call Slots Available This Month"
-      ctaText="Book Your Free Call"
-      ctaLink="/contact"
-      triggerScrollY={600}
-    />
-  </main>
-</Layout>
+<AgencyLayout title="Expresiv — Ideas, fully expressed." description="Independent Australian design and development studio. We turn ideas into expressive websites, useful mobile apps and custom software. See our work.">
+ <section class="hero wrap" aria-labelledby="hero-title">
+  <div class="hero-meta"><span class="eyebrow"><i></i>Independent design & development</span><span class="eyebrow">Australia / Open to possibility</span></div>
+  <div class="hero-intro"><p class="hero-kicker">A little imagination.<br/>A lot of intention.</p><p>We give ambitious ideas a digital life.<br/> Websites, mobile apps and software.<br/> Considered from the inside out.</p></div>
+  <h1 id="hero-title"><span class="hero-line">Ideas, fully</span><span class="expression-frame"><span class="expression-word">expressed<span class="expression-period">.</span></span></span></h1>
+  <div class="hero-bottom"><span class="eyebrow">The space between thinking and making.</span><a href="/work" class="text-link">Explore our work <span aria-hidden="true">↓</span></a></div>
+ </section>
+ <section class="wrap home-work"><div class="section-top"><span class="eyebrow">01 / Ideas in the world</span><a href="/work" class="text-link">All projects <span aria-hidden="true">↗</span></a></div><div class="section-heading" data-reveal><h2>Different challenges.<br/><em>One considered approach.</em></h2><p>A clearer connection. A stronger presence.<br/>Work shaped around what matters.</p></div><AgencyProjects limit={2}/></section>
+ <section class="expertise"><div class="wrap"><div class="section-top"><span class="eyebrow">02 / What we bring</span><span class="eyebrow">Thinking + making</span></div><div class="expertise-intro" data-reveal><h2>Good on the outside.<br/><em>Great on the inside.</em></h2><p>We connect the story people see with the technology they use. From the first sketch to the final interaction.</p></div>{services.map(service => <a class="service" href={`/services/${service.slug}`}><span class="service-number">{service.number}</span><h3>{service.name}</h3><p>{service.short}</p><span class="service-arrow" aria-hidden="true">↗</span></a>)}</div></section>
+ <section class="studio-teaser wrap" data-reveal><span class="eyebrow">03 / A studio with a point of view</span><div><h2>Small enough to care.<br/><em>Curious enough to question.</em></h2><p>We look for the idea inside the brief. Then we design it, build it and work through the details that make it feel right.</p><a href="/studio" class="text-link">Get to know Expresiv <span aria-hidden="true">↗</span></a></div></section>
+</AgencyLayout>

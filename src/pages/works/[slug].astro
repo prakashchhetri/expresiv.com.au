@@ -1,37 +1,10 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Container from "../../components/Container.astro";
-
-export async function getStaticPaths() {
-    const slugs = ['sample', 'example', 'test', 'osgx', 'beauty-and-nails']; // Replace with your actual slugs
-    return slugs.map(slug => ({ params: { slug } })); // Return an array of paths
+import AgencyCaseStudy from '../../components/AgencyCaseStudy.astro';
+import {projects} from '../../data/agency';
+export const prerender = true;
+export function getStaticPaths() {
+ return projects.filter(project => project.slug !== 'web-networks').map(project => ({params:{slug:project.slug},props:{project}}));
 }
-
-const { slug } = Astro.params;
-
-if (slug === 'works') {
-    return {
-        props: {
-            isWorksPage: true
-        }
-    };
-}
+const {project} = Astro.props;
 ---
-
-<Layout>
-    <main class="space-y-40">
-        <div class="relative" id="home">
-            <section class="pt-[150px] md:pt-[200px] md:pb-[150px] pb-[100px] relative">
-                <Container>
-                    <h1 class="lg:leading-relaxed leading-10 text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl">
-                        Works
-                    </h1>
-                    <p class="mb-6 font-normal text-gray-800 dark:text-gray-400 md:text-lg mt-5">
-                        We partner with brands to create experiences that drive growth. One of those partners was {slug}
-                    </p>
-                </Container>
-            </section>
-        </div>
-    </main>
-    {Astro.request.url.includes('ref=') && <p>Reference: {new URLSearchParams(Astro.request.url).get('ref')}</p>}
-</Layout>
+<AgencyCaseStudy project={project}/>

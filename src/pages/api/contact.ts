@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import Mailjet from 'node-mailjet';
+import {validateEnquiry, escapeHtml} from '../../lib/enquiry.mjs';
 
 export const POST: APIRoute = async ({ request }) => {
     try {
@@ -18,34 +19,13 @@ export const POST: APIRoute = async ({ request }) => {
             );
         }
 
-        const name = formData.get('name')?.toString();
-        const email = formData.get('email')?.toString();
-        const message = formData.get('message')?.toString();
-
-        console.log('[DEBUG] Form data received:', { name, email, message });
-
-        // Validate required fields
-        if (!name || !email || !message) {
-            return new Response(
-                JSON.stringify({
-                    success: false,
-                    message: 'All fields are required'
-                }),
-                { status: 400, headers: { 'Content-Type': 'application/json' } }
-            );
+        let enquiry;
+        try {
+            enquiry = validateEnquiry(formData);
+        } catch (error) {
+            return new Response(JSON.stringify({success:false, message:error instanceof Error ? error.message : 'Invalid enquiry.'}), {status:400, headers:{'Content-Type':'application/json'}});
         }
-
-        // Validate email format
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            return new Response(
-                JSON.stringify({
-                    success: false,
-                    message: 'Invalid email address'
-                }),
-                { status: 400, headers: { 'Content-Type': 'application/json' } }
-            );
-        }
+        const {name, email, message} = enquiry;
 
         // Get environment variables
         const apiKey = import.meta.env.MAILJET_API_KEY;
@@ -53,14 +33,6 @@ export const POST: APIRoute = async ({ request }) => {
         const recipientEmail = import.meta.env.RECIPIENT_EMAIL || 'info@expresiv.com.au';
         const senderEmail = import.meta.env.SENDER_EMAIL || 'noreply@expresiv.com.au';
         const senderName = import.meta.env.SENDER_NAME || 'Expresiv Contact Form';
-
-        // Debug logging
-        console.log('[DEBUG] Environment check:', {
-            hasApiKey: !!apiKey,
-            hasApiSecret: !!apiSecret,
-            recipientEmail,
-            senderEmail
-        });
 
         // Check if API credentials are configured
         if (!apiKey || !apiSecret) {
@@ -93,7 +65,7 @@ Timestamp: ${new Date().toLocaleString('en-AU', { timeZone: 'Australia/Sydney' }
     `.trim();
 
         // Send email via Mailjet
-        const result = await mailjet
+        await mailjet
             .post('send', { version: 'v3.1' })
             .request({
                 Messages: [
@@ -116,13 +88,13 @@ Timestamp: ${new Date().toLocaleString('en-AU', { timeZone: 'Australia/Sydney' }
                   New Contact Form Submission
                 </h2>
                 <div style="background-color: #f9fafb; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                  <p style="margin: 10px 0;"><strong>Name:</strong> ${name}</p>
-                  <p style="margin: 10px 0;"><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+                  <p style="margin: 10px 0;"><strong>Name:</strong> ${escapeHtml(name)}</p>
+                  <p style="margin: 10px 0;"><strong>Email:</strong> <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></p>
                 </div>
                 <div style="margin: 20px 0;">
                   <p style="margin: 10px 0;"><strong>Message:</strong></p>
                   <div style="background-color: #ffffff; padding: 15px; border-left: 4px solid #3b82f6; border-radius: 4px;">
-                    ${message.replace(/\n/g, '<br>')}
+                    ${escapeHtml(message).replace(/\n/g, '<br>')}
                   </div>
                 </div>
                 <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;">
@@ -136,18 +108,18 @@ Timestamp: ${new Date().toLocaleString('en-AU', { timeZone: 'Australia/Sydney' }
                 ]
             });
 
-        console.log('Email sent successfully:', result.body);
+
 
         return new Response(
             JSON.stringify({
                 success: true,
-                message: 'Thank you! We\'ll get back to you within 24 hours.'
+                message: 'Thank you. Your enquiry has been sent. We’ll be in touch.'
             }),
             { status: 200, headers: { 'Content-Type': 'application/json' } }
         );
 
     } catch (error) {
-        console.error('Error sending email:', error);
+        console.error('Contact email delivery failed.');
 
         return new Response(
             JSON.stringify({

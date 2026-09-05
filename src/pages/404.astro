@@ -1,17 +1,7 @@
 ---
-import Stats from '../components/Stats.astro';
-import Features from '../components/Features.astro';
-import HeroSection2 from '../components/HeroSection2.astro';
-import Layout from '../layouts/Layout.astro';
-import Testimonials from '../components/Testimonials.astro';
-import CallToAction from '../components/CallToAction.astro';
-import Blog from '../components/Blog.astro';
+import AgencyLayout from '../layouts/AgencyLayout.astro';
+export const prerender = true;
 ---
-
-<Layout title="Welcome to Astrolus.">
-	<main class="space-y-40 mb-40">
-		<HeroSection2/>
-		<h3 class="text-2xl text-center"> The page you requested is not found.</h3>
-        <p>If you think this is a mistake, please contact us at info@expresive.com.au</p>
-	</main>
-</Layout>
+<AgencyLayout title="Page not found — Expresiv" showCTA={false}>
+ <section class="wrap page-hero"><span class="eyebrow">404 / A little off course</span><h1>Nothing here.<br/><em>Plenty ahead.</em></h1><p>This page may have moved, or the link may be incorrect.</p><a class="pill" href="/" style="margin-top:30px">Back to the studio <span aria-hidden="true">↗</span></a></section>
+</AgencyLayout>

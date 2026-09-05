@@ -1,0 +1,16 @@
+---
+import {Image} from 'astro:assets';
+import {projectImages} from '../data/project-images';
+import AgencyLayout from '../layouts/AgencyLayout.astro';
+import {projects} from '../data/agency';
+const {project} = Astro.props;
+const next = projects.find(item => item.slug === project.next)!;
+---
+<AgencyLayout title={`${project.name} — Project by Expresiv`} description={project.summary}>
+ <section class="case-hero wrap"><a href="/work" class="breadcrumb">← <span>All work</span></a><div class="case-heading"><h1>{project.name}</h1><span class="case-number" aria-hidden="true">{project.number}</span></div><p class="case-tagline">{project.headline}</p><div class="case-meta"><div><span class="eyebrow">Project scope</span><div class="tags">{project.scope.map((item:string)=><span>{item}</span>)}</div></div><p>{project.summary}</p></div></section>
+ <div class="wrap"><figure class:list={['case-visual', {compact:project.image !== 'webnetwork'}]} style={`--case-color:${project.color}`}><Image src={projectImages[project.image]} alt={project.alt} widths={project.image === 'webnetwork' ? [480,960,1440] : [394]} sizes={project.image === 'webnetwork' ? '(max-width: 760px) calc(100vw - 86px), (max-width: 1536px) calc(100vw - 186px), 1350px' : '(max-width: 500px) calc(100vw - 86px), 394px'} format="webp" quality={85} fetchpriority="high"/><figcaption>{project.name} / {project.category}</figcaption></figure></div>
+ <section class="case-story wrap" data-reveal><h2>The starting point.</h2><p>{project.context}</p></section>
+ <div class="case-chapters wrap"><article data-reveal><h2>01 / The challenge</h2><p>{project.challenge}</p></article><article data-reveal><h2>02 / The approach</h2><p>{project.approach}</p></article><article data-reveal><h2>03 / The work</h2><p>{project.outcome}</p></article></div>
+ {project.detail && <section class="case-detail wrap" data-reveal><Image src={projectImages[project.detail]} alt={project.detailAlt} widths={[360,666]} sizes="(max-width: 760px) calc(100vw - 36px), 50vw" format="webp" quality={85} loading="lazy" decoding="async"/><div><h2>{project.detailTitle}</h2><p>{project.detailCopy}</p></div></section>}
+ <section class="case-next wrap"><div><span class="eyebrow">Keep exploring / Next project</span><h2><a href={`/works/${next.slug}`}>{next.name}</a></h2></div><a href={`/works/${next.slug}`} aria-label={`Next project: ${next.name}`}>↗</a></section>
+</AgencyLayout>

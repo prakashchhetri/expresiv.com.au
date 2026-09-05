@@ -20,6 +20,6 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true,
   },
-  integrations: [tailwind(), react(), sitemap()]
-  // integrations: [tailwind(), react(), sitemap()] adding sitemap is causing build issues. Need to come back to this later on
+  integrations: [tailwind({ applyBaseStyles: false }), react(), sitemap({filter: (page) => !['/index.backup/', '/aceternity-cards/', '/single-page/', '/work-single/', '/moving/'].includes(new URL(page).pathname)})]
+  // Legacy layouts load Tailwind explicitly; agency pages use their own stylesheet.
 });

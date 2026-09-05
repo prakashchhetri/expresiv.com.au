@@ -1,9 +1,11 @@
 ---
+import "@astrojs/tailwind/base.css";
 import AppFooter from "../components/AppFooter.astro";
 import AppHeader from "../components/AppHeader.astro"
 import {Helmet} from 'react-helmet-async';
 import { ViewTransitions } from "astro:transitions";
 import "../styles/global.css";
+const { title = "Expresiv – Premium Digital Solutions for Local Businesses", agency = false, description = "Expresiv designs and develops websites, mobile apps and custom software for Australian businesses." } = Astro.props;
 ---
 
 
@@ -15,8 +17,9 @@ import "../styles/global.css";
 	<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
 	<meta name="generator" content={Astro.generator}/>
 	<meta name="description"
-	      content="Expresiv Designs - Premium digital solutions for local businesses. We build high-converting websites and apps that grow your brand.">
-	<title>Expresiv – Premium Digital Solutions for Local Businesses</title>
+	      content={description}>
+	<title>{title}</title>
+	{['/index.backup', '/aceternity-cards', '/single-page', '/work-single', '/moving'].includes(Astro.url.pathname.replace(/\/$/, '')) && <meta name="robots" content="noindex"/>}
 
 	<meta name="keywords"
 	      content="design agency, website design, brochure design, digital marketing, SEO, search engine optimization, graphic design, branding, logo design, web development, online marketing, content creation, social media marketing"/>
@@ -47,9 +50,9 @@ import "../styles/global.css";
 	<ViewTransitions />
 </head>
 <body class="bg-white dark:bg-gray-900">
-<AppHeader/>
+{!agency && <AppHeader/>}
 <slot/>
-<AppFooter/>
+{!agency && <AppFooter/>}
 <script>
   // @ts-nocheck
   function initializeAnimations() {

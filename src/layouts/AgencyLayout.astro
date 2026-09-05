@@ -1,0 +1,39 @@
+---
+import AgencyCTA from '../components/AgencyCTA.astro';
+import '../styles/agency.css';
+const { title, description = 'Expresiv is an independent Australian studio designing and developing websites, mobile apps and custom software. Explore our work and approach.', showCTA = true } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const canonical = new URL(path, 'https://expresiv.com.au').href;
+const links = [{href:'/work',label:'Work'}, {href:'/services',label:'Expertise'}, {href:'/studio',label:'Studio'}, {href:'/contact',label:'Contact'}];
+const active = (href: string) => path === href || (href === '/work' && path.startsWith('/works/')) || (href === '/services' && path.startsWith('/services/'));
+---
+<!doctype html>
+<html lang="en-AU">
+ <head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{title}</title><meta name="description" content={description}/><link rel="canonical" href={canonical}/>
+  <meta name="theme-color" content="#f7f8f2"/>
+  <meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:type" content="website"/>
+  <meta name="twitter:card" content="summary"/>
+  {path === '/404' && <meta name="robots" content="noindex"/>}
+  <link rel="icon" href="/agency-mark.svg" type="image/svg+xml"/><link rel="sitemap" href="/sitemap-index.xml"/>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17733981254"></script>
+  <script is:inline>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js',new Date()); gtag('config','G-Y1HKE41C83'); gtag('config','AW-17733981254');
+  </script>
+ </head>
+ <body class="agency">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+   <a href="/" class="wordmark" aria-label="Expresiv home">expresiv<span class="brand-dot" aria-hidden="true">.</span></a>
+   <nav class="desktop-nav" aria-label="Main navigation">{links.map((link,i) => <a href={link.href} aria-label={link.label} aria-current={active(link.href) ? 'page' : undefined}><span class="nav-number" aria-hidden="true">0{i+1}</span>{link.label}</a>)}</nav>
+   <a class="header-cta" href="/contact">Start something <span aria-hidden="true">↗</span></a>
+   <details class="mobile-nav"><summary>Menu <span aria-hidden="true">+</span></summary><nav aria-label="Mobile navigation">{links.map(link => <a href={link.href} aria-label={link.label} aria-current={active(link.href) ? 'page' : undefined}>{link.label}<span aria-hidden="true">↗</span></a>)}</nav></details>
+  </header>
+  <main id="main" tabindex="-1"><slot/>{showCTA && <AgencyCTA/>}</main>
+  <footer class="agency-footer wrap"><div class="footer-top"><a href="mailto:info@expresiv.com.au">info@expresiv.com.au ↗</a><span>Independent studio.<br/>Based in Australia. Open to possibility.</span><a href="#main">Back to top ↑</a></div><a class="footer-wordmark" href="/" aria-label="Expresiv home">expresiv<span aria-hidden="true">.</span></a><div class="footer-bottom"><span>© {new Date().getFullYear()} Expresiv</span><span>Design with intent. Develop with care.</span><a href="/contact">Let’s talk ↗</a></div></footer>
+  <script src="../scripts/agency.ts"></script>
+ </body>
+</html>

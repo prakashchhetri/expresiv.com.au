@@ -1,45 +1,10 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import TechStack from "../components/ServicesPage/TechStack.astro";
-import MainCallToAction from "../components/MainCallToAction.astro";
-import OfferSection from "../components/ServicesPage/OfferSection.astro";
-import DesignProcess from "../components/ServicesPage/DesignProcess.astro";
-import BrandingSection from "../components/ServicesPage/BrandingSection.astro";
-import HeroSection from "../components/ServicesPage/HeroSection.astro";
-
+import AgencyLayout from '../layouts/AgencyLayout.astro';
+import {services} from '../data/agency';
+export const prerender = true;
 ---
-
-<Layout title="Welcome to Astrolus.">
-	<main class="space-y-40">
-		<div class="relative" id="home">
-			<div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
-				<div class="blur-[106px] h-32 bg-gradient-to-r from-sky-700 to-sky-700"></div>
-				<div class="blur-[106px] h-32 bg-gradient-to-r from-purple-700 to-fuchsia-600"></div>
-			</div>
-			
-			<!-- BANNER -->
-			<HeroSection
-			title="We help you launch digital products that drive revenue and grow your brand"
-			description="Elevating businesses with expertly designed and executed digital strategies. Expresiv is here to help you conquer the online space one pixel at a time."
-			buttonText="Book a Strategy Call"
-			buttonLink="/contact"
-		/>
-
-			<!-- what we offer -->
-			<OfferSection/>			
-
-			<!-- tech stack -->
-			<TechStack/>
-
-
-			<!-- design process -->
-			<DesignProcess/>
-
-			<!-- BRANDING -->
-			<BrandingSection/>
-
-			<!-- Call to action -->
-			<MainCallToAction/>
-		</div>
-	</main>
-</Layout>
+<AgencyLayout title="Websites, Mobile Apps & Software — Expresiv" description="Website design and development, iOS and Android apps, and custom business software. Explore how Expresiv approaches each discipline.">
+ <section class="wrap page-hero"><span class="eyebrow">02 / Our expertise</span><h1>Thought through.<br/><em>Built to matter.</em></h1><div class="page-intro"><span class="eyebrow">Strategy → Design → Development</span><p>A public face for your business. A product people return to. A platform that makes the day easier. We bring design and development to the same table.</p></div></section>
+ <section class="expertise"><div class="wrap"><div class="section-top"><span class="eyebrow">Three disciplines. One connected approach.</span></div><div class="expertise-intro"><h2>Where your idea<br/><em>takes shape.</em></h2></div>{services.map(service => <a class="service" href={`/services/${service.slug}`}><span class="service-number">{service.number}</span><h3>{service.name}</h3><p>{service.short}</p><span class="service-arrow" aria-hidden="true">↗</span></a>)}</div></section>
+ <section class="wrap delivery" data-reveal><span class="eyebrow">How the work happens</span><h2>No mystery.<br/><em>Just a considered process.</em></h2><div class="principles"><div><span>01 — Get clear</span><p>Understand the people, map the important tasks and agree on the scope. A shared brief gives the project a clear direction.</p></div><div><span>02 — Make it tangible</span><p>Work through structure, visual design and prototypes before turning the experience into working software.</p></div><div><span>03 — Get it ready</span><p>Check the details, prepare the content and plan the handover. Discuss support and improvements as the product evolves.</p></div></div></section>
+</AgencyLayout>
