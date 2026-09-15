@@ -1,5 +1,7 @@
 ---
 import AgencyCTA from '../components/AgencyCTA.astro';
+import Glyph from '../components/Glyph.astro';
+const strip = ['circle','half','square','triangle','ring','diamond'];
 import '../styles/agency.css';
 const { title, description = 'Expresiv is an independent Australian studio designing and developing websites, mobile apps and custom software. Explore our work and approach.', showCTA = true } = Astro.props;
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
@@ -50,6 +52,7 @@ const year = new Date().getFullYear();
     <a href="/services/mobile-apps">Mobile apps</a><a href="/services/custom-software">Custom software</a>
     <a href="/contact">Contact</a>
    </nav>
+   <div class="footer-strip" aria-hidden="true">{Array.from({length:24}, (_, i) => <Glyph kind={strip[i % strip.length]}/>)}</div>
    <a class="footer-wordmark" href="/" aria-label="Expresiv home">expresiv<span aria-hidden="true">.</span></a>
    <div class="footer-bottom"><span>© {year} Expresiv</span><span>Design with intent. Develop with care.</span><a href="/contact">Let’s talk ↗</a></div>
   </footer>

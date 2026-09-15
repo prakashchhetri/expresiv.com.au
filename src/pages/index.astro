@@ -2,8 +2,10 @@
 import AgencyLayout from '../layouts/AgencyLayout.astro';
 import AgencyProjects from '../components/AgencyProjects.astro';
 import StudioSeal from '../components/StudioSeal.astro';
+import Glyph from '../components/Glyph.astro';
 import {services} from '../data/agency';
 export const prerender = true;
+const serviceShapes = ['circle','half','square'];
 const ticker = ['Websites','Mobile apps','Custom software','AI automation','Business systems','Digital marketing'];
 ---
 <AgencyLayout title="Expresiv — Ideas, fully expressed." description="Independent Australian design and development studio. We turn ideas into expressive websites, useful mobile apps and custom software. See our work.">
@@ -21,6 +23,12 @@ const ticker = ['Websites','Mobile apps','Custom software','AI automation','Busi
      <svg class="swash" viewBox="0 0 600 24" preserveAspectRatio="none" aria-hidden="true"><path d="M6 15C104 5 214 20 312 11 400 3 498 17 594 8"/></svg>
     </span>
    </h1>
+   <div class="hero-plate" aria-hidden="true">
+    <div class="plate-cell"><Glyph kind="circle"/></div>
+    <div class="plate-cell"><Glyph kind="quarter"/></div>
+    <div class="plate-cell"><Glyph kind="triangle"/></div>
+    <div class="plate-cell"><Glyph kind="ring"/></div>
+   </div>
   </div>
 
   <div class="hero-intro">
@@ -42,7 +50,7 @@ const ticker = ['Websites','Mobile apps','Custom software','AI automation','Busi
  </div>
 
  <section class="wrap home-work">
-  <div class="rule-row"><span class="eyebrow"><span class="fig">01</span> — Ideas in the world</span><a href="/work" class="text-link">All projects <span aria-hidden="true">↗</span></a></div>
+  <div class="rule-row"><span class="eyebrow"><span class="fig" data-shape="circle">01</span> — Ideas in the world</span><a href="/work" class="text-link">All projects <span aria-hidden="true">↗</span></a></div>
   <div class="section-heading" data-reveal>
    <h2>Different challenges.<br/><em>One considered approach.</em></h2>
    <p>A clearer connection. A stronger presence. Work shaped around what actually matters to the person on the other side of the screen.</p>
@@ -52,17 +60,20 @@ const ticker = ['Websites','Mobile apps','Custom software','AI automation','Busi
 
  <section class="expertise">
   <div class="wrap">
-   <div class="rule-row" style="border-color:var(--pine-line)"><span class="eyebrow"><span class="fig" style="color:#e8b7a4">02</span> — What we bring</span><span class="eyebrow">Thinking + making</span></div>
+   <div class="rule-row" style="border-color:var(--pine-line)"><span class="eyebrow"><span class="fig" data-shape="square" style="color:#e8b7a4">02</span> — What we bring</span><span class="eyebrow">Thinking + making</span></div>
    <div class="expertise-intro" data-reveal>
     <h2>Good on the outside.<br/><em>Great on the inside.</em></h2>
     <p>We connect the story people see with the technology they use — from the first sketch to the final interaction.</p>
    </div>
-   {services.map(service => <a class="service" href={`/services/${service.slug}`}><span class="service-number">{service.number}</span><h3>{service.name}</h3><p>{service.short}</p><span class="service-arrow" aria-hidden="true">↗</span></a>)}
+   {services.map((service, i) => <a class="service" href={`/services/${service.slug}`}><span class="service-number"><Glyph kind={serviceShapes[i]}/>{service.number}</span><h3>{service.name}</h3><p>{service.short}</p><span class="service-arrow" aria-hidden="true">↗</span></a>)}
   </div>
  </section>
 
  <section class="studio-teaser wrap" data-reveal>
-  <span class="eyebrow"><span class="fig">03</span> — A studio with a point of view</span>
+  <div>
+   <span class="eyebrow"><span class="fig" data-shape="triangle">03</span> — A studio with a point of view</span>
+   <div class="shape-stack" aria-hidden="true"><Glyph kind="half"/><Glyph kind="circle"/><Glyph kind="frame"/></div>
+  </div>
   <div>
    <h2>Small enough to care.<br/><em>Curious enough to question.</em></h2>
    <p>We look for the idea inside the brief. Then we design it, build it and work through the details that make it feel right.</p>

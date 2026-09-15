@@ -1,0 +1,17 @@
+---
+// The studio's sign system: one geometric mark per idea. Decorative only.
+const { kind = 'circle', class: className = '', size } = Astro.props;
+const style = size ? `width:${size};height:${size}` : undefined;
+---
+<svg class:list={['glyph', `glyph-${kind}`, className]} viewBox="0 0 40 40" aria-hidden="true" focusable="false" style={style}>
+ {kind === 'circle'   && <circle cx="20" cy="20" r="19"/>}
+ {kind === 'ring'     && <circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-width="3.5"/>}
+ {kind === 'half'     && <path d="M1 21a19 19 0 0 1 38 0z"/>}
+ {kind === 'quarter'  && <path d="M1 39V1a38 38 0 0 1 38 38z"/>}
+ {kind === 'square'   && <rect x="2" y="2" width="36" height="36"/>}
+ {kind === 'frame'    && <rect x="3.5" y="3.5" width="33" height="33" fill="none" stroke="currentColor" stroke-width="3"/>}
+ {kind === 'diamond'  && <path d="M20 1l19 19-19 19L1 20z"/>}
+ {kind === 'triangle' && <path d="M20 2l19 36H1z"/>}
+ {kind === 'cross'    && <path d="M17 1h6v16h16v6H23v16h-6V23H1v-6h16z"/>}
+ {kind === 'dots'     && <g><circle cx="10" cy="10" r="6"/><circle cx="30" cy="10" r="6"/><circle cx="10" cy="30" r="6"/><circle cx="30" cy="30" r="6"/></g>}
+</svg>

@@ -1,6 +1,7 @@
 ---
 import AgencyLayout from '../layouts/AgencyLayout.astro';
 import StudioSeal from '../components/StudioSeal.astro';
+import Glyph from '../components/Glyph.astro';
 export const prerender = true;
 
 const phone = '0433 951 797';
@@ -8,32 +9,32 @@ const phoneHref = 'tel:+61433951797';
 
 const capabilities = [
   {
-    no: '01', name: 'Business automation',
+    no: '01', shape: 'circle', name: 'Business automation',
     copy: 'The quoting, invoicing, rostering and follow-up work that eats an afternoon every week. We map how your business actually runs, then remove the re-typing.',
     tags: ['Workflow mapping', 'Xero & CRM sync', 'Job & quote flows', 'Reporting']
   },
   {
-    no: '02', name: 'AI automation',
+    no: '02', shape: 'ring', name: 'AI automation',
     copy: 'Practical AI, not novelty. Answering the same twelve enquiries, reading invoices and delivery dockets, drafting the first version of a proposal, triaging the inbox.',
     tags: ['Enquiry handling', 'Document extraction', 'Drafting assistants', 'Internal search']
   },
   {
-    no: '03', name: 'Websites',
+    no: '03', shape: 'square', name: 'Websites',
     copy: 'A site that explains what you do, ranks for the searches that matter locally, and makes getting in touch obvious. Built so your team can update it without calling us.',
     tags: ['Design & build', 'Local SEO', 'WordPress & Astro', 'Hosting']
   },
   {
-    no: '04', name: 'Custom software',
+    no: '04', shape: 'triangle', name: 'Custom software',
     copy: 'When the spreadsheet has become the business. Job tracking, bookings, inventory, client portals — built around your process instead of the other way around.',
     tags: ['Internal tools', 'Dashboards', 'Integrations', 'Client portals']
   },
   {
-    no: '05', name: 'Mobile apps',
+    no: '05', shape: 'half', name: 'Mobile apps',
     copy: 'iOS and Android for teams in the field and customers on the move. Works on a patchy signal between Bathurst and Oberon, because that is where it gets used.',
     tags: ['iOS & Android', 'Offline-first', 'Field tools', 'App Store release']
   },
   {
-    no: '06', name: 'Digital marketing',
+    no: '06', shape: 'diamond', name: 'Digital marketing',
     copy: 'Google Business Profile, local search, Google Ads and the tracking that shows which of it produced a phone call. Measured, and cut when it does not work.',
     tags: ['Google Ads', 'Local SEO', 'Analytics', 'Email']
   }
@@ -90,7 +91,7 @@ const jsonLd = {
   <h1 id="local-title">Bathurst businesses,<br/><em>running lighter.</em></h1>
   <div class="local-split">
    <div>
-    <p class="lede">Most businesses around here are not short of work. They are short of hours — lost to quoting by hand, chasing the same information twice and a website that does not bring the phone to life.</p>
+    <p class="lede dropcap">Most businesses around here are not short of work. They are short of hours — lost to quoting by hand, chasing the same information twice and a website that does not bring the phone to life.</p>
     <p class="lede" style="margin-top:20px">We design and build the things that give those hours back: automation, practical AI, websites, custom software, mobile apps and the marketing that feeds them. One studio, one point of contact, based in Bathurst.</p>
     <div class="hero-bottom">
      <a class="pill" href="/contact">Start a conversation <span aria-hidden="true">↗</span></a>
@@ -98,7 +99,7 @@ const jsonLd = {
     </div>
    </div>
    <aside class="local-card">
-    <h2>What a first call covers</h2>
+    <h2><Glyph kind="quarter"/>What a first call covers</h2>
     <ul>
      <li>Where the week actually goes, task by task</li>
      <li>Which jobs a machine should be doing instead</li>
@@ -111,10 +112,10 @@ const jsonLd = {
  </section>
 
  <section class="wrap" style="padding-bottom:var(--shelf)">
-  <div class="rule-row"><span class="eyebrow"><span class="fig">01</span> — What we do here</span><span class="eyebrow">Six disciplines, one team</span></div>
+  <div class="rule-row"><span class="eyebrow"><span class="fig" data-shape="circle">01</span> — What we do here</span><span class="eyebrow">Six disciplines, one team</span></div>
   <div class="capability-grid">
    {capabilities.map(item => <article class="capability" data-reveal>
-    <span class="capability-no">{item.no}</span>
+    <span class="capability-no">{item.no}<Glyph kind={item.shape} class="capability-glyph"/></span>
     <h3>{item.name}</h3>
     <p>{item.copy}</p>
     <div class="capability-tags">{item.tags.map(tag => <span>{tag}</span>)}</div>
@@ -124,20 +125,20 @@ const jsonLd = {
 
  <section class="local-band">
   <div class="wrap">
-   <div class="rule-row" style="border-color:var(--pine-line)"><span class="eyebrow"><span class="fig" style="color:#e8b7a4">02</span> — Why local matters</span><span class="eyebrow">Bathurst / Orange / Lithgow</span></div>
+   <div class="rule-row" style="border-color:var(--pine-line)"><span class="eyebrow"><span class="fig" data-shape="square" style="color:#e8b7a4">02</span> — Why local matters</span><span class="eyebrow">Bathurst / Orange / Lithgow</span></div>
    <h2>We can be at your <em>counter by Tuesday.</em></h2>
    <p>Process work does not survive a video call and a questionnaire. Understanding why the job card gets written twice, or why the quote sits for four days, usually takes standing in the room where it happens. That is a short drive for us and it changes what gets built.</p>
    <div class="local-stats">
-    <div><strong>48hr</strong><span>Every enquiry answered by a person, not a queue</span></div>
-    <div><strong>10 days</strong><span>Typical first launch for a local business site</span></div>
-    <div><strong>1:1</strong><span>You deal with whoever designs and builds it</span></div>
-    <div><strong>0</strong><span>Lock-in contracts. Your accounts, code and data stay yours</span></div>
+    <div><Glyph kind="circle"/><strong>48hr</strong><span>Every enquiry answered by a person, not a queue</span></div>
+    <div><Glyph kind="half"/><strong>10 days</strong><span>Typical first launch for a local business site</span></div>
+    <div><Glyph kind="square"/><strong>1:1</strong><span>You deal with whoever designs and builds it</span></div>
+    <div><Glyph kind="ring"/><strong>0</strong><span>Lock-in contracts. Your accounts, code and data stay yours</span></div>
    </div>
   </div>
  </section>
 
  <section class="wrap" style="padding-block:var(--shelf)">
-  <div class="rule-row"><span class="eyebrow"><span class="fig">03</span> — How it runs</span><span class="eyebrow">Four stages, no mystery</span></div>
+  <div class="rule-row"><span class="eyebrow"><span class="fig" data-shape="triangle">03</span> — How it runs</span><span class="eyebrow">Four stages, no mystery</span></div>
   <div class="section-heading" data-reveal>
    <h2>Straight answers,<br/><em>then the work.</em></h2>
    <p>You will know the scope, the price and the sequence before anything is built. If we think the project is a bad idea, we will tell you that too.</p>
@@ -148,7 +149,7 @@ const jsonLd = {
  </section>
 
  <section class="wrap faq" aria-labelledby="faq-title">
-  <div class="rule-row"><span class="eyebrow"><span class="fig">04</span> — Questions we get asked</span><StudioSeal text="Bathurst NSW · Central West · Independent studio · "/></div>
+  <div class="rule-row"><span class="eyebrow"><span class="fig" data-shape="ring">04</span> — Questions we get asked</span><StudioSeal text="Bathurst NSW · Central West · Independent studio · "/></div>
   <h2 id="faq-title" style="margin:32px 0 24px">The honest <em>answers.</em></h2>
   {faqs.map(item => <details><summary>{item.q}</summary><p>{item.a}</p></details>)}
  </section>
