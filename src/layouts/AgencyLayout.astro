@@ -1,7 +1,5 @@
 ---
 import AgencyCTA from '../components/AgencyCTA.astro';
-import Glyph from '../components/Glyph.astro';
-const strip = ['circle','half','square','triangle','ring','diamond'];
 import '../styles/agency.css';
 const { title, description = 'Expresiv is an independent Australian studio designing and developing websites, mobile apps and custom software. Explore our work and approach.', showCTA = true } = Astro.props;
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
@@ -15,7 +13,7 @@ const year = new Date().getFullYear();
  <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>{title}</title><meta name="description" content={description}/><link rel="canonical" href={canonical}/>
-  <meta name="theme-color" content="#efe9df"/>
+  <meta name="theme-color" content="#0d0c0a"/>
   <meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:type" content="website"/>
   <meta name="twitter:card" content="summary"/>
   {path === '/404' && <meta name="robots" content="noindex"/>}
@@ -27,32 +25,37 @@ const year = new Date().getFullYear();
    window.dataLayer = window.dataLayer || [];
    function gtag(){dataLayer.push(arguments);}
    gtag('js',new Date()); gtag('config','G-Y1HKE41C83'); gtag('config','AW-17733981254');
+   if (!sessionStorage.getItem('expresiv:loaded') && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('will-load');
   </script>
+  <style is:inline>html.will-load body{overflow:hidden}</style>
  </head>
  <body class="agency">
-  <div class="grain" aria-hidden="true"></div>
-  <div class="grid-rules" aria-hidden="true"></div>
+  <div class="loader" aria-hidden="true">
+   <div class="loader-top"><span>Expresiv</span><span>Bathurst NSW — Australia</span><span>Loading</span></div>
+   <div><div class="loader-count">000</div><div class="loader-bar"><i></i></div></div>
+  </div>
+  <div class="cursor" aria-hidden="true"><div class="cursor-dot"></div><div class="cursor-label">View</div></div>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header wrap">
+  <header class="site-header">
    <a href="/" class="wordmark" aria-label="Expresiv home">expresiv<span class="brand-dot" aria-hidden="true">.</span></a>
-   <nav class="desktop-nav" aria-label="Main navigation">{links.map((link,i) => <a href={link.href} aria-label={link.label} aria-current={active(link.href) ? 'page' : undefined}><span class="nav-number" aria-hidden="true">0{i+1}</span>{link.label}</a>)}</nav>
-   <a class="header-cta" href="/contact">Start something <span aria-hidden="true">↗</span></a>
-   <details class="mobile-nav"><summary>Menu <span aria-hidden="true">+</span></summary><nav aria-label="Mobile navigation">{links.map(link => <a href={link.href} aria-label={link.label} aria-current={active(link.href) ? 'page' : undefined}>{link.label}<span aria-hidden="true">↗</span></a>)}</nav></details>
+   <nav class="desktop-nav" aria-label="Main navigation">{links.map((link,i) => <a href={link.href} aria-current={active(link.href) ? 'page' : undefined}><span class="nav-number" aria-hidden="true">0{i+1}</span>{link.label}</a>)}</nav>
+   <div class="header-right">
+    <span class="header-status"><i aria-hidden="true"></i>Bathurst <span data-clock>--:--</span></span>
+    <a class="header-cta" href="/contact">Start a project <span aria-hidden="true">↗</span></a>
+    <details class="mobile-nav"><summary>Menu <span aria-hidden="true">+</span></summary><nav aria-label="Mobile navigation">{links.map(link => <a href={link.href} aria-current={active(link.href) ? 'page' : undefined}>{link.label}<span aria-hidden="true">↗</span></a>)}<a href="/bathurst">Bathurst<span aria-hidden="true">↗</span></a></nav></details>
+   </div>
   </header>
   <main id="main" tabindex="-1"><slot/>{showCTA && <AgencyCTA/>}</main>
-  <footer class="agency-footer wrap">
+  <footer class="agency-footer">
    <div class="footer-top">
-    <a href="mailto:info@expresiv.com.au">info@expresiv.com.au ↗</a>
-    <span>Independent studio.<br/>Bathurst NSW, working Australia-wide.</span>
-    <a href="#main">Back to top ↑</a>
+    <a href="mailto:info@expresiv.com.au" class="text-link">info@expresiv.com.au <span aria-hidden="true">↗</span></a>
+    <span>Independent studio. Bathurst NSW,<br/>working Australia-wide. Local time <span data-clock>--:--</span>.</span>
+    <a href="#main" class="text-link">Back to top <span aria-hidden="true">↑</span></a>
    </div>
    <nav class="footer-links" aria-label="Footer navigation">
-    <a href="/work">Work</a><a href="/services">Expertise</a><a href="/studio">Studio</a>
-    <a href="/bathurst">Bathurst</a><a href="/services/websites">Websites</a>
-    <a href="/services/mobile-apps">Mobile apps</a><a href="/services/custom-software">Custom software</a>
-    <a href="/contact">Contact</a>
+    <a href="/work">Work</a><a href="/services">Expertise</a><a href="/studio">Studio</a><a href="/bathurst">Bathurst</a>
+    <a href="/services/websites">Websites</a><a href="/services/mobile-apps">Mobile apps</a><a href="/services/custom-software">Custom software</a><a href="/contact">Contact</a>
    </nav>
-   <div class="footer-strip" aria-hidden="true">{Array.from({length:24}, (_, i) => <Glyph kind={strip[i % strip.length]}/>)}</div>
    <a class="footer-wordmark" href="/" aria-label="Expresiv home">expresiv<span aria-hidden="true">.</span></a>
    <div class="footer-bottom"><span>© {year} Expresiv</span><span>Design with intent. Develop with care.</span><a href="/contact">Let’s talk ↗</a></div>
   </footer>

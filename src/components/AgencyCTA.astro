@@ -1,14 +1,12 @@
 ---
 import Glyph from './Glyph.astro';
 ---
-<section class="contact-section">
+<section class="contact-section" aria-labelledby="cta-title">
  <div class="contact-geo" aria-hidden="true"><Glyph kind="ring"/><Glyph kind="circle"/><Glyph kind="square"/></div>
- <div class="wrap">
-  <div class="rule-row" style="border-color:#3a352a"><span class="eyebrow">A new chapter starts here</span><span class="eyebrow">Bring your idea. We’ll bring our perspective.</span></div>
-  <a href="/contact" class="contact-title">Let’s make<br/><em>something.</em><span aria-hidden="true">↗</span></a>
-  <div class="contact-bottom">
-   <p>A website. An app. A smarter way of working.</p>
-   <a class="pill" href="/contact">Start a conversation <span aria-hidden="true">↗</span></a>
-  </div>
+ <div class="rule-row"><span class="eyebrow"><i></i>A new chapter starts here</span><span class="eyebrow">Bring your idea. We’ll bring our perspective.</span></div>
+ <a href="/contact" class="contact-title" id="cta-title" data-split>Let’s make<br/><em>something.</em></a>
+ <div class="contact-bottom">
+  <p data-reveal>A website. An app. A smarter way of working. Tell us what you have in mind and we’ll come back within two days.</p>
+  <a class="pill" href="/contact">Start a conversation <span aria-hidden="true">↗</span></a>
  </div>
 </section>

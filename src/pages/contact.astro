@@ -3,9 +3,9 @@ import AgencyLayout from '../layouts/AgencyLayout.astro';
 export const prerender = true;
 ---
 <AgencyLayout title="Start a Project — Expresiv" description="Tell Expresiv about your website, mobile app or software project. Contact our independent Australian design and development studio." showCTA={false}>
- <section class="wrap page-hero"><span class="eyebrow"><span class="fig" data-shape="ring">04</span> — Start a conversation</span><h1>Every idea starts<br/><em>somewhere.</em></h1></section>
- <section class="wrap contact-grid">
-  <div class="contact-aside"><h2>You bring the idea.<br/><em>We’ll ask the questions.</em></h2><p>Tell us what you have in mind. An early idea, a clear brief or a challenge to solve — we’d love to hear it.</p><a class="text-link" href="mailto:info@expresiv.com.au">info@expresiv.com.au ↗</a><span class="eyebrow">Bathurst NSW · Working Australia-wide</span></div>
+ <section class="page-hero"><span class="eyebrow"><span class="fig" data-shape="ring">04</span> — Start a conversation</span><h1 data-split>Every idea starts<br/><em>somewhere.</em></h1></section>
+ <section class="contact-grid">
+  <div class="contact-aside"><h2 data-split>You bring the idea.<br/><em>We’ll ask the questions.</em></h2><p>Tell us what you have in mind. An early idea, a clear brief or a challenge to solve — we’d love to hear it.</p><a class="text-link" href="mailto:info@expresiv.com.au">info@expresiv.com.au ↗</a><span class="eyebrow">Bathurst NSW · Working Australia-wide</span></div>
   <form id="contact-form" action="/api/contact" method="post">
    <label for="name">Your name<input id="name" name="name" autocomplete="name" required maxlength="120" placeholder="Alex Smith"/></label>
    <label for="email">Email address<input id="email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="alex@company.com"/></label>
