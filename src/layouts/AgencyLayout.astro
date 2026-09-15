@@ -6,17 +6,20 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const canonical = new URL(path, 'https://expresiv.com.au').href;
 const links = [{href:'/work',label:'Work'}, {href:'/services',label:'Expertise'}, {href:'/studio',label:'Studio'}, {href:'/contact',label:'Contact'}];
 const active = (href: string) => path === href || (href === '/work' && path.startsWith('/works/')) || (href === '/services' && path.startsWith('/services/'));
+const year = new Date().getFullYear();
 ---
 <!doctype html>
 <html lang="en-AU">
  <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>{title}</title><meta name="description" content={description}/><link rel="canonical" href={canonical}/>
-  <meta name="theme-color" content="#f7f8f2"/>
+  <meta name="theme-color" content="#efe9df"/>
   <meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:type" content="website"/>
   <meta name="twitter:card" content="summary"/>
   {path === '/404' && <meta name="robots" content="noindex"/>}
   <link rel="icon" href="/agency-mark.svg" type="image/svg+xml"/><link rel="sitemap" href="/sitemap-index.xml"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Instrument+Sans:ital,wght@0,400..600;1,400&family=Instrument+Serif:ital@0;1&display=swap"/>
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17733981254"></script>
   <script is:inline>
    window.dataLayer = window.dataLayer || [];
@@ -25,6 +28,8 @@ const active = (href: string) => path === href || (href === '/work' && path.star
   </script>
  </head>
  <body class="agency">
+  <div class="grain" aria-hidden="true"></div>
+  <div class="grid-rules" aria-hidden="true"></div>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header wrap">
    <a href="/" class="wordmark" aria-label="Expresiv home">expresiv<span class="brand-dot" aria-hidden="true">.</span></a>
@@ -33,7 +38,21 @@ const active = (href: string) => path === href || (href === '/work' && path.star
    <details class="mobile-nav"><summary>Menu <span aria-hidden="true">+</span></summary><nav aria-label="Mobile navigation">{links.map(link => <a href={link.href} aria-label={link.label} aria-current={active(link.href) ? 'page' : undefined}>{link.label}<span aria-hidden="true">↗</span></a>)}</nav></details>
   </header>
   <main id="main" tabindex="-1"><slot/>{showCTA && <AgencyCTA/>}</main>
-  <footer class="agency-footer wrap"><div class="footer-top"><a href="mailto:info@expresiv.com.au">info@expresiv.com.au ↗</a><span>Independent studio.<br/>Based in Australia. Open to possibility.</span><a href="#main">Back to top ↑</a></div><a class="footer-wordmark" href="/" aria-label="Expresiv home">expresiv<span aria-hidden="true">.</span></a><div class="footer-bottom"><span>© {new Date().getFullYear()} Expresiv</span><span>Design with intent. Develop with care.</span><a href="/contact">Let’s talk ↗</a></div></footer>
+  <footer class="agency-footer wrap">
+   <div class="footer-top">
+    <a href="mailto:info@expresiv.com.au">info@expresiv.com.au ↗</a>
+    <span>Independent studio.<br/>Bathurst NSW, working Australia-wide.</span>
+    <a href="#main">Back to top ↑</a>
+   </div>
+   <nav class="footer-links" aria-label="Footer navigation">
+    <a href="/work">Work</a><a href="/services">Expertise</a><a href="/studio">Studio</a>
+    <a href="/bathurst">Bathurst</a><a href="/services/websites">Websites</a>
+    <a href="/services/mobile-apps">Mobile apps</a><a href="/services/custom-software">Custom software</a>
+    <a href="/contact">Contact</a>
+   </nav>
+   <a class="footer-wordmark" href="/" aria-label="Expresiv home">expresiv<span aria-hidden="true">.</span></a>
+   <div class="footer-bottom"><span>© {year} Expresiv</span><span>Design with intent. Develop with care.</span><a href="/contact">Let’s talk ↗</a></div>
+  </footer>
   <script src="../scripts/agency.ts"></script>
  </body>
 </html>

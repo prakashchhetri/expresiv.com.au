@@ -1,0 +1,155 @@
+---
+import AgencyLayout from '../layouts/AgencyLayout.astro';
+import StudioSeal from '../components/StudioSeal.astro';
+export const prerender = true;
+
+const phone = '0433 951 797';
+const phoneHref = 'tel:+61433951797';
+
+const capabilities = [
+  {
+    no: '01', name: 'Business automation',
+    copy: 'The quoting, invoicing, rostering and follow-up work that eats an afternoon every week. We map how your business actually runs, then remove the re-typing.',
+    tags: ['Workflow mapping', 'Xero & CRM sync', 'Job & quote flows', 'Reporting']
+  },
+  {
+    no: '02', name: 'AI automation',
+    copy: 'Practical AI, not novelty. Answering the same twelve enquiries, reading invoices and delivery dockets, drafting the first version of a proposal, triaging the inbox.',
+    tags: ['Enquiry handling', 'Document extraction', 'Drafting assistants', 'Internal search']
+  },
+  {
+    no: '03', name: 'Websites',
+    copy: 'A site that explains what you do, ranks for the searches that matter locally, and makes getting in touch obvious. Built so your team can update it without calling us.',
+    tags: ['Design & build', 'Local SEO', 'WordPress & Astro', 'Hosting']
+  },
+  {
+    no: '04', name: 'Custom software',
+    copy: 'When the spreadsheet has become the business. Job tracking, bookings, inventory, client portals — built around your process instead of the other way around.',
+    tags: ['Internal tools', 'Dashboards', 'Integrations', 'Client portals']
+  },
+  {
+    no: '05', name: 'Mobile apps',
+    copy: 'iOS and Android for teams in the field and customers on the move. Works on a patchy signal between Bathurst and Oberon, because that is where it gets used.',
+    tags: ['iOS & Android', 'Offline-first', 'Field tools', 'App Store release']
+  },
+  {
+    no: '06', name: 'Digital marketing',
+    copy: 'Google Business Profile, local search, Google Ads and the tracking that shows which of it produced a phone call. Measured, and cut when it does not work.',
+    tags: ['Google Ads', 'Local SEO', 'Analytics', 'Email']
+  }
+];
+
+const steps = [
+  { no: 'i', title: 'A conversation, on site if you like', copy: 'Bathurst, Orange, Blayney, Oberon, Lithgow — we will come to you. We want to see how the work actually moves through your business before proposing anything.' },
+  { no: 'ii', title: 'A written plan with a number on it', copy: 'Scope, sequence, fixed price and what it depends on from you. No hourly surprises, and no proposal that needs a decoder ring.' },
+  { no: 'iii', title: 'Build in visible stages', copy: 'You see working software early and often, not a six-week silence followed by a reveal. Change your mind while it is still cheap to change.' },
+  { no: 'iv', title: 'Handover that actually hands over', copy: 'Your accounts, your code, your data. Documentation and a walkthrough so the team can run it. Support if you want it, not because you are locked in.' }
+];
+
+const faqs = [
+  { q: 'Do you actually work in Bathurst, or just target the keyword?', a: 'We are based in Bathurst and work across the Central West — Orange, Blayney, Oberon, Kelso, Lithgow and out to Dubbo. We are happy to meet in person, which is usually how these projects start.' },
+  { q: 'What does a project cost?', a: 'A small local business website starts at $499 for a fixed-scope build. Automation and custom software depend entirely on what we find when we map the process, so we quote a fixed price after the first conversation rather than guessing at it now.' },
+  { q: 'Is AI automation worth it for a small business?', a: 'Sometimes, and we will say so when it is not. It earns its place when the same task is repeated often, the inputs are messy, and a human still checks the output. It does not earn its place as a chatbot bolted to a homepage because everyone else has one.' },
+  { q: 'We already have a website. Can you work with it?', a: 'Usually yes. WordPress, Shopify, Squarespace, Webflow or something custom — we will tell you honestly whether it is worth improving or worth replacing, and what each path costs.' },
+  { q: 'Who will I be dealing with?', a: 'The person who designs and builds it. There is no account manager relaying messages to a team you never meet, and nothing is sent offshore.' },
+  { q: 'How long does it take?', a: 'A straightforward local website is typically live in about ten business days once the content is ready. Automation and software projects are staged, with something working in your hands within the first few weeks.' }
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ProfessionalService',
+      '@id': 'https://expresiv.com.au/bathurst#business',
+      name: 'Expresiv — Bathurst',
+      description: 'Business automation, AI automation, website design, custom software, mobile apps and digital marketing for businesses in Bathurst and the Central West NSW.',
+      url: 'https://expresiv.com.au/bathurst',
+      telephone: '+61433951797',
+      email: 'info@expresiv.com.au',
+      address: { '@type': 'PostalAddress', addressLocality: 'Bathurst', addressRegion: 'NSW', addressCountry: 'AU' },
+      areaServed: ['Bathurst', 'Orange', 'Blayney', 'Oberon', 'Kelso', 'Lithgow', 'Central West NSW'].map(name => ({ '@type': 'Place', name }))
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://expresiv.com.au/bathurst#faq',
+      mainEntity: faqs.map(item => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } }))
+    }
+  ]
+};
+---
+<AgencyLayout
+ title="Business & AI Automation, Web, Software and Marketing in Bathurst | Expresiv"
+ description="Bathurst-based studio building business automation, AI automation, websites, custom software, mobile apps and digital marketing for businesses across the Central West NSW.">
+ <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}/>
+
+ <section class="wrap local-hero" aria-labelledby="local-title">
+  <div class="hero-meta">
+   <span class="eyebrow"><i></i>Bathurst NSW / Central West</span>
+   <span class="eyebrow">Est. in the region, not flown in</span>
+  </div>
+  <h1 id="local-title">Bathurst businesses,<br/><em>running lighter.</em></h1>
+  <div class="local-split">
+   <div>
+    <p class="lede">Most businesses around here are not short of work. They are short of hours — lost to quoting by hand, chasing the same information twice and a website that does not bring the phone to life.</p>
+    <p class="lede" style="margin-top:20px">We design and build the things that give those hours back: automation, practical AI, websites, custom software, mobile apps and the marketing that feeds them. One studio, one point of contact, based in Bathurst.</p>
+    <div class="hero-bottom">
+     <a class="pill" href="/contact">Start a conversation <span aria-hidden="true">↗</span></a>
+     <a class="text-link" href={phoneHref}>{phone} <span aria-hidden="true">↗</span></a>
+    </div>
+   </div>
+   <aside class="local-card">
+    <h2>What a first call covers</h2>
+    <ul>
+     <li>Where the week actually goes, task by task</li>
+     <li>Which jobs a machine should be doing instead</li>
+     <li>Whether your site is helping or quietly leaking enquiries</li>
+     <li>A rough number, and whether it is worth doing at all</li>
+    </ul>
+    <a class="pill" href="/contact">Book the call <span aria-hidden="true">↗</span></a>
+   </aside>
+  </div>
+ </section>
+
+ <section class="wrap" style="padding-bottom:var(--shelf)">
+  <div class="rule-row"><span class="eyebrow"><span class="fig">01</span> — What we do here</span><span class="eyebrow">Six disciplines, one team</span></div>
+  <div class="capability-grid">
+   {capabilities.map(item => <article class="capability" data-reveal>
+    <span class="capability-no">{item.no}</span>
+    <h3>{item.name}</h3>
+    <p>{item.copy}</p>
+    <div class="capability-tags">{item.tags.map(tag => <span>{tag}</span>)}</div>
+   </article>)}
+  </div>
+ </section>
+
+ <section class="local-band">
+  <div class="wrap">
+   <div class="rule-row" style="border-color:var(--pine-line)"><span class="eyebrow"><span class="fig" style="color:#e8b7a4">02</span> — Why local matters</span><span class="eyebrow">Bathurst / Orange / Lithgow</span></div>
+   <h2>We can be at your <em>counter by Tuesday.</em></h2>
+   <p>Process work does not survive a video call and a questionnaire. Understanding why the job card gets written twice, or why the quote sits for four days, usually takes standing in the room where it happens. That is a short drive for us and it changes what gets built.</p>
+   <div class="local-stats">
+    <div><strong>48hr</strong><span>Every enquiry answered by a person, not a queue</span></div>
+    <div><strong>10 days</strong><span>Typical first launch for a local business site</span></div>
+    <div><strong>1:1</strong><span>You deal with whoever designs and builds it</span></div>
+    <div><strong>0</strong><span>Lock-in contracts. Your accounts, code and data stay yours</span></div>
+   </div>
+  </div>
+ </section>
+
+ <section class="wrap" style="padding-block:var(--shelf)">
+  <div class="rule-row"><span class="eyebrow"><span class="fig">03</span> — How it runs</span><span class="eyebrow">Four stages, no mystery</span></div>
+  <div class="section-heading" data-reveal>
+   <h2>Straight answers,<br/><em>then the work.</em></h2>
+   <p>You will know the scope, the price and the sequence before anything is built. If we think the project is a bad idea, we will tell you that too.</p>
+  </div>
+  <div class="steps">
+   {steps.map(step => <div data-reveal><span class="step-no">{step.no}</span><h3>{step.title}</h3><p>{step.copy}</p></div>)}
+  </div>
+ </section>
+
+ <section class="wrap faq" aria-labelledby="faq-title">
+  <div class="rule-row"><span class="eyebrow"><span class="fig">04</span> — Questions we get asked</span><StudioSeal text="Bathurst NSW · Central West · Independent studio · "/></div>
+  <h2 id="faq-title" style="margin:32px 0 24px">The honest <em>answers.</em></h2>
+  {faqs.map(item => <details><summary>{item.q}</summary><p>{item.a}</p></details>)}
+ </section>
+</AgencyLayout>

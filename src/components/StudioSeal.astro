@@ -1,0 +1,12 @@
+---
+// A hand-set studio seal. Decorative only, so it stays out of the accessibility tree.
+const { text = 'Expresiv · Independent studio · Bathurst NSW · Australia · ' } = Astro.props;
+const id = `seal-${Math.random().toString(36).slice(2, 8)}`;
+---
+<svg class="seal" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+ <defs><path id={id} d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs>
+ <circle class="seal-ring" cx="60" cy="60" r="52"/>
+ <circle class="seal-ring" cx="60" cy="60" r="30"/>
+ <g class="seal-spin"><text><textPath href={`#${id}`} startOffset="0">{text}{text}</textPath></text></g>
+ <text class="seal-mark" x="60" y="66" text-anchor="middle" style="font-size:19px;letter-spacing:-.04em;font-weight:600">E</text>
+</svg>

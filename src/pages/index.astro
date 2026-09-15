@@ -1,17 +1,72 @@
 ---
 import AgencyLayout from '../layouts/AgencyLayout.astro';
 import AgencyProjects from '../components/AgencyProjects.astro';
+import StudioSeal from '../components/StudioSeal.astro';
 import {services} from '../data/agency';
 export const prerender = true;
+const ticker = ['Websites','Mobile apps','Custom software','AI automation','Business systems','Digital marketing'];
 ---
 <AgencyLayout title="Expresiv — Ideas, fully expressed." description="Independent Australian design and development studio. We turn ideas into expressive websites, useful mobile apps and custom software. See our work.">
  <section class="hero wrap" aria-labelledby="hero-title">
-  <div class="hero-meta"><span class="eyebrow"><i></i>Independent design & development</span><span class="eyebrow">Australia / Open to possibility</span></div>
-  <div class="hero-intro"><p class="hero-kicker">A little imagination.<br/>A lot of intention.</p><p>We give ambitious ideas a digital life.<br/> Websites, mobile apps and software.<br/> Considered from the inside out.</p></div>
-  <h1 id="hero-title"><span class="hero-line">Ideas, fully</span><span class="expression-frame"><span class="expression-word">expressed<span class="expression-period">.</span></span></span></h1>
-  <div class="hero-bottom"><span class="eyebrow">The space between thinking and making.</span><a href="/work" class="text-link">Explore our work <span aria-hidden="true">↓</span></a></div>
+  <div class="hero-meta">
+   <span class="eyebrow"><i></i>Independent design &amp; development</span>
+   <span class="eyebrow">Bathurst NSW / Working Australia-wide</span>
+  </div>
+
+  <div class="hero-masthead">
+   <h1 id="hero-title">
+    <span class="hero-line">Ideas, fully</span>
+    <span class="expression-frame">
+     <span class="expression-word">expressed<span class="expression-period">.</span></span>
+     <svg class="swash" viewBox="0 0 600 24" preserveAspectRatio="none" aria-hidden="true"><path d="M6 15C104 5 214 20 312 11 400 3 498 17 594 8"/></svg>
+    </span>
+   </h1>
+  </div>
+
+  <div class="hero-intro">
+   <p class="hero-kicker">A little imagination.<br/>A lot of intention.</p>
+   <StudioSeal/>
+   <p>We give ambitious ideas a digital life.<br/>Websites, mobile apps and software.<br/>Considered from the inside out.</p>
+  </div>
+
+  <div class="hero-bottom">
+   <span class="eyebrow">The space between thinking and making</span>
+   <a href="/work" class="text-link">Explore our work <span aria-hidden="true">↓</span></a>
+  </div>
  </section>
- <section class="wrap home-work"><div class="section-top"><span class="eyebrow">01 / Ideas in the world</span><a href="/work" class="text-link">All projects <span aria-hidden="true">↗</span></a></div><div class="section-heading" data-reveal><h2>Different challenges.<br/><em>One considered approach.</em></h2><p>A clearer connection. A stronger presence.<br/>Work shaped around what matters.</p></div><AgencyProjects limit={2}/></section>
- <section class="expertise"><div class="wrap"><div class="section-top"><span class="eyebrow">02 / What we bring</span><span class="eyebrow">Thinking + making</span></div><div class="expertise-intro" data-reveal><h2>Good on the outside.<br/><em>Great on the inside.</em></h2><p>We connect the story people see with the technology they use. From the first sketch to the final interaction.</p></div>{services.map(service => <a class="service" href={`/services/${service.slug}`}><span class="service-number">{service.number}</span><h3>{service.name}</h3><p>{service.short}</p><span class="service-arrow" aria-hidden="true">↗</span></a>)}</div></section>
- <section class="studio-teaser wrap" data-reveal><span class="eyebrow">03 / A studio with a point of view</span><div><h2>Small enough to care.<br/><em>Curious enough to question.</em></h2><p>We look for the idea inside the brief. Then we design it, build it and work through the details that make it feel right.</p><a href="/studio" class="text-link">Get to know Expresiv <span aria-hidden="true">↗</span></a></div></section>
+
+ <div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+   {[0,1,2,3].map(() => <div style="display:flex">{ticker.map(item => <span>{item}</span>)}</div>)}
+  </div>
+ </div>
+
+ <section class="wrap home-work">
+  <div class="rule-row"><span class="eyebrow"><span class="fig">01</span> — Ideas in the world</span><a href="/work" class="text-link">All projects <span aria-hidden="true">↗</span></a></div>
+  <div class="section-heading" data-reveal>
+   <h2>Different challenges.<br/><em>One considered approach.</em></h2>
+   <p>A clearer connection. A stronger presence. Work shaped around what actually matters to the person on the other side of the screen.</p>
+  </div>
+  <AgencyProjects limit={2}/>
+ </section>
+
+ <section class="expertise">
+  <div class="wrap">
+   <div class="rule-row" style="border-color:var(--pine-line)"><span class="eyebrow"><span class="fig" style="color:#e8b7a4">02</span> — What we bring</span><span class="eyebrow">Thinking + making</span></div>
+   <div class="expertise-intro" data-reveal>
+    <h2>Good on the outside.<br/><em>Great on the inside.</em></h2>
+    <p>We connect the story people see with the technology they use — from the first sketch to the final interaction.</p>
+   </div>
+   {services.map(service => <a class="service" href={`/services/${service.slug}`}><span class="service-number">{service.number}</span><h3>{service.name}</h3><p>{service.short}</p><span class="service-arrow" aria-hidden="true">↗</span></a>)}
+  </div>
+ </section>
+
+ <section class="studio-teaser wrap" data-reveal>
+  <span class="eyebrow"><span class="fig">03</span> — A studio with a point of view</span>
+  <div>
+   <h2>Small enough to care.<br/><em>Curious enough to question.</em></h2>
+   <p>We look for the idea inside the brief. Then we design it, build it and work through the details that make it feel right.</p>
+   <a href="/studio" class="text-link">Get to know Expresiv <span aria-hidden="true">↗</span></a>
+  </div>
+ </section>
 </AgencyLayout>
