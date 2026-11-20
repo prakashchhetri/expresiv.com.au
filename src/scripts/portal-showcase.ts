@@ -7,6 +7,7 @@ export function mountPortalShowcase(figure: HTMLElement) {
   const plan = figure.querySelector<HTMLElement>('.app-plan')!;
   const usage = figure.querySelector<HTMLElement>('.app-usage')!;
   const gauge = figure.querySelector<SVGSVGElement>('.plan-body svg')!;
+  const bars = figure.querySelector<HTMLElement>('.chart-series')!;
   const chapters = figure.querySelector<HTMLElement>('.chapter-nav')!;
   const buttons = Array.from(chapters.querySelectorAll('button'));
   const featureDetail = figure.querySelector<HTMLElement>('.phone-feature-detail')!;
@@ -19,11 +20,12 @@ export function mountPortalShowcase(figure: HTMLElement) {
   const clamp = (n:number, min:number, max:number) => Math.max(min,Math.min(max,n));
   const ease = (t:number) => t*t*(3-2*t);
 
+  let targetProgress = 0;
   let progress = 0;
   let selected = -1;
   let runway = 0;
-  let pinTop = 0;
-  let planStop = 0;
+  let scrollStart = 0;
+  let planProgress = .5;
   let usageStop = 0;
   let playing = !reduced.matches;
   let visible = true;
@@ -35,21 +37,27 @@ export function mountPortalShowcase(figure: HTMLElement) {
   let roll = reduced.matches ? 0 : -9;
   let handYaw = 0;
   let handPitch = 0;
-  let drag: { id:number; x:number; y:number; yaw:number; pitch:number } | null = null;
+  let drag: { id:number; x:number; y:number; yaw:number; pitch:number; active:boolean } | null = null;
   const tourYaw = () => -24 + 43 * ease(progress) + 4 * Math.sin(phase);
   const tourPitch = () => 9 - 15 * progress + 1.6 * Math.sin(phase);
 
   function drawPhone() {
     rig.style.transform = `rotateX(${pitch.toFixed(2)}deg) rotateY(${yaw.toFixed(2)}deg) rotateZ(${roll.toFixed(2)}deg)`;
   }
+  function chapterAt(position: number) {
+    if (position < planProgress / 2) return 0;
+    return position < (planProgress + 1) / 2 ? 1 : 2;
+  }
+  function chapterPosition(step: number) {
+    return step === 1 ? planProgress : step / 2;
+  }
   function drawApp() {
-    const step = Math.round(progress * 2);
-    const position = playing ? progress : step / 2;
-    const first = ease(Math.min(1, position * 2));
-    const next = ease(Math.max(0, position * 2 - 1));
-    feed.style.transform = `translateY(${-(planStop * first + (usageStop - planStop) * next)}px)`;
-    feed.style.setProperty('--bar-scale', String(playing ? .62 + .38 * next : 1));
-    gauge.style.scale = String(playing ? .9 + .1 * first : 1);
+    const step = chapterAt(progress);
+    feed.style.transform = `translateY(${(-usageStop * progress).toFixed(2)}px)`;
+    const planReveal = ease(clamp(progress / planProgress, 0, 1));
+    const usageReveal = ease(clamp((progress - planProgress) / (1 - planProgress), 0, 1));
+    gauge.style.scale = String(playing ? .9 + .1 * planReveal : 1);
+    bars.style.transform = `scaleY(${playing ? .62 + .38 * usageReveal : 1})`;
     if (step !== selected) {
       selected = step;
       featureDetail.textContent = buttons[step].dataset.summary!;
@@ -58,24 +66,35 @@ export function mountPortalShowcase(figure: HTMLElement) {
   }
   function readScroll() {
     if (!runway || inspector.open) return;
-    progress = clamp((pinTop - track.getBoundingClientRect().top) / runway,0,1);
-    drawApp();
+    targetProgress = clamp((window.scrollY - scrollStart) / runway, 0, 1);
+    if (!playing && visible && chapterAt(targetProgress) !== selected) {
+      progress = chapterPosition(chapterAt(targetProgress));
+      drawApp();
+    }
   }
   function measure() {
     const canPin = !reduced.matches && figure.offsetHeight + 45 < window.innerHeight;
-    track.toggleAttribute('data-scroll-tour',canPin);
-    pinTop = parseFloat(getComputedStyle(figure).top) || 0;
+    track.toggleAttribute('data-scroll-tour', canPin);
+    const pinTop = parseFloat(getComputedStyle(figure).top) || 0;
+    scrollStart = track.getBoundingClientRect().top + window.scrollY - pinTop;
     runway = canPin ? track.offsetHeight - figure.offsetHeight : 0;
-    const lastStop = Math.max(0, feed.offsetHeight - appWindow.clientHeight);
-    planStop = Math.min(lastStop,plan.offsetTop);
-    usageStop = Math.min(lastStop,usage.offsetTop);
+    usageStop = Math.min(Math.max(0, feed.offsetHeight - appWindow.clientHeight), usage.offsetTop);
+    planProgress = usageStop > 0 ? clamp(plan.offsetTop / usageStop, .01, .99) : .5;
     hint.textContent = runway ? 'Scroll to explore · Drag to rotate' : 'Choose a feature · Drag to rotate';
-    if (runway) readScroll();
-    else drawApp();
+    readScroll();
+    drawApp();
   }
   function animate(now: number) {
-    const dt = previousTime ? Math.min((now-previousTime)/1000,.08) : 0;
+    const dt = previousTime ? Math.min((now - previousTime) / 1000, .08) : 0;
     previousTime = now;
+    if (progress !== targetProgress) {
+      // Both the handset and its content sample the same frame, including between wheel ticks.
+      const distance = targetProgress - progress;
+      progress = Math.abs(distance) < .0002
+        ? targetProgress
+        : progress + distance * -Math.expm1(-16 * dt);
+      drawApp();
+    }
     phase += dt * .38;
     const decay = Math.exp(-dt * .44);
     handYaw *= decay;
@@ -93,20 +112,23 @@ export function mountPortalShowcase(figure: HTMLElement) {
   function syncMotion() {
     cancelAnimationFrame(frame);
     previousTime = 0;
-    if (playing && visible && !document.hidden && !drag && !inspector.open) {
+    if (playing && visible && !document.hidden && !drag?.active && !inspector.open) {
       frame = requestAnimationFrame(animate);
     }
     motion.dataset.playing = String(playing);
     motionText.textContent = playing ? 'Pause motion' : 'Play motion';
   }
   function chooseStep(step:number) {
-    const target = step / 2;
+    const target = chapterPosition(step);
     if (runway) {
-      const top = window.scrollY + track.getBoundingClientRect().top - pinTop + runway * target;
+      const top = scrollStart + runway * target;
       window.scrollTo({top, behavior:playing ? 'smooth' : 'instant'});
     } else {
-      progress = target;
-      drawApp();
+      targetProgress = target;
+      if (!playing) {
+        progress = target;
+        drawApp();
+      }
     }
   }
   buttons.forEach((button,i) => button.addEventListener('click', () => chooseStep(i)));
@@ -133,32 +155,57 @@ export function mountPortalShowcase(figure: HTMLElement) {
   });
   window.addEventListener('scroll',readScroll,{passive:true});
   window.addEventListener('resize',measure,{passive:true});
-  new ResizeObserver(measure).observe(figure);
+  const sizes = new ResizeObserver(measure);
+  sizes.observe(figure);
+  sizes.observe(track.closest<HTMLElement>('.phone-hero')!);
   document.fonts.ready.then(measure);
   document.addEventListener('visibilitychange',syncMotion);
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !visible) {
+        progress = playing ? targetProgress : chapterPosition(chapterAt(targetProgress));
+        drawApp();
+      }
       visible = entry.isIntersecting;
       syncMotion();
     }).observe(scene);
   }
   scene.addEventListener('pointerdown', event => {
     if (!event.isPrimary || event.button !== 0) return;
-    drag = {id:event.pointerId,x:event.clientX,y:event.clientY,yaw,pitch};
+    const active = event.pointerType !== 'touch';
+    drag = {id:event.pointerId, x:event.clientX, y:event.clientY, yaw, pitch, active};
+    if (!active) return;
     scene.setPointerCapture(event.pointerId);
     scene.dataset.dragging = '';
     syncMotion();
   });
   scene.addEventListener('pointermove', event => {
     if (!drag || event.pointerId !== drag.id) return;
+    const dx = event.clientX - drag.x;
+    const dy = event.clientY - drag.y;
+    if (!drag.active) {
+      if (Math.max(Math.abs(dx), Math.abs(dy)) < 6) return;
+      if (Math.abs(dy) >= Math.abs(dx)) {
+        drag = null;
+        return;
+      }
+      drag.active = true;
+      drag.yaw = yaw;
+      drag.pitch = pitch;
+      scene.setPointerCapture(event.pointerId);
+      scene.dataset.dragging = '';
+      syncMotion();
+    }
     const scale = 125 / scene.clientWidth;
-    yaw = clamp(drag.yaw+(event.clientX-drag.x)*scale,-62,62);
-    pitch = clamp(drag.pitch-(event.clientY-drag.y)*scale,-27,27);
+    yaw = clamp(drag.yaw + dx * scale, -62, 62);
+    pitch = clamp(drag.pitch - dy * scale, -27, 27);
     drawPhone();
   });
   function endDrag(event:PointerEvent) {
     if (!drag || event.pointerId !== drag.id) return;
+    const wasDragging = drag.active;
     drag = null;
+    if (!wasDragging) return;
     delete scene.dataset.dragging;
     anchor();
     syncMotion();

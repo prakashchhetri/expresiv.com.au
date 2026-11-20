@@ -26,7 +26,7 @@
 .portal-scene[data-dragging] { cursor:grabbing; }
 .portal-scene:focus-visible { outline:2px solid #3a3c73; outline-offset:-4px; border-radius:5px; }
 .device-shadow { position:absolute; width:34%; height:5%; border-radius:50%; left:34%; bottom:-.3%; background:#3e417d77; filter:blur(12px); transform:rotate(-7deg); }
-.portal-rig { position:absolute; height:94%; aspect-ratio: .484; top:50%; left:53%; translate:-50% -50%; transform-style:preserve-3d; transform:rotateX(9deg) rotateY(-24deg) rotateZ(-9deg); pointer-events:none; }
+.portal-rig { position:absolute; height:94%; aspect-ratio: .484; top:50%; left:53%; translate:-50% -50%; transform-style:preserve-3d; will-change:transform; transform:rotateX(9deg) rotateY(-24deg) rotateZ(-9deg); pointer-events:none; }
 .phone-edge,.phone-face { position:absolute; inset:0; border-radius:16% / 7.75%; }
 .phone-edge { background:linear-gradient(135deg,#ded9e8 0%,#9998a6 9%,#6c677b 25%,#cfced8 49%,#555263 75%,#c1bec9 94%); border:1px solid #9a96a6; transform:translateZ(calc((var(--layer) - 9) * 1.2px)); }
 .phone-face { padding:2.35%; border:1px solid #e3e0ed; background:linear-gradient(130deg,#3b3945,#0b0c15 22%,#12121d 76%,#4f4a5d); box-shadow:inset 0 0 0 1px #625e6a; }
@@ -71,7 +71,8 @@
 .usage-heading { align-items:center; justify-content:space-between; }
 .usage-heading span { font-size:3.4em; background:#f2f5fa; border-radius:.6em; padding:.28em .65em; }
 .usage-chart { justify-content:space-around; height:54em; margin-top:6em; align-items:flex-end; background:repeating-linear-gradient(to top,#e8edf1 0 1px,transparent 1px 25%); }
-.usage-chart div { height:100%; width:9%; display:flex; align-items:flex-end; gap:.8em; transform-origin:bottom; transform:scaleY(var(--bar-scale,1)); }
+.chart-series { display:flex; width:100%; height:100%; justify-content:space-around; transform-origin:bottom; }
+.chart-series > div { height:100%; width:9%; display:flex; align-items:flex-end; gap:.8em; }
 .usage-chart i { width:47%; border-radius:1em 1em 0 0; background:#259b90; }
 .usage-chart i+i { background:#3abbe4; }
 .chart-days { justify-content:space-around; margin-top:1em; color:#526178; font-size:3.1em; }

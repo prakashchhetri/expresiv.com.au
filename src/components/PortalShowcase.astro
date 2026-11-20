@@ -45,7 +45,7 @@ const metrics = [
             </div>
             <div class="app-usage">
               <div class="usage-heading"><strong>Internet Usage</strong><span>Week</span></div>
-              <div class="usage-chart">{bars.map(([down,up])=><div><i style={`height:${down}%`}></i><i style={`height:${up}%`}></i></div>)}</div>
+              <div class="usage-chart"><div class="chart-series">{bars.map(([down,up])=><div><i style={`height:${down}%`}></i><i style={`height:${up}%`}></i></div>)}</div></div>
               <div class="chart-days">{['S','M','T','W','T','F','S'].map(day=><span>{day}</span>)}</div>
               <div class="usage-key"><span>Download</span><span>Upload</span></div>
               <div class="usage-grid">{metrics.map(([name,value,symbol])=><div><i>{symbol}</i><b>{name}</b><span>{value}</span></div>)}</div>
