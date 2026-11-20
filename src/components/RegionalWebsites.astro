@@ -1,0 +1,14 @@
+---
+import AgencyLayout from '../layouts/AgencyLayout.astro';
+import PageIntro from './PageIntro.astro';
+const {region, centralWest = false} = Astro.props;
+---
+<AgencyLayout title={`Website design in ${region} — Expresiv`} description={`Custom website design, WordPress development, online stores and local search for businesses in ${region}, NSW.`}>
+  <PageIntro section="Local website development" lead="Websites for" accent={region + '.'} summary={`Help people in ${region} find your services, understand what you offer and get in touch. We design and develop your website around the customers you serve.`}/>
+  <div class="tint"><section class="editorial-split wrap"><h2>What your <em>site needs.</em></h2><div class="copy-rows">
+    <article><h3>Service websites</h3><p>Present the work you do, the areas you cover and how to book. We can build on WordPress so your team can update the details.</p><a class="underlink" href="/services/websites">Website development</a></article>
+    <article><h3>Online stores</h3><p>Bring products, payments and order management together with a shop designed for your catalogue.</p><a class="underlink" href="/services/ecommerce-website-design">E-commerce design</a></article>
+    <article><h3>Local search</h3><p>Structure location pages, business information and contact details so customers can find the right service nearby.</p></article>
+  </div></section></div>
+  <section class="related-strip wrap"><div><p class="overline">{centralWest ? 'Bathurst small businesses' : 'Recent client work'}</p><h2>{centralWest ? 'The $499 website package.' : 'See a website we built.'}</h2></div><a class="underlink" href={centralWest ? '/bathurst-499-website-design' : '/works/osgx'}>{centralWest ? 'See package details' : 'Explore OffshoreGeniX'}</a></section>
+</AgencyLayout>

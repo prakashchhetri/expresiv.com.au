@@ -1,0 +1,11 @@
+---
+const { section, href, lead, accent, summary } = Astro.props;
+---
+<header class="spread-head wrap">
+  <p class="overline"><span class="index-mark" aria-hidden="true"></span>{href ? <a href={href}>{section}</a> : section}</p>
+  <div class="spread-titles">
+    <h1>{lead}{accent && <> <em>{accent}</em></>}</h1>
+    {summary && <p>{summary}</p>}
+  </div>
+  <slot/>
+</header>

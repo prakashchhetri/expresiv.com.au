@@ -1,22 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Container from "../components/Container.astro";
+const destination = new URL('/work', Astro.url);
+destination.search = Astro.url.search;
+return Astro.redirect(destination.pathname + destination.search, 301);
 ---
-
-<Layout>
-    <main class="space-y-40">
-        <div class="relative" id="home">
-            <section class="pt-[150px] md:pt-[200px] md:pb-[150px] pb-[100px] relative">
-                <Container>
-                    <h1 class="lg:leading-relaxed leading-10 text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl">
-                        Works
-                    </h1>
-                    <p class="mb-6 font-normal text-gray-800 dark:text-gray-400 md:text-lg mt-5">
-                        Coming soon
-                    </p>
-                </Container>
-            </section>
-        </div>
-    </main>
-    {Astro.request.url.includes('ref=') && <p>Reference: {new URLSearchParams(Astro.request.url).get('ref')}</p>}
-</Layout> 

@@ -1,17 +1,34 @@
 import assert from 'node:assert/strict';
 import {readFileSync, existsSync, statSync, writeFileSync} from 'node:fs';
 import {join} from 'node:path';
+import {createServer} from 'node:http';
+import {once} from 'node:events';
 import {gzipSync} from 'node:zlib';
 import {load} from 'cheerio';
+// Check server-rendered routes through the same adapter as production.
+async function renderRoute(path, status) {
+ process.env.ASTRO_NODE_AUTOSTART = 'disabled';
+ const {handler} = await import('../dist/server/entry.mjs');
+ const server = createServer(handler).listen(0, '127.0.0.1');
+ try {
+  await once(server, 'listening');
+  const response = await fetch(`http://127.0.0.1:${server.address().port}${path}`);
+  assert.equal(response.status, status, path);
+  return await response.text();
+ } finally {
+  server.close();
+  server.closeAllConnections();
+ }
+}
 const root = 'dist/client';
 const routes = ['/', '/work', '/services', '/studio', '/contact', '/services/websites', '/services/mobile-apps', '/services/custom-software', '/works/web-networks', '/works/osgx', '/works/beauty-and-nails', '/404'];
 const titles = new Set();
 let links = 0, images = 0;
 const fullSizeAssets = new Set();
+const runtimeLinks = new Set();
 const measurements = [];
 for (const route of routes) {
- const file = route === '/404' ? join(root,'404.html') : join(root,route,'index.html');
- const html = readFileSync(file,'utf8');
+ const html = route === '/404' ? await renderRoute('/missing-page-for-check', 404) : readFileSync(join(root,route,'index.html'),'utf8');
  const $ = load(html);
  assert.equal($('main').length,1,`${route}: one main landmark`);
  assert.equal($('h1').length,1,`${route}: one h1`);
@@ -29,7 +46,7 @@ for (const route of routes) {
   if (href.startsWith('#')) assert(ids.has(href.slice(1)),`${route}: missing anchor ${href}`);
   else if (href.startsWith('/')) {
    const path = href.split(/[?#]/)[0];
-   assert(existsSync(join(root,path,'index.html')) || existsSync(join(root,path)),`${route}: unresolved local link ${href}`);
+   if (!existsSync(join(root,path,'index.html')) && !existsSync(join(root,path))) runtimeLinks.add(path);
   }
   links++;
  });
@@ -54,6 +71,7 @@ for (const route of routes) {
  measurements.push({route,htmlBytes:Buffer.byteLength(html),cssGzipBytes:cssGzip,localJavaScriptGzipBytes:jsGzip+gzipSync(inlineJS).length});
  console.log(`PASS ${route}`);
 }
+for (const path of runtimeLinks) await renderRoute(path, 200);
 const $contact = load(readFileSync(join(root,'contact/index.html'),'utf8'));
 assert.equal($contact('#contact-form').attr('action'),'/api/contact');
 assert.equal($contact('#contact-form').attr('method'),'post');

@@ -1,134 +1,29 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import MainCallToAction from "../../components/MainCallToAction.astro";
-import Container from "../../components/Container.astro";
-import WhyExpresive from "../../components/SingleService/WhyExpresive.astro";
-import "../../styles/index.css";
+import AgencyLayout from '../../layouts/AgencyLayout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import services from '../../data/services.json';
 
-import services from "../../data/services.json";
-import TypesOfWebsite from "../../components/SingleService/TypesOfWebsite.astro";
-
-export async function getStaticPaths() {
-  return services.map((service) => ({
-    params: { slug: service.slug },
-    props: { service },
-  }));
+export const prerender = true;
+export function getStaticPaths() {
+  return services.map(service => ({ params: { slug: service.slug }, props: { service } }));
 }
-
-const { slug } = Astro.params;
-const currentService = services.find((s) => s.slug === slug);
-
-if (!currentService) {
-  return Astro.rewrite('/404');
-}
-
-const {
-  bg1,
-  bg2,
-  title,
-  description,
-  image,
-  features,
-  services: serviceList,
-  serviceImg,
-  serviceTitle,
-  typesOfWebsites
-} = currentService;
+const { service } = Astro.props;
+const descriptions: Record<string, string> = {
+  'ai-solutions': 'AI assistants and automation',
+  'ui-ux': 'Interface and experience design',
+  'dental-clinic-design': 'Dental clinic websites',
+  'cleaning-company-website-design': 'Cleaning company websites',
+  'sydney-based-website': 'Sydney website design',
+  'ecommerce-website-design': 'E-commerce websites'
+};
+const name = descriptions[service.slug] || service.title;
 ---
-
-<Layout>
-  <main class="space-y-40">
-    <div class="relative" id="home">
-      <div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
-        <div class={`blur-[106px] h-32 ${bg1}`}></div>
-        <div class={`blur-[106px] h-32 ${bg2}`}></div>
-      </div>
-
-      <!-- Hero Section -->
-      <section class="relative pt-[200px] pb-[120px]">
-        <Container>
-          <div class="flex flex-col md:flex-row items-center gap-5 md:gap-20">
-            <div class="w-[100%]">
-              <h1 class="lg:leading-relaxed leading-10 text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl w-[60%]">
-                {title}
-              </h1>
-              <p class="mb-6 font-normal text-gray-800 dark:text-gray-400 md:text-lg mt-5">
-                {description}
-              </p>
-              <div class="flex">
-                <a href="/" class="relative flex h-12 items-center justify-center px-8 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max">
-                  <span class="relative text-sm font-semibold text-white">Quick Quote</span>
-                </a>
-              </div>
-            </div>
-            {image && (
-              <div class="w-[335px]">
-                <img src={image} alt={title} class="m-auto" />
-              </div>
-            )}
-          </div>
-        </Container>
-      </section>
-
-      <!-- Features Section -->
-      <section class="relative pb-[120px] z-10">
-        <Container>
-          {features && features.length > 0 && (
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pb-[150px]">
-              <div class="w-[70%]">
-                <h3 class="text-3xl text-gray-900 dark:text-white font-bold">Why {title}?</h3>
-              </div>
-              <div>
-                <ul class="tick-list mt-6">
-                  {features.map(feature => (
-                    <li key={feature.title}>
-                      <img src='/images/tick.svg' alt="tick" />
-                      <div>
-                        {feature.title && (
-                          <div class="text-lg font-medium">{feature.title}</div>
-                        )}
-                        <p class="mt-[10px]">{feature.description}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          )}
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="service-content">
-              <h2>{serviceTitle}</h2>
-              {serviceList.map(service => (
-                <div class="service-box" key={service.title}>
-                  <div class="icon-wrap">
-                    <img src={service.icon} alt={service.title} />
-                  </div>
-                  <h4>{service.title}</h4>
-                  <p>{service.description}</p>
-                </div>
-              ))}
-            </div>
-            {serviceImg && (
-              <div>
-                <img src={serviceImg} alt={serviceTitle} class="img-fluid sticky-img" />
-              </div>
-            )}
-          </div>
-        </Container>
-      </section>
-
-      <!-- TYPES -->
-      {typesOfWebsites && typesOfWebsites.length > 0 && (
-        <TypesOfWebsite typesOfWebsites={typesOfWebsites} />
-        )
-      }
-
-      <!-- Why Section -->
-      <WhyExpresive />
-
-      <!-- Call to Action -->
-      <MainCallToAction />
-    </div>
-  </main>
-</Layout>
+<AgencyLayout title={`${name} — Expresiv`} description={service.metaDescription || service.description}>
+  <PageIntro section="All expertise" href="/services" lead={name} summary={service.description}/>
+  <section class="tint resource-section"><div class="wrap">
+    <h2 class="resource-title">What we can <em>deliver.</em></h2>
+    <div class="resource-grid">{service.services.map(item => <article class="resource-card"><h3>{item.title}</h3><p>{item.description}</p></article>)}</div>
+  </div></section>
+  {service.features?.length > 0 && <section class="editorial-split wrap"><h2>Working with <em>your team.</em></h2><div class="copy-rows">{service.features.map(item => <article>{item.title && <h3>{item.title}</h3>}<p>{item.description}</p></article>)}</div></section>}
+  {service.typesOfWebsites && <section class="resource-section wrap"><h2 class="resource-title">Website types</h2><div class="resource-grid">{service.typesOfWebsites.map(item => <article class="resource-card"><h3>{item.title}</h3><p>{item.description}</p><a class="underlink" href={item.link}>Explore {item.title}</a></article>)}</div></section>}
+</AgencyLayout>

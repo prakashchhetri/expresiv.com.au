@@ -1,0 +1,83 @@
+---
+import WebNetworksDashboard from './WebNetworksDashboard.astro';
+import '../styles/portal-showcase.css';
+const caseUrl = '/works/web-networks';
+const mobileScreen = '/images/web-networks-mobile-screen.webp';
+const steps = [
+  { label:'Account', summary:'The account overview shows the customer’s Wi-Fi and router shortcuts.' },
+  { label:'Internet plan', summary:'The internet plan has 12 days remaining out of 30, with an advance payment shortcut.' },
+  { label:'Data usage', summary:'Weekly upload and download bars sit above usage totals, including 230 GB used.' }
+];
+const bars = [[74,15],[96,12],[60,17],[53,12],[70,14],[80,9],[88,25]];
+const metrics = [
+  ['Download', '206.86 Mbps', '↓'], ['Upload', '217.10 Mbps', '↑'],
+  ['Total usage', '230 GB', '⇅'], ['Duration', '55hrs 22min', '◷']
+];
+---
+<figure class="portal-showcase" aria-label="Web Networks mobile customer portal">
+  <div class="portal-card">
+    <div class="signal-rings" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="portal-heading">
+      <div><a href={caseUrl}>Web Networks</a><p>Mobile customer portal</p></div>
+      <button type="button" class="inspect-button" aria-haspopup="dialog" hidden><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8V3h5m4 0h5v5m0 4v5h-5m-4 0H3v-5"/></svg> Inspect</button>
+    </div>
+    <div class="portal-scene" aria-describedby="phone-feature-detail" role="img" aria-label="An iPhone displaying the Web Networks customer’s account, internet plan and usage">
+      <div class="device-shadow" aria-hidden="true"></div>
+      <div class="portal-rig" aria-hidden="true">
+        {Array.from({length:9}, (_,i) => <div class="phone-edge" style={`--layer:${i}`}></div>)}
+        <i class="side-key mute"></i><i class="side-key volume-up"></i><i class="side-key volume-down"></i><i class="side-key power"></i>
+        <div class="phone-face"><div class="phone-glass">
+          <div class="app-status"><span>9:27</span><i class="camera-island"></i><svg viewBox="0 0 50 13" fill="currentColor"><path d="M1 12V9h2v3zm4 0V7h2v5zm4 0V4h2v8zm4 0V1h2v11zM19 4q6-6 12 0l-2 2q-4-4-8 0zm3 3q3-3 6 0l-3 4z"/><rect x="34" y="3" width="13" height="7" rx="2" fill="none" stroke="currentColor"/><rect x="36" y="5" width="9" height="3" rx=".8"/><path d="M48 5h1v3h-1z"/></svg></div>
+          <div class="app-window"><div class="app-feed">
+            <div class="app-account">
+              <div class="app-avatar">SS<i></i></div>
+              <strong>Welcome back, Sam <span>👋</span></strong>
+              <div class="app-shortcuts"><span><b>⌁</b>Wi-Fi</span><span><b>⏻</b>Restart router</span></div>
+            </div>
+            <div class="app-plan">
+              <div class="app-plan-card">
+                <strong>My Internet Plan</strong>
+                <div class="plan-body"><div><b>12 days</b><small>remaining out of 30</small></div>
+                  <svg viewBox="0 0 60 60"><circle class="ring-track" cx="30" cy="30" r="25"/><circle class="ring-fill" cx="30" cy="30" r="25" pathLength="100"/><text x="30" y="34">12</text></svg>
+                </div>
+                <span class="pay-chip">Pay Advance</span>
+              </div>
+            </div>
+            <div class="app-usage">
+              <div class="usage-heading"><strong>Internet Usage</strong><span>Week</span></div>
+              <div class="usage-chart">{bars.map(([down,up])=><div><i style={`height:${down}%`}></i><i style={`height:${up}%`}></i></div>)}</div>
+              <div class="chart-days">{['S','M','T','W','T','F','S'].map(day=><span>{day}</span>)}</div>
+              <div class="usage-key"><span>Download</span><span>Upload</span></div>
+              <div class="usage-grid">{metrics.map(([name,value,symbol])=><div><i>{symbol}</i><b>{name}</b><span>{value}</span></div>)}</div>
+            </div>
+          </div></div>
+          <div class="app-homebar"><i></i></div>
+        </div></div>
+      </div>
+    </div>
+    <p class="phone-feature-detail" id="phone-feature-detail" role="status">{steps[0].summary}</p>
+    <div class="chapter-nav" role="group" aria-label="Explore app features" hidden>
+      {steps.map((step,i)=><button type="button" data-step={i} data-summary={step.summary} aria-pressed={i===0 ? 'true' : 'false'}>{step.label}</button>)}
+    </div>
+  </div>
+  <dialog class="portal-inspector" aria-labelledby="portal-inspector-title">
+    <div class="inspector-head"><div><p>Web Networks</p><h2 id="portal-inspector-title">Customer portal</h2></div><button type="button" class="inspector-close" aria-label="Close screen inspector" autofocus>×</button></div>
+    <div class="screen-picker" role="group" aria-label="Choose a portal screen">
+      <button type="button" data-screen="mobile" aria-pressed="true">Mobile account</button>
+      <button type="button" data-screen="desktop" aria-pressed="false">Desktop dashboard</button>
+    </div>
+    <div class="inspector-display" data-view="mobile" role="region" aria-label="Portal screen detail">
+      <div class="inspector-mobile"><img src={mobileScreen} width="226" height="494" alt="Mobile portal with 12 days remaining on the internet plan, Pay Advance and data usage for the week"/></div>
+      <div class="inspector-desktop" hidden><WebNetworksDashboard/></div>
+    </div>
+    <p class="screen-pan-hint" hidden>Swipe across to see the whole dashboard.</p>
+    <a class="inspector-case" href={caseUrl}>View the project</a>
+  </dialog>
+  <figcaption class="portal-caption"><span class="portal-hint"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2v15m-5-5 5 5 5-5"/></svg><span>Mobile app preview</span></span>
+    <button type="button" class="portal-motion" hidden><span aria-hidden="true"></span><span class="motion-text">Pause motion</span></button>
+  </figcaption>
+</figure>
+<script>
+  import { mountPortalShowcase } from '../scripts/portal-showcase';
+  document.querySelectorAll<HTMLElement>('.portal-showcase').forEach(mountPortalShowcase);
+</script>

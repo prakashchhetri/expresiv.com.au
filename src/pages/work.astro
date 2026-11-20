@@ -1,9 +1,34 @@
 ---
 import AgencyLayout from '../layouts/AgencyLayout.astro';
 import AgencyProjects from '../components/AgencyProjects.astro';
+import PageIntro from '../components/PageIntro.astro';
 export const prerender = true;
+const categories = [['all', 'All work'], ['platforms','Platforms & apps'], ['websites','Websites'], ['identity','Visual direction']];
 ---
 <AgencyLayout title="Selected Work — Expresiv" description="Explore Expresiv’s Web Networks customer platform, OffshoreGeniX website and Beauty & Nails visual direction.">
- <section class="page-hero"><span class="eyebrow"><span class="fig">01</span> — Selected work</span><h1 data-split>Ideas out<br/><em>in the world.</em></h1><div class="page-intro"><span class="eyebrow">Selected projects <span class="fig">01—03</span></span><p data-reveal>Different businesses. Different needs. A collection of digital experiences and visual directions, each with its own point of view.</p></div></section>
- <section class="portfolio" aria-label="Project portfolio"><div class="work-filters" role="group" aria-label="Filter projects" hidden><button data-filter="all" aria-pressed="true">All work <span>03</span></button><button data-filter="websites" aria-pressed="false">Websites</button><button data-filter="platforms" aria-pressed="false">Platforms & apps</button><button data-filter="identity" aria-pressed="false">Visual direction</button></div><p class="sr-only" role="status" data-filter-status>3 projects shown</p><h2 class="sr-only">Projects</h2><AgencyProjects/></section>
+  <PageIntro section="Portfolio" lead="Selected" accent="work." summary="A customer portal, an agency website and a beauty brand study. See the decisions behind each project."/>
+  <section class="catalogue tint" aria-label="Project portfolio">
+    <div class="wrap">
+      <div class="work-filters" role="group" aria-label="Filter projects" hidden>{categories.map(([id, label]) => <button data-filter={id} aria-pressed={id === 'all' ? 'true' : 'false'}>{label}</button>)}</div>
+      <p class="sr-only" role="status" data-filter-status>3 projects shown</p>
+      <AgencyProjects/>
+    </div>
+  </section>
 </AgencyLayout>
+<script>
+  const filters = document.querySelector<HTMLElement>('.work-filters')!;
+  const cards = document.querySelectorAll<HTMLElement>('[data-category]');
+  const status = document.querySelector<HTMLElement>('[data-filter-status]')!;
+  filters.hidden = false;
+  filters.querySelectorAll<HTMLButtonElement>('button').forEach(button => {
+    button.addEventListener('click', () => {
+      filters.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+      let count = 0;
+      cards.forEach(card => {
+        card.hidden = button.dataset.filter !== 'all' && card.dataset.category !== button.dataset.filter;
+        if (!card.hidden) count++;
+      });
+      status.textContent = `${count} ${count === 1 ? 'project' : 'projects'} shown`;
+    });
+  });
+</script>

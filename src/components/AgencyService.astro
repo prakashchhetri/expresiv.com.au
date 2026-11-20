@@ -1,12 +1,21 @@
 ---
 import AgencyLayout from '../layouts/AgencyLayout.astro';
-import {projects} from '../data/agency';
-const {service} = Astro.props;
+import PageIntro from './PageIntro.astro';
+import { Image } from 'astro:assets';
+import { projectImages } from '../data/project-images';
+import { projects } from '../data/agency';
+const { service } = Astro.props;
 const project = projects.find(item => item.slug === service.project)!;
 ---
 <AgencyLayout title={`${service.name} — Design & Development by Expresiv`} description={service.description}>
- <section class="page-hero"><a href="/services" class="breadcrumb">← <span>All expertise</span></a><h1>{service.name}<br/><em>with intent.</em></h1><div class="page-intro"><span class="eyebrow">E—{service.number} / {service.phrase}</span><p>{service.description}</p></div></section>
- <section class="service-detail" data-reveal><h2>What we can<br/><em>build together.</em></h2><ul class="deliverables">{service.deliverables.map((item:string,i:number)=><li><span>0{i+1}</span>{item}</li>)}</ul></section>
- <section class="service-detail" data-reveal><h2>It starts with<br/><em>better questions.</em></h2><ol class="question-list">{service.questions.map((item:string)=><li>{item}</li>)}</ol></section>
- <section class="related-work"><span class="eyebrow">A related project</span><div class="section-heading"><h2>{project.name}</h2><p>{project.summary}</p></div><a href={`/works/${project.slug}`} class="text-link">Explore the project <span aria-hidden="true">↗</span></a></section>
+  <PageIntro section="All expertise" href="/services" lead={service.name.split(' ').slice(0,-1).join(' ')} accent={service.name.split(' ').at(-1) + '.'} summary={service.description}/>
+  <section class="tint"><div class="wrap editorial-split">
+    <div><p class="overline"><span class="index-mark" aria-hidden="true"></span>Scope</p><h2>What’s <em>involved.</em></h2></div>
+    <ul class="scope-list">{service.deliverables.map((item: string) => <li>{item}</li>)}</ul>
+  </div></section>
+  <section class="wrap editorial-split">
+    <div><h2>Before we <em>build.</em></h2></div>
+    <ul class="question-rows">{service.questions.map((item: string) => <li>{item}</li>)}</ul>
+  </section>
+  <div class="tint"><section class="wrap related-project"><a href={`/works/${project.slug}`} aria-label={`View ${project.name} project`} style={`--plate:${project.color}`}><Image src={projectImages[project.image]} alt={project.alt} widths={[394,800]} sizes="(max-width: 680px) 90vw, 42vw" format="webp" loading="lazy"/></a><div><p class="overline">Related work</p><h2>{project.name}</h2><p>{project.summary}</p><a class="underlink" href={`/works/${project.slug}`}>Read the case study</a></div></section></div>
 </AgencyLayout>

@@ -1,15 +1,143 @@
 ---
 import AgencyLayout from '../layouts/AgencyLayout.astro';
-import {services} from '../data/agency';
-import Glyph from '../components/Glyph.astro';
+import { Image } from 'astro:assets';
+import { services } from '../data/agency';
+import specialistServices from '../data/services.json';
+import { projectImages } from '../data/project-images';
 export const prerender = true;
-const serviceShapes = ['circle','half','square'];
+
+const practices = [
+  {
+    ...services[2], project: 'Web Networks', caseSlug: 'web-networks', image: 'webnetwork',
+    use: 'Customer portal', alt: 'Web Networks customer dashboard and account screen on a laptop and phone',
+    copy: 'Connect the information your team needs in one place. We build portals, dashboards and integrations around the steps people take to get a job done.',
+    example: 'One account for plans, usage and payments.'
+  },
+  {
+    ...services[1], project: 'Web Networks', caseSlug: 'web-networks', image: 'appnet',
+    use: 'Mobile workflow', alt: 'Web Networks mobile lead directory with search, status filters and calling actions',
+    copy: 'Put the job in someone’s hand. We design the key flows, prototype them on a phone, then build and test the app for iOS and Android.',
+    example: 'A searchable lead list with contact actions close at hand.'
+  },
+  {
+    ...services[0], project: 'OffshoreGeniX', caseSlug: 'osgx', image: 'work3',
+    use: 'Agency website', alt: 'OffshoreGeniX website on a tilted tablet stand',
+    copy: 'Help customers find the right service and take the next step. Your team gets an editable website and a clear handover when it launches.',
+    example: 'Service pages and enquiries in an editable WordPress site.'
+  }
+];
 ---
-<AgencyLayout title="Websites, Mobile Apps & Software — Expresiv" description="Website design and development, iOS and Android apps, and custom business software. Explore how Expresiv approaches each discipline.">
- <section class="page-hero"><span class="eyebrow"><span class="fig" data-shape="square">02</span> Our expertise</span><h1 data-split>Thought through.<br/><em>Built to matter.</em></h1><div class="page-intro"><span class="eyebrow">Strategy → Design → Development</span><p data-reveal>A public face for your business. A product people return to. A platform that makes the day easier. We bring design and development to the same table.</p></div></section>
- <section class="expertise">
-  <div class="expertise-pin"><span class="eyebrow">Three disciplines. One connected approach.</span><h2 data-split>Where your idea<br/><em>takes shape.</em></h2></div>
-  <div>{services.map((service, i) => <a class="service" href={`/services/${service.slug}`}><span class="service-number"><Glyph kind={serviceShapes[i]}/>{service.number}</span><h3 data-split>{service.name}</h3><p>{service.short}</p><span class="service-arrow" aria-hidden="true">↗</span></a>)}</div>
- </section>
- <section class="delivery panel-bone"><span class="eyebrow"><span class="fig" data-shape="triangle">03</span> How the work happens</span><h2 data-split>No mystery.<br/><em>Just a considered process.</em></h2><div class="principles stagger"><div data-reveal><span>01 — Get clear</span><h3>Understand first</h3><p>Understand the people, map the important tasks and agree on the scope. A shared brief gives the project a clear direction.</p></div><div data-reveal><span>02 — Make it tangible</span><h3>Design, then prototype</h3><p>Work through structure, visual design and prototypes before turning the experience into working software.</p></div><div data-reveal><span>03 — Get it ready</span><h3>Ship and hand over</h3><p>Check the details, prepare the content and plan the handover. Discuss support and improvements as the product evolves.</p></div></div></section>
+<AgencyLayout title="Software, Mobile Apps & Websites — Expresiv Expertise" description="Explore what Expresiv builds through real examples of custom software, mobile workflows and websites, and see how we take a brief into development.">
+  <section class="practice wrap" aria-labelledby="practice-title">
+    <div class="practice-head">
+      <p class="overline"><span class="spark" aria-hidden="true">✳</span>Our expertise</p>
+      <h1 id="practice-title">What we <em>build<span>.</span></em></h1>
+      <p>Software for the people running your business and the customers on the other side of the screen.</p>
+    </div>
+    <div class="practice-browser">
+      <div class="practice-picker" aria-label="Explore a discipline">
+        {practices.map((p,i) => <a class="practice-choice" id={`choice-${p.slug}`} href={`/services/${p.slug}`} data-practice={p.slug} data-current={i === 0 ? 'true' : undefined}>
+          <span class="choice-dot" aria-hidden="true"></span>{p.name}
+        </a>)}
+      </div>
+      {practices.map((p,i) => <div class="practice-info" id={`practice-${p.slug}`} hidden={i !== 0}>
+        <p>{p.copy}</p>
+        <a href={`/services/${p.slug}`} class="underlink">Explore {p.name.toLowerCase()}</a>
+      </div>)}
+    </div>
+    <div class="practice-display">
+      {practices.map((p,i) => <figure class:list={['practice-figure',`practice-${p.image}`]} data-project={p.slug} hidden={i !== 0}>
+        <div class="practice-stage">
+          <div class="stage-grid" aria-hidden="true"></div>
+          <button class="inspect-control" type="button" hidden data-inspect={p.slug} aria-label={`Inspect ${p.use.toLowerCase()}`}>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 8V3h5m4 0h5v5m0 4v5h-5m-4 0H3v-5"/></svg>Inspect
+          </button>
+          <div class="stage-title"><span class="stage-dot" aria-hidden="true"></span>{p.use}</div>
+          <Image src={projectImages[p.image]} alt={p.alt} widths={i === 0 ? [640,960,1440] : i === 1 ? [360,666] : [394]} sizes="(max-width: 730px) 92vw, 57vw" format="webp" quality={90} loading={i === 0 ? 'eager' : 'lazy'}/>
+        </div>
+        <figcaption>
+          <div><h2>{p.project}</h2><p>{p.example}</p></div>
+          <a class="underlink" href={`/works/${p.caseSlug}`}>Case study</a>
+        </figcaption>
+      </figure>)}
+    </div>
+  </section>
+  <dialog class="project-inspector" aria-labelledby="inspect-name">
+    <div class="inspector-top"><div><p class="overline" data-inspect-category></p><h2 id="inspect-name"></h2></div><button type="button" class="inspector-close" autofocus>Close</button></div>
+    <div class="inspector-media"></div><p class="inspector-caption"></p>
+  </dialog>
+  <div class="tint"><section class="editorial-split wrap">
+    <div><p class="overline"><span class="index-mark" aria-hidden="true"></span>Process</p><h2>From brief<br/>to <em>handover.</em></h2></div>
+    <div class="copy-rows">
+      <article><h3>Agree on the job</h3><p>We map the people, tasks and systems involved, then agree on scope and what a successful first release needs to do.</p></article>
+      <article><h3>Try a working version</h3><p>Review the flows and prototype early. Use each build to work through the details with the people who will use it.</p></article>
+      <article><h3>Launch with your team</h3><p>Test the release, document the decisions and walk your team through managing it. Your accounts, code and data stay yours.</p></article>
+    </div>
+  </section></div>
+  <section class="directory wrap">
+    <details><summary>Browse specialist services<span aria-hidden="true">+</span></summary>
+      <nav aria-label="Specialist services">{specialistServices.map(service => <a href={`/services/${service.slug}`}>{service.title}</a>)}</nav>
+    </details>
+  </section>
 </AgencyLayout>
+<script>
+  const picker = document.querySelector<HTMLElement>('.practice-picker')!;
+  const choices = Array.from(picker.querySelectorAll<HTMLAnchorElement>('[data-practice]'));
+  const panels = document.querySelectorAll<HTMLElement>('.practice-info');
+  const projects = document.querySelectorAll<HTMLElement>('[data-project]');
+  function select(choice: HTMLAnchorElement) {
+    const slug = choice.dataset.practice;
+    choices.forEach(tab => {
+      const selected = tab === choice;
+      tab.setAttribute('aria-selected', String(selected));
+      tab.dataset.current = String(selected);
+      tab.tabIndex = selected ? 0 : -1;
+    });
+    panels.forEach(panel => panel.hidden = panel.id !== 'practice-' + slug);
+    projects.forEach(project => project.hidden = project.dataset.project !== slug);
+  }
+  picker.setAttribute('role', 'tablist');
+  const compact = matchMedia('(max-width: 730px)');
+  const orient = () => picker.setAttribute('aria-orientation', compact.matches ? 'horizontal' : 'vertical');
+  compact.addEventListener('change', orient);
+  orient();
+  choices.forEach((choice, i) => {
+    const id = 'practice-' + choice.dataset.practice;
+    const panel = document.getElementById(id)!;
+    panel.setAttribute('role', 'tabpanel');
+    panel.setAttribute('aria-labelledby', choice.id);
+    choice.setAttribute('role', 'tab');
+    choice.setAttribute('aria-controls', id);
+    choice.addEventListener('click', event => { event.preventDefault(); select(choice); });
+    choice.addEventListener('keydown', event => {
+      if (event.key === ' ') { event.preventDefault(); select(choice); return; }
+      const indexes: Record<string, number> = {ArrowRight: (i+1)%choices.length, ArrowLeft: (i+choices.length-1)%choices.length, ArrowDown: (i+1)%choices.length, ArrowUp: (i+choices.length-1)%choices.length, Home: 0, End: choices.length-1};
+      if (!(event.key in indexes)) return;
+      event.preventDefault();
+      const next = choices[indexes[event.key]];
+      select(next);
+      next.focus();
+    });
+  });
+  select(choices[0]);
+
+  const inspector = document.querySelector<HTMLDialogElement>('.project-inspector')!;
+  if (typeof inspector.showModal === 'function') {
+    document.querySelectorAll<HTMLButtonElement>('[data-inspect]').forEach(button => {
+      button.hidden = false;
+      button.addEventListener('click', () => {
+        const figure = button.closest('figure')!;
+        const img = figure.querySelector('img')!.cloneNode() as HTMLImageElement;
+        img.loading = 'eager';
+        img.sizes = '90vw';
+        inspector.querySelector('.inspector-media')!.replaceChildren(img);
+        inspector.querySelector('#inspect-name')!.textContent = figure.querySelector('h2')!.textContent;
+        inspector.querySelector('[data-inspect-category]')!.textContent = figure.querySelector('.stage-title')!.textContent;
+        inspector.querySelector('.inspector-caption')!.textContent = figure.querySelector('figcaption p')!.textContent;
+        inspector.showModal();
+      });
+    });
+    inspector.querySelector('button')!.addEventListener('click', () => inspector.close());
+    inspector.addEventListener('click', event => { if (event.target === inspector) inspector.close(); });
+  }
+</script>

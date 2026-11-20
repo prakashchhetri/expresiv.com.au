@@ -1,17 +1,22 @@
 ---
-import {Image} from 'astro:assets';
-import {projectImages} from '../data/project-images';
+import { Image } from 'astro:assets';
+import { projectImages } from '../data/project-images';
 import { projects } from '../data/agency';
-const { limit = projects.length } = Astro.props;
+const { items = projects } = Astro.props;
 ---
-<div class="projects">
- {projects.slice(0,limit).map(project => <article class="project" data-category={project.type}>
-  <a href={`/works/${project.slug}`} class:list={['project-image', { 'project-device': project.image === 'webnetwork' }]} style={`--project-color:${project.color}`} data-cursor="View" aria-label={`View ${project.name} project`}>
-   <span class="project-type">E—{project.number} / {project.category}</span>
-   <Image src={projectImages[project.image]} alt={project.alt} widths={project.image === 'webnetwork' ? [640,1200,1800] : [480,800]} sizes="(max-width: 760px) 100vw, 50vw" format="webp" quality={85} loading="lazy" decoding="async"/>
-   <span class="project-arrow" aria-hidden="true">↗</span>
-  </a>
-  <div class="project-caption"><h3 data-split><a href={`/works/${project.slug}`}>{project.name}</a></h3><span>{project.category}</span></div>
-  <p class="project-summary" data-reveal>{project.summary}</p>
- </article>)}
+<div class="work-grid">
+  {items.map((project: typeof projects[number]) => (
+    <article class:list={['work-card', {
+      'network-project': project.image === 'webnetwork',
+      'agency-project': project.image === 'work3',
+      'identity-project': project.image === 'work2'
+    }]} data-category={project.type}>
+      <a href={`/works/${project.slug}`} class="work-art" aria-label={`Explore the ${project.name} case study`}>
+        {project.image === 'webnetwork' && <span class="project-signature" aria-hidden="true"><i></i>Web Networks</span>}
+        <Image src={projectImages[project.image]} alt={project.alt} widths={project.image === 'webnetwork' ? [480, 800, 1200] : [394]} sizes="(max-width: 680px) 90vw, 50vw" format="webp" quality={88} loading="lazy"/>
+      </a>
+      <div class="work-caption"><h3><a href={`/works/${project.slug}`}>{project.name}</a></h3><p>{project.category}</p></div>
+      <p class="work-description">{project.summary}</p>
+    </article>
+  ))}
 </div>

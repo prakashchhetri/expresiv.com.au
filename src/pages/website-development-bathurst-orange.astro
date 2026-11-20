@@ -1,35 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Container from "../components/Container.astro";
-import HeroSection from "../components/ServicesPage/HeroSection.astro";
-import OfferSection from "../components/ServicesPage/OfferSection.astro";
-import BrandingSection from "../components/ServicesPage/BrandingSection.astro";
-import DesignProcess from "../components/ServicesPage/DesignProcess.astro";
-import TechStack from "../components/ServicesPage/TechStack.astro";
-import CallToAction from "../components/CallToAction.astro";
-import ClientsBanner from "../components/ClientsBanner.astro";
-import FeatureGrid from "../components/FeatureGrid.astro";
-import CTASection from "../components/CTASection.astro";
-import CTABathurst499 from "../components/CTABathurst499.astro";
+import RegionalWebsites from '../components/RegionalWebsites.astro';
+export const prerender = true;
 ---
-
-<Layout title="Bathurst & Orange Website Design & Development | Expresiv">
-	<main class="space-y-40">
-		<HeroSection
-			title="Bathurst & Orange Website Design & Development"
-			description="Professional web design and development services for businesses in Bathurst and Orange, NSW. Custom websites that drive results."
-			buttonText="Get Started"
-			buttonLink="/contact"
-			image="/images/ai_banner.png"
-		/>
-		<ClientsBanner />
-		<FeatureGrid />
-		<CTABathurst499 />
-		<OfferSection />
-		<BrandingSection />
-		<DesignProcess />
-		<TechStack />
-		<CallToAction />
-		<CTASection />
-	</main>
-</Layout> 
+<RegionalWebsites region="Bathurst & Orange" centralWest/>

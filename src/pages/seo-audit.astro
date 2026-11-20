@@ -1,30 +1,17 @@
 ---
+import PageIntro from '../components/PageIntro.astro';
 import Layout from "../layouts/Layout.astro";
 import { config } from "../lib/api-config.ts";
 ---
 
 <Layout title="SEO Audit Snapshot | Expresiv">
-  <main class="space-y-16 py-20">
-    <!-- Hero Section -->
-    <section class="fade-in bg-gradient-to-br from-green-500/5 via-transparent to-blue-500/5 py-16">
-      <div class="mx-auto max-w-4xl px-4 text-center">
-        <div class="inline-flex items-center justify-center w-16 h-16 bg-green-500/10 rounded-2xl mb-6">
-          <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-          </svg>
-        </div>
-        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
-          SEO Audit & Analysis
-        </h1>
-        <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-          Get a comprehensive SEO analysis of your website. Check technical SEO, performance, Core Web Vitals, and get actionable recommendations to improve your search rankings.
-        </p>
-        
-        <!-- Analysis Form -->
-        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 max-w-2xl mx-auto">
+  <PageIntro section="Search tools" lead="Website" accent="audit." summary="Check technical SEO, performance and crawlability for a web address. Choose a device to run the audit."/>
+  <div class="tool-body">
+    <section class="tool-entry tint"><div class="tool-shell wrap"><div>
           <form id="audit-form" class="space-y-6">
             <div class="space-y-4">
               <div class="relative">
+                <label class="tool-label" for="url">Website URL</label>
                 <input 
                   id="url" 
                   name="url" 
@@ -86,7 +73,7 @@ import { config } from "../lib/api-config.ts";
           
           <div id="error" class="hidden mt-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl text-red-700 dark:text-red-300 text-sm"></div>
           
-          <div class="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl">
+          <div class="tool-note">
             <div class="flex items-start space-x-3">
               <svg class="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -105,7 +92,7 @@ import { config } from "../lib/api-config.ts";
       </div>
     </section>
 
-    <section id="results-section" class="fade-in">
+    <section id="results-section" class="tool-results">
       <div class="mx-auto max-w-6xl px-4">
         <!-- Loading Indicator -->
         <div id="loader" class="hidden">
@@ -141,7 +128,7 @@ import { config } from "../lib/api-config.ts";
         </div>
       </div>
     </section>
-  </main>
+  </div>
 </Layout>
 
 <script define:vars={{ config }}>

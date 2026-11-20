@@ -8,7 +8,7 @@ const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 function preload() {
  const loader = document.querySelector<HTMLElement>('.loader');
  if (!loader) return Promise.resolve();
- if (reduced || sessionStorage.getItem('expresiv:loaded')) { loader.remove(); document.body.classList.remove('loading'); return Promise.resolve(); }
+ if (reduced || sessionStorage.getItem('expresiv:loaded')) { loader.remove(); document.documentElement.classList.remove('will-load'); return Promise.resolve(); }
  const count = loader.querySelector<HTMLElement>('.loader-count');
  const bar = loader.querySelector<HTMLElement>('.loader-bar');
  const start = performance.now();
@@ -23,7 +23,7 @@ function preload() {
    if (t < 1) requestAnimationFrame(tick);
    else {
     loader.classList.add('done');
-    document.body.classList.remove('loading');
+    document.documentElement.classList.remove('will-load');
     sessionStorage.setItem('expresiv:loaded', '1');
     setTimeout(() => loader.remove(), 1200);
     resolve();

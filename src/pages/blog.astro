@@ -1,35 +1,18 @@
 ---
-import BlogPost from '../components/BlogPost.astro';
-import { getBlogPosts } from '../lib/posts';
-import Layout from '../layouts/Layout.astro';
-import Container from '../components/Container.astro';
-
-let posts = [];
-try {
-  posts = await getBlogPosts();
-  console.log(posts);
-} catch (error) {
-  console.warn('Failed to fetch blog posts:', error);
-}
+import AgencyLayout from '../layouts/AgencyLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { getBlogPosts, plainText } from '../lib/posts';
+let feedAvailable = true;
+const posts = await getBlogPosts().catch(() => { feedAvailable = false; return []; });
 ---
-
-<Layout title="Insights & News | Expresiv">
-  <main class="py-20 lg:py-32">
-    <Container>
-      <div class="max-w-2xl mx-auto text-center mb-16">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Insights & News</h1>
-        <p class="text-lg text-gray-600 dark:text-gray-300">Latest thoughts on design, technology, and business growth.</p>
-      </div>
-
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {posts.length > 0 ? (
-          posts.map((post) => <BlogPost post={post} />)
-        ) : (
-          <div class="col-span-full text-center py-12">
-            <p class="text-gray-500">Blog posts are temporarily unavailable. Please check back later.</p>
-          </div>
-        )}
-      </div>
-    </Container>
-  </main>
-</Layout>
+<AgencyLayout title="Studio Journal — Expresiv" description="Articles from the Expresiv studio on digital product design, development, and building for the people who use your software.">
+  <PageIntro section="Insights" lead="Studio" accent="journal." summary="Notes on designing, developing and looking after digital products."/>
+  <section class="resource-section tint"><div class="wrap">
+    {!feedAvailable && <p class="feed-status">The latest articles are temporarily unavailable.</p>}
+    <div class="resource-grid">
+      {posts.map(post => <article class="resource-card"><p class="meta">{new Date(post.date).toLocaleDateString('en-AU', {dateStyle:'long'})}</p><h2><a href={`/blog/${post.slug}`}>{plainText(post.title.rendered)}</a></h2><p>{plainText(post.excerpt?.rendered || '').slice(0,220)}</p><a class="underlink" href={`/blog/${post.slug}`}>Read article</a></article>)}
+      <article class="resource-card"><p class="meta">Product design</p><h2><a href="/single-page">Testing a prototype before development</a></h2><p>Choose one task, observe someone using the prototype and use what you learn in the next build.</p><a class="underlink" href="/single-page">Read the studio note</a></article>
+    </div>
+  </div></section>
+  <section class="wrap related-strip"><div><p class="overline">Website tools</p><h2>Check a <em>website.</em></h2></div><div class="resource-links"><a class="underlink" href="/seo-audit">SEO audit</a><a class="underlink" href="/competitor-analysis">Competitor analysis</a></div></section>
+</AgencyLayout>

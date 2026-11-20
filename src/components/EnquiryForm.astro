@@ -1,0 +1,40 @@
+---
+const { home = false } = Astro.props;
+---
+<form id="contact-form" class:list={[{ "home-form": home }]} action="/api/contact" method="post">
+   <label for="name">Your name<input id="name" name="name" autocomplete="name" required maxlength="120" placeholder={home ? "Name" : "Alex Smith"}/></label>
+   <label for="email">Email address<input id="email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="alex@company.com"/></label>
+   <label for="message">{home ? "About your project" : "What are you thinking?"}<textarea id="message" name="message" rows={home ? 3 : 5} required maxlength="10000" placeholder="Tell us about your project, your goals and any timing you have in mind."></textarea></label>
+   <p class="form-note">Your details will be used to respond to this enquiry.</p>
+   <button type="submit" class={home ? "solid-button light" : "pill"}>Send enquiry <span class={home ? "button-mark" : undefined} aria-hidden="true">{home ? "+" : "↗"}</span></button>
+   <p id="form-status" role="status" aria-live="polite"></p>
+  </form>
+<script>
+ import {sendEnquiry} from '../lib/enquiry.mjs';
+ function initContactForm() {
+  const form = document.querySelector<HTMLFormElement>('#contact-form');
+  if (!form || form.dataset.initialized) return;
+  form.dataset.initialized = 'true';
+  form.addEventListener('submit', async (event) => {
+   event.preventDefault();
+   const button = form.querySelector<HTMLButtonElement>('button')!;
+   const status = form.querySelector<HTMLParagraphElement>('#form-status')!;
+   button.disabled = true;
+   form.setAttribute('aria-busy', 'true');
+   status.textContent = 'Sending your enquiry…';
+   try {
+    const body = new URLSearchParams();
+    new FormData(form).forEach((value, key) => body.append(key, String(value)));
+    status.textContent = await sendEnquiry(body);
+    form.reset();
+   } catch {
+    status.textContent = 'Your enquiry could not be sent. Please try again or email info@expresiv.com.au.';
+   } finally {
+    button.disabled = false;
+    form.removeAttribute('aria-busy');
+   }
+  });
+ }
+ initContactForm();
+ document.addEventListener('astro:page-load', initContactForm);
+</script>
