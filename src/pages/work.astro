@@ -2,15 +2,16 @@
 import AgencyLayout from '../layouts/AgencyLayout.astro';
 import AgencyProjects from '../components/AgencyProjects.astro';
 import PageIntro from '../components/PageIntro.astro';
+import { projects } from '../data/agency';
 export const prerender = true;
 const categories = [['all', 'All work'], ['platforms','Platforms & apps'], ['websites','Websites'], ['identity','Visual direction']];
 ---
-<AgencyLayout title="Selected Work — Expresiv" description="Explore Expresiv’s Web Networks customer platform, OffshoreGeniX website and Beauty & Nails visual direction.">
-  <PageIntro section="Portfolio" lead="Selected" accent="work." summary="A customer portal, an agency website and a beauty brand study. See the decisions behind each project."/>
+<AgencyLayout title="Selected Work — Expresiv" description="Explore Expresiv’s work, including the SeaPen mobile app for DockPro, a Web Networks customer portal, websites and visual design.">
+  <PageIntro section="Portfolio" lead="Selected" accent="work." summary="From a dry dock controlled by phone to a customer portal for an internet provider. See what we built and how people use it."/>
   <section class="catalogue tint" aria-label="Project portfolio">
     <div class="wrap">
       <div class="work-filters" role="group" aria-label="Filter projects" hidden>{categories.map(([id, label]) => <button data-filter={id} aria-pressed={id === 'all' ? 'true' : 'false'}>{label}</button>)}</div>
-      <p class="sr-only" role="status" data-filter-status>3 projects shown</p>
+      <p class="sr-only" role="status" data-filter-status>{projects.length} projects shown</p>
       <AgencyProjects/>
     </div>
   </section>

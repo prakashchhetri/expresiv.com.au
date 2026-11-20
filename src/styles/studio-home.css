@@ -92,6 +92,8 @@ html { scroll-behavior: smooth; }
 .work-art img { position: absolute; display: block; transition: transform .65s cubic-bezier(.2,.75,.2,1); }
 .work-art:hover img { transform: scale(1.035); }
 .network-project .work-art img { width: 100%; height: auto; bottom: -11.4%; left: 0; }
+.seapen-project .work-art { background: #285457; aspect-ratio: 1.28; }
+.seapen-project .work-art img { inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 85% center; }
 .agency-project .work-art img { width: 100%; height: 100%; inset: 0; object-fit: contain; }
 .project-signature { position: absolute; z-index: 1; top: clamp(14px, 2vw, 34px); left: clamp(14px, 2vw, 34px); display: flex; align-items: center; gap: 7px; font-size: clamp(1.1rem, 1.65vw, 1.7rem); letter-spacing: -.06em; font-weight: 600; }
 .project-signature i { width: .85em; height: .7em; border: 3px solid currentColor; border-radius: 50%; transform: rotate(-30deg); }
@@ -171,7 +173,7 @@ html { scroll-behavior: smooth; }
   .artboard figcaption { margin-top: 0; }
   .location { display: none; }
   .work-grid { grid-template-columns: 1fr; gap: 33px; }
-  .work-art, .agency-project .work-art { aspect-ratio: 1.5; }
+  .work-art, .agency-project .work-art, .seapen-project .work-art { aspect-ratio: 1.5; }
   .section-head { margin-bottom: 19px; }
   .section-head h2 { gap: 10px; font-size: 2.4rem; }
   .section-head .index-mark { width: 9px; height: 9px; }

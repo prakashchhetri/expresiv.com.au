@@ -21,7 +21,7 @@ async function renderRoute(path, status) {
  }
 }
 const root = 'dist/client';
-const routes = ['/', '/work', '/services', '/studio', '/contact', '/services/websites', '/services/mobile-apps', '/services/custom-software', '/works/web-networks', '/works/osgx', '/works/beauty-and-nails', '/404'];
+const routes = ['/', '/work', '/services', '/studio', '/contact', '/services/websites', '/services/mobile-apps', '/services/custom-software', '/works/web-networks', '/works/seapen', '/works/osgx', '/works/beauty-and-nails', '/404'];
 const titles = new Set();
 let links = 0, images = 0;
 const fullSizeAssets = new Set();
@@ -77,9 +77,8 @@ assert.equal($contact('#contact-form').attr('action'),'/api/contact');
 assert.equal($contact('#contact-form').attr('method'),'post');
 assert.equal($contact('#email').attr('type'),'email');
 assert($contact('#form-status[role="status"]').length);
-const before=['webnetwork','work2','work3','appnet'].reduce((sum,name)=>sum+statSync(`public/images/${name}.png`).size,0);
-const after=[...fullSizeAssets].reduce((sum,path)=>sum+statSync(join(root,path)).size,0);
+const referencedImageBytes=[...fullSizeAssets].reduce((sum,path)=>sum+statSync(join(root,path)).size,0);
 console.log(`${routes.length} routes, ${links} links and ${images} image references checked.`);
-console.log(`Project assets: ${before} → ${after} bytes (${Math.round((1-after/before)*100)}% smaller).`);
+console.log(`Distinct referenced image files: ${fullSizeAssets.size} (${referencedImageBytes} bytes total).`);
 console.table(measurements);
-writeFileSync('/private/tmp/expresiv-agency-checks.json',JSON.stringify({routes:routes.length,links,images,assetReductionPercent:Math.round((1-after/before)*100),measurements},null,2));
+writeFileSync('/private/tmp/expresiv-agency-checks.json',JSON.stringify({routes:routes.length,links,images,referencedImageBytes,measurements},null,2));

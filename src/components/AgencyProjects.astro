@@ -7,13 +7,14 @@ const { items = projects } = Astro.props;
 <div class="work-grid">
   {items.map((project: typeof projects[number]) => (
     <article class:list={['work-card', {
+      'seapen-project': project.image === 'seapen',
       'network-project': project.image === 'webnetwork',
       'agency-project': project.image === 'work3',
       'identity-project': project.image === 'work2'
     }]} data-category={project.type}>
       <a href={`/works/${project.slug}`} class="work-art" aria-label={`Explore the ${project.name} case study`}>
         {project.image === 'webnetwork' && <span class="project-signature" aria-hidden="true"><i></i>Web Networks</span>}
-        <Image src={projectImages[project.image]} alt={project.alt} widths={project.image === 'webnetwork' ? [480, 800, 1200] : [394]} sizes="(max-width: 680px) 90vw, 50vw" format="webp" quality={88} loading="lazy"/>
+        <Image src={projectImages[project.image]} alt={project.alt} widths={projectImages[project.image].width >= 1200 ? [480, 800, 1200] : [394]} sizes="(max-width: 680px) 90vw, 50vw" format="webp" quality={88} loading="lazy"/>
       </a>
       <div class="work-caption"><h3><a href={`/works/${project.slug}`}>{project.name}</a></h3><p>{project.category}</p></div>
       <p class="work-description">{project.summary}</p>

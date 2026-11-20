@@ -6,16 +6,27 @@ import PageIntro from './PageIntro.astro';
 import {projects} from '../data/agency';
 const {project} = Astro.props;
 const next = projects.find(item => item.slug === project.next)!;
+const cover = projectImages[project.image];
+const isSeaPen = project.slug === 'seapen';
 ---
-<AgencyLayout title={`${project.name} — Project by Expresiv`} description={project.summary}>
+<AgencyLayout title={project.pageTitle ?? `${project.name} — Project by Expresiv`} description={project.summary}>
+  <Fragment slot="head">{isSeaPen && <><meta property="og:image" content={new URL(cover.src, Astro.site).href}/><meta property="og:image:alt" content={project.alt}/></>}</Fragment>
   <PageIntro section="All work" href="/work" lead={project.name} summary={project.summary}>
     <p class="project-scope">{project.scope.join('   /   ')}</p>
   </PageIntro>
-  <figure class="case-plate wrap" style={`--plate:${project.color}`}><Image src={projectImages[project.image]} alt={project.alt} widths={project.image === 'webnetwork' ? [480,960,1440] : [394]} sizes="(max-width: 680px) 90vw, 65vw" format="webp" quality={88} fetchpriority="high" loading="eager"/></figure>
+  <figure class:list={['case-plate', 'wrap', {'seapen-cover': isSeaPen}]} style={`--plate:${project.color}`}>
+    <Image src={cover} alt={project.alt} widths={cover.width >= 1440 ? [480,960,1440] : [394]} sizes={isSeaPen ? '(max-width: 1500px) 92vw, 1440px' : '(max-width: 680px) 90vw, 65vw'} format="webp" quality={88} fetchpriority="high" loading="eager"/>
+  </figure>
   <section class="wrap editorial-split">
     <div><p class="overline"><span class="index-mark" aria-hidden="true"></span>{project.category}</p><h2>{project.headline}</h2><p class="section-copy">{project.context}</p></div>
     <div class="copy-rows"><article><h3>The challenge</h3><p>{project.challenge}</p></article><article><h3>The approach</h3><p>{project.approach}</p></article><article><h3>The result</h3><p>{project.outcome}</p></article></div>
   </section>
-  {project.detail && <div class="tint"><section class="related-project wrap"><figure style="--plate:#e1f6fc"><Image src={projectImages[project.detail]} alt={project.detailAlt} widths={[360,666]} sizes="(max-width: 680px) 90vw, 42vw" format="webp" loading="lazy"/></figure><div><h2>{project.detailTitle}</h2><p>{project.detailCopy}</p></div></section></div>}
+  {project.detail && <div class="tint"><section class:list={['related-project', 'wrap', {'seapen-detail': isSeaPen}]}>
+    <figure style={`--plate:${isSeaPen ? '#d8e7e3' : '#e1f6fc'}`}><Image src={projectImages[project.detail]} alt={project.detailAlt} widths={[360,666]} sizes={isSeaPen ? '(max-width: 680px) 60vw, 260px' : '(max-width: 680px) 90vw, 42vw'} format="webp" loading="lazy"/></figure>
+    <div><h2>{project.detailTitle}</h2><p>{project.detailCopy}</p>
+      {project.externalUrl && <a class="underlink" href={project.externalUrl}>{project.externalLabel}</a>}
+      {project.imageNote && <p class="image-credit">{project.imageNote}</p>}
+    </div>
+  </section></div>}
   <section class="related-strip wrap"><div><p class="overline">Next project</p><h2><a href={`/works/${next.slug}`}>{next.name}</a></h2></div><a class="underlink" href={`/works/${next.slug}`}>Explore {next.name}</a></section>
 </AgencyLayout>
